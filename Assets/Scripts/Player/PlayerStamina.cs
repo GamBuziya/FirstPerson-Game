@@ -9,10 +9,13 @@ namespace DefaultNamespace
     public class PlayerStamina : MonoBehaviour
     {
         public float Stamina;
+        public float BasicAttackStamina;
+        public float SpecialAttackStamina;
 
         [SerializeField] private float _maxStamina;
         [SerializeField] private Image _frontStamina;
         [SerializeField] private Image _backStamina;
+        
         
 
         private void Start()

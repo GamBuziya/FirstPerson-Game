@@ -36,7 +36,7 @@ public class EnemyAnimation : MonoBehaviour, IAnimationReset
         _animator.SetBool("Block", false);
     }
 
-    public void ResetFirstAttack()
+    public void ResetAttack()
     {
         StopCoroutine(WaitAndReset());
         if (Random.Range(0, 1f) < 0.3)
@@ -46,17 +46,11 @@ public class EnemyAnimation : MonoBehaviour, IAnimationReset
         }
         _animator.SetBool("FirstAttack", false);
     }
-
-    public void ResetSecondAttack()
-    {
-        _animator.SetBool("FirstAttack", false);
-        _animator.SetBool("SecondAttack", false);
-    }
+    
     
     
     private IEnumerator WaitAndReset()
     {
         yield return new WaitForSeconds(0.4f);
-        ResetSecondAttack();
     }
 }

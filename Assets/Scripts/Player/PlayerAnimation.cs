@@ -10,11 +10,15 @@ namespace DefaultNamespace
     public class PlayerAnimation : MonoBehaviour, IAnimationReset
     {
         public Animator Animator;
-        public bool isAttack = false;
-        public bool secondAttack = false;
         public int StaminaCost = 30;
+        
+        private float _mouseX = 0;
+        private float _prevMouseX = 0;
+        private bool _power = false;
+
 
         private PlayerStamina _stamina;
+        
 
 
         private void Awake()
@@ -22,54 +26,72 @@ namespace DefaultNamespace
             _stamina = GetComponent<PlayerStamina>();
         }
 
-        public void Attack()
-        {
-            if(Animator == null) return;
-            if (!isAttack && _stamina.Stamina >= StaminaCost)
+            public void UpdateSide(Vector2 input)
             {
-                Animator.SetBool("FirstAttack", true);
-                isAttack = true;
-                return;
+                input.Normalize();
+                _prevMouseX = _mouseX;
+                _mouseX -= MoreAccuracy(input.x);
             }
             
-            if (isAttack && _stamina.Stamina >= 2*StaminaCost)
+            public void Attack()
             {
-                Animator.SetBool("SecondAttack", true);
-                secondAttack = true;
+                float deltaX = _mouseX - _prevMouseX;
+                deltaX = MoreAccuracy(deltaX);
+
+                if (Animator == null) return;
+                if (true)
+                {
+                    Animator.SetBool("IsAttack", true);
+                    if (_power)
+                    {
+                        Animator.SetBool("Up", true);
+                        return;
+                    }
+                    
+                    if (deltaX > 0)
+                    {
+                        Animator.SetBool("Right", true);
+                    }
+                    else
+                    {
+                        Animator.SetBool("Left", true);
+                    }
+                }
             }
 
-        }
-
-        public void Block()
-        {
-            if(Animator == null) return;
-            Animator.SetBool("Block", true);
-        }
-
-
-        public void ResetBlock()
-        {
-            Animator.SetBool("Block", false);
-        }
-
-        public void ResetFirstAttack()
-        {
-            _stamina.StaminaDamage(StaminaCost);
-            if (!secondAttack)
+            public void Block()
             {
-                Animator.SetBool("FirstAttack", false);
-                isAttack = false;
+                if(Animator == null) return;
+                Animator.SetBool("Block", true);
+            }
+
+
+            public void ChangePower()
+            {
                 
+                _power = !_power;
             }
-        }
+            
 
-        public void ResetSecondAttack()
-        {
-            _stamina.StaminaDamage(StaminaCost);
-            Animator.SetBool("FirstAttack", false);
-            Animator.SetBool("SecondAttack", false);
-            isAttack = false;
-            secondAttack = false;
-        }
+            public void ResetBlock()
+            {
+                Animator.SetBool("Block", false);
+            }
+
+            public void ResetAttack()
+            {
+                //_stamina.StaminaDamage(StaminaCost);
+                Animator.SetBool("Left", false);
+                Animator.SetBool("Right", false);
+                Animator.SetBool("Up", false);
+                Animator.SetBool("IsAttack", false);
+            }
+            
+            
+            public float MoreAccuracy(float num)
+            {
+                return num * Time.deltaTime * 100;
+            }
+        
     }
 }

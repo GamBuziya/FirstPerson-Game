@@ -28,6 +28,9 @@ public class InputManager : MonoBehaviour
         
         
         //Удари
+        onFoot.PowerButton.started += context => _playerAnimation.ChangePower();
+        onFoot.PowerButton.canceled += context => _playerAnimation.ChangePower();
+        
         onFoot.LMK.performed += context => _playerAnimation.Attack();
         
         onFoot.RMK.performed += context => _playerAnimation.Block();
@@ -43,6 +46,12 @@ public class InputManager : MonoBehaviour
     {
         _look.UpdateLook(_playerInput.OnFoot.Look.ReadValue<Vector2>());
     }
+
+    private void Update()
+    {
+        _playerAnimation.UpdateSide(_playerInput.OnFoot.Look.ReadValue<Vector2>());
+    }
+
 
     private void OnEnable()
     {

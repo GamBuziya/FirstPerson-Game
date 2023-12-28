@@ -25,13 +25,9 @@ public class Resets : MonoBehaviour
         _controller.ResetBlock();
     }
 
-    public void ResetFirstAttack()
+    public void ResetAttack()
     {
-        _controller.ResetFirstAttack();
+        _controller.ResetAttack();
     }
-
-    public void ResetSecondAttack()
-    {
-        _controller.ResetSecondAttack();
-    }
+    
 }
