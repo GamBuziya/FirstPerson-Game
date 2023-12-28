@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     public PlayerInput.OnFootActions onFoot;
     private PlayerMotor _motor;
     private PlayerLook _look;
-    private PlayerAnimation _playerAnimation;
+    private PlayerBattleController _battleController;
     
     void Awake()
     {
@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
         
         _motor = GetComponent<PlayerMotor>();
         _look = GetComponent<PlayerLook>();
-        _playerAnimation = GetComponent<PlayerAnimation>();
+        _battleController = GetComponent<PlayerBattleController>();
         
         //Підв'язка методу до дії
         onFoot.Jump.performed += context =>  _motor.Jump();
@@ -28,12 +28,13 @@ public class InputManager : MonoBehaviour
         
         
         //Удари
-        onFoot.PowerButton.started += context => _playerAnimation.ChangePower();
-        onFoot.PowerButton.canceled += context => _playerAnimation.ChangePower();
+        onFoot.PowerButton.started += context => _battleController.ActivatePower();
+        onFoot.PowerButton.canceled += context => _battleController.DeactivatePower();
         
-        onFoot.LMK.performed += context => _playerAnimation.Attack();
+        onFoot.LMK.performed += context => _battleController.Attack();
         
-        onFoot.RMK.performed += context => _playerAnimation.Block();
+        onFoot.RMK.started += context => _battleController.Block();
+        onFoot.RMK.canceled += context => _battleController.ResetBlock();
         
     }
 
@@ -49,7 +50,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        _playerAnimation.UpdateSide(_playerInput.OnFoot.Look.ReadValue<Vector2>());
+        _battleController.Animation.UpdateSide(_playerInput.OnFoot.Look.ReadValue<Vector2>());
     }
 
 

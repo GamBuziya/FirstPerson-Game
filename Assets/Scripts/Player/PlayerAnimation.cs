@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -26,72 +27,97 @@ namespace DefaultNamespace
             _stamina = GetComponent<PlayerStamina>();
         }
 
-            public void UpdateSide(Vector2 input)
-            {
-                input.Normalize();
-                _prevMouseX = _mouseX;
-                _mouseX -= MoreAccuracy(input.x);
-            }
+        public void UpdateSide(Vector2 input)
+        {
+            input.Normalize();
+            _prevMouseX = _mouseX;
+            _mouseX -= MoreAccuracy(input.x);
+        }
             
-            public void Attack()
-            {
-                float deltaX = _mouseX - _prevMouseX;
-                deltaX = MoreAccuracy(deltaX);
+        public void Attack()
+        {
+            ChangeAnimation(true);
+        }
+        
+        public void Block()
+        {
+            ChangeAnimation(false);
+        }
+        
+        private void ChangeAnimation(bool isAttack)
+        {
+            float deltaX = _mouseX - _prevMouseX;
+            deltaX = MoreAccuracy(deltaX);
 
-                if (Animator == null) return;
-                if (true)
+            if (Animator == null) return;
+            if (true)
+            {
+                if(isAttack) Animator.SetBool(PartsOfAnimation.IsAttack.ToString(), true);
+                else Animator.SetBool(PartsOfAnimation.IsBlock.ToString(), true);
+                
+                
+                if (_power)
                 {
-                    Animator.SetBool("IsAttack", true);
-                    if (_power)
-                    {
-                        Animator.SetBool("Up", true);
-                        return;
-                    }
-                    
+                    Animator.SetBool(PartsOfAnimation.Up.ToString(), true);
+                    return;
+                }
+
+                if (isAttack)
+                {
                     if (deltaX > 0)
                     {
-                        Animator.SetBool("Right", true);
+                        Animator.SetBool(PartsOfAnimation.Right.ToString(), true);
                     }
                     else
                     {
-                        Animator.SetBool("Left", true);
+                        Animator.SetBool(PartsOfAnimation.Left.ToString(), true);
                     }
                 }
-            }
-
-            public void Block()
-            {
-                if(Animator == null) return;
-                Animator.SetBool("Block", true);
-            }
-
-
-            public void ChangePower()
-            {
+                else
+                {
+                    if (deltaX < 0)
+                    {
+                        Animator.SetBool(PartsOfAnimation.Right.ToString(), true);
+                    }
+                    else
+                    {
+                        Animator.SetBool(PartsOfAnimation.Left.ToString(), true);
+                    }
+                }
                 
-                _power = !_power;
             }
-            
-
-            public void ResetBlock()
-            {
-                Animator.SetBool("Block", false);
-            }
-
-            public void ResetAttack()
-            {
-                //_stamina.StaminaDamage(StaminaCost);
-                Animator.SetBool("Left", false);
-                Animator.SetBool("Right", false);
-                Animator.SetBool("Up", false);
-                Animator.SetBool("IsAttack", false);
-            }
-            
-            
-            public float MoreAccuracy(float num)
-            {
-                return num * Time.deltaTime * 100;
-            }
+        }
         
+        
+        public void ResetBlock()
+        {
+            Animator.SetBool("IsBlock", false);
+            ResetParts();
+        }
+
+        public void ResetAttack()
+        {
+            Animator.SetBool("IsAttack", false);
+            ResetParts();
+        }
+
+        public void ResetParts()
+        {
+            Animator.SetBool("Left", false);
+            Animator.SetBool("Right", false);
+            Animator.SetBool("Up", false);
+        }
+        
+        
+        public float MoreAccuracy(float num)
+        {
+            return num * Time.deltaTime * 100;
+        }
+        
+        public void ChangePower()
+        {
+            _power = !_power;
+        }
+    
     }
 }

@@ -5,12 +5,12 @@ namespace DefaultNamespace
 {
     public class WeaponTaker : MonoBehaviour
     {
-        private PlayerAnimation _playerAnimation;
+        private PlayerBattleController _battleController;
 
 
         private void Start()
         {
-            _playerAnimation = GetComponent<PlayerAnimation>();
+            _battleController = GetComponent<PlayerBattleController>();
         }
 
         public void TakeWeapon()
@@ -26,7 +26,7 @@ namespace DefaultNamespace
                     var childTransform = weaponSlot.transform.GetChild(0);
 
                     var weapon = childTransform.gameObject;
-                    _playerAnimation.Animator = weapon.GetComponent<Animator>();
+                    _battleController.SetAnimator(weapon.GetComponent<Animator>());
                 }
             }
             else
