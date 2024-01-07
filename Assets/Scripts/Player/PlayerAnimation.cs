@@ -11,81 +11,11 @@ namespace DefaultNamespace
     public class PlayerAnimation : MonoBehaviour, IAnimationReset
     {
         public Animator Animator;
-        public int StaminaCost = 30;
-        
-        private float _mouseX = 0;
-        private float _prevMouseX = 0;
-        private bool _power = false;
 
-
-        private PlayerStamina _stamina;
-        
-
-
-        private void Awake()
+        public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
         {
-            _stamina = GetComponent<PlayerStamina>();
-        }
-
-        public void UpdateSide(Vector2 input)
-        {
-            input.Normalize();
-            _prevMouseX = _mouseX;
-            _mouseX -= MoreAccuracy(input.x);
-        }
-            
-        public void Attack()
-        {
-            ChangeAnimation(true);
-        }
-        
-        public void Block()
-        {
-            ChangeAnimation(false);
-        }
-        
-        private void ChangeAnimation(bool isAttack)
-        {
-            float deltaX = _mouseX - _prevMouseX;
-            deltaX = MoreAccuracy(deltaX);
-
-            if (Animator == null) return;
-            if (true)
-            {
-                if(isAttack) Animator.SetBool(TypeOfMove.IsAttack.ToString(), true);
-                else Animator.SetBool(TypeOfMove.IsBlock.ToString(), true);
-                
-                
-                if (_power)
-                {
-                    Animator.SetBool(PartsOfBattleMoves.Up.ToString(), true);
-                    return;
-                }
-
-                if (isAttack)
-                {
-                    if (deltaX > 0)
-                    {
-                        Animator.SetBool(PartsOfBattleMoves.Right.ToString(), true);
-                    }
-                    else
-                    {
-                        Animator.SetBool(PartsOfBattleMoves.Left.ToString(), true);
-                    }
-                }
-                else
-                {
-                    if (deltaX < 0)
-                    {
-                        Animator.SetBool(PartsOfBattleMoves.Right.ToString(), true);
-                    }
-                    else
-                    {
-                        Animator.SetBool(PartsOfBattleMoves.Left.ToString(), true);
-                    }
-                }
-                
-            }
+            Animator.SetBool(partsOfBattleMoves.ToString(), true);
+            Animator.SetBool(typeOfMove.ToString(), true);
         }
         
         
@@ -108,16 +38,6 @@ namespace DefaultNamespace
             Animator.SetBool("Up", false);
         }
         
-        
-        public float MoreAccuracy(float num)
-        {
-            return num * Time.deltaTime * 100;
-        }
-        
-        public void ChangePower()
-        {
-            _power = !_power;
-        }
     
     }
 }

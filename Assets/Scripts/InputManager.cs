@@ -28,8 +28,8 @@ public class InputManager : MonoBehaviour
         
         
         //Удари
-        onFoot.PowerButton.started += context => _battleController.ActivatePower();
-        onFoot.PowerButton.canceled += context => _battleController.DeactivatePower();
+        onFoot.PowerButton.started += context => _battleController.ChangeForce();
+        onFoot.PowerButton.canceled += context => _battleController.ChangeForce();
         
         onFoot.LMK.performed += context => _battleController.Attack();
         
@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        _battleController.Animation.UpdateSide(_playerInput.OnFoot.Look.ReadValue<Vector2>());
+        _battleController.UpdateMousePosition(_playerInput.OnFoot.Look.ReadValue<Vector2>());
     }
 
 
