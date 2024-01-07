@@ -1787,7 +1787,11 @@ PrefabInstance:
     - target: {fileID: 2675573604061635467, guid: 07b1edac5661bf14b823d5a1e455c085, type: 3}
       propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1230440227}
+      objectReference: {fileID: 1326599029}
+    - target: {fileID: 2675573604061635467, guid: 07b1edac5661bf14b823d5a1e455c085, type: 3}
+      propertyPath: OnInteract.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DefaultNamespace.Player, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 8495854229486390844, guid: 07b1edac5661bf14b823d5a1e455c085, type: 3}
       propertyPath: m_Name
       value: Sword_01
@@ -1837,17 +1841,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 07b1edac5661bf14b823d5a1e455c085, type: 3}
---- !u!114 &1230440227 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2141987026869303133, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
-  m_PrefabInstance: {fileID: 2025113674834956534}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1326599003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc5a17bf6b940a9afdcde1ce1647e28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1230440232 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 704425920380729454, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
@@ -1998,7 +1991,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 99683411360573057, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
   m_PrefabInstance: {fileID: 2025113674834956534}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1326599016
+--- !u!114 &1326599029
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2007,11 +2000,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1326599003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a428b86b3b2d49a8b2503e7a35ff1f71, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c576a017ecc4ab1b770bd0db200c5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Animation: {fileID: 0}
-  Stamina: {fileID: 0}
+  MaxHealth: 100
 --- !u!1 &1365271215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3945,13 +3937,15 @@ PrefabInstance:
       propertyPath: SpecialAttackStamina
       value: 35
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4487690167475641688, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+    - {fileID: 2141987026869303133, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 99683411360573057, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1326599016}
+      addedObject: {fileID: 1326599029}
   m_SourcePrefab: {fileID: 100100000, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
 --- !u!23 &2289172521816160637
 MeshRenderer:

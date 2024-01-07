@@ -3,14 +3,13 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class WeaponTaker : MonoBehaviour
+    public class WeaponTaker
     {
-        private PlayerBattleController _battleController;
+        private Player _player;
 
-
-        private void Start()
+        public WeaponTaker(Player player)
         {
-            _battleController = GetComponent<PlayerBattleController>();
+            _player = player;
         }
 
         public void TakeWeapon()
@@ -26,7 +25,7 @@ namespace DefaultNamespace
                     var childTransform = weaponSlot.transform.GetChild(0);
 
                     var weapon = childTransform.gameObject;
-                    _battleController.SetAnimator(weapon.GetComponent<Animator>());
+                    _player.BattleController.SetAnimator(weapon.GetComponent<Animator>());
                 }
             }
             else

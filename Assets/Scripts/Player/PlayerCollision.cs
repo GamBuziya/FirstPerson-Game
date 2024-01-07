@@ -8,12 +8,12 @@ using UnityEngine.Events;
 public class PlayerCollision : MonoBehaviour
 {
     [SerializeField] private UnityEvent _OnWeaponCollisionEnter;
-    private PlayerHealthController _player;
+    private Player _player;
 
     private void Awake()
     {
-        _player = GetComponent<PlayerHealthController>();
-        SubscribeToCollisionEvent(() => _player._playerHealth.BasicTakeDamage(30));
+        _player = GetComponent<Player>();
+        SubscribeToCollisionEvent(() => _player.PlayerHealth.BasicTakeDamage(30));
     }
 
     private void OnCollisionEnter(Collision other)

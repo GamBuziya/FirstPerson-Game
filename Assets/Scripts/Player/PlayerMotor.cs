@@ -14,13 +14,13 @@ public class PlayerMotor : MonoBehaviour
     
     
     private CharacterController _characterController;
-    private PlayerStamina _stamina;
+    private StaminaController _staminaController;
     private Vector3 _velocityVector;
     private Vector3 _worldSpaceInput;
     
     void Awake()
     {
-        _stamina = GetComponent<PlayerStamina>();
+        _staminaController = GetComponent<StaminaController>();
         _characterController = GetComponent<CharacterController>();
     }
 
@@ -56,7 +56,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void SpeedUp()
     {
-        if (_stamina.Stamina > _SpeedupStaminaCost)
+        if (_staminaController.Stamina > _SpeedupStaminaCost)
         {
             Invoke("SpeedUpReset", 0.2f);
             _speed *= 3f;
@@ -67,6 +67,6 @@ public class PlayerMotor : MonoBehaviour
     private void SpeedUpReset()
     {
         _speed /= 3f;
-        _stamina.StaminaDamage(_SpeedupStaminaCost);
+        _staminaController.StaminaDamage(_SpeedupStaminaCost);
     }
 }

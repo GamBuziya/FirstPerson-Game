@@ -11,11 +11,11 @@ namespace DefaultNamespace
     public class PlayerAnimation : MonoBehaviour, IAnimationReset
     {
         public Animator Animator;
-        private PlayerBattleController _battleController;
+        private Player _player;
 
         private void Awake()
         {
-            _battleController = GetComponent<PlayerBattleController>();
+            _player = GetComponent<Player>();
         }
 
         public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
@@ -29,14 +29,14 @@ namespace DefaultNamespace
         public void ResetBlock()
         {
             Animator.SetBool("IsBlock", false);
-            _battleController.ResetMoves();
+            _player.BattleController.ResetMoves();
             ResetParts();
         }
 
         public void ResetAttack()
         {
             Animator.SetBool("IsAttack", false);
-            _battleController.ResetMoves();
+            _player.BattleController.ResetMoves();
             ResetParts();
         }
 

@@ -6,12 +6,10 @@ using Random = UnityEngine.Random;
 
 namespace DefaultNamespace 
 {
-    public class PlayerStamina : MonoBehaviour
+    public class StaminaController : MonoBehaviour
     {
         public float Stamina;
-        public float BasicAttackStamina;
-        public float SpecialAttackStamina;
-
+        
         [SerializeField] private float _maxStamina;
         [SerializeField] private Image _frontStamina;
         [SerializeField] private Image _backStamina;
@@ -28,11 +26,7 @@ namespace DefaultNamespace
         {
             Stamina = Mathf.Clamp(Stamina, 0, _maxStamina);
             UpdateStaminaUI();
-
-            if (Input.GetKeyDown(KeyCode.A))
-            {
-                StaminaDamage(Random.Range(0, 20));
-            }
+            
         }
 
         private void UpdateStaminaUI()

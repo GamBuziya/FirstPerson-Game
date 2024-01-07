@@ -18,10 +18,9 @@ GameObject:
   - component: {fileID: 3870916682164375809}
   - component: {fileID: 704425920380729454}
   - component: {fileID: 7813005532750296851}
-  - component: {fileID: 2141987026869303133}
   - component: {fileID: 4496111340486124857}
   - component: {fileID: 3027081942084630660}
-  - component: {fileID: 4487690167475641688}
+  - component: {fileID: 6939364773227829886}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -163,7 +162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camera: {fileID: 6296668537648969147}
-  _sensivity: 40
+  _sensivity: 30
 --- !u!114 &3870916682164375809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,21 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Animator: {fileID: 0}
-  isAttack: 0
-  secondAttack: 0
-  StaminaCost: 30
---- !u!114 &2141987026869303133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99683411360573057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ddc5a17bf6b940a9afdcde1ce1647e28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4496111340486124857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,8 +241,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _OnWeaponCollisionEnter:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &4487690167475641688
+      m_Calls:
+      - m_Target: {fileID: 704425920380729454}
+        m_TargetAssemblyTypeName: PlayerUI, Assembly-CSharp
+        m_MethodName: TakeDamageEffect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &6939364773227829886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -267,10 +263,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 99683411360573057}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ac49a00089425ba152f7fb24197761, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c576a017ecc4ab1b770bd0db200c5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _health: 100
+  MaxHealth: 100
 --- !u!1 &7531284264709940320
 GameObject:
   m_ObjectHideFlags: 0

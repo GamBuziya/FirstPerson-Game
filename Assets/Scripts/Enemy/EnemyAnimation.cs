@@ -1,10 +1,9 @@
-﻿
-using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.Enums;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 public class EnemyAnimation : MonoBehaviour, IAnimationReset
 {
@@ -27,24 +26,21 @@ public class EnemyAnimation : MonoBehaviour, IAnimationReset
 
     public void Attack()
     {
-        _animator.SetBool("FirstAttack", true);
+        _animator.SetBool(PartsOfBattleMoves.Left.ToString(), true);
+        _animator.SetBool(TypeOfMove.IsAttack.ToString(), true);
         StartCoroutine(WaitAndReset());
     }
 
     public void ResetBlock()
     {
-        _animator.SetBool("Block", false);
+        _animator.SetBool(TypeOfMove.IsBlock.ToString(), false);
     }
 
     public void ResetAttack()
     {
         StopCoroutine(WaitAndReset());
-        if (Random.Range(0, 1f) < 0.3)
-        {
-            _animator.SetBool("SecondAttack", true);
-            return;
-        }
-        _animator.SetBool("FirstAttack", false);
+        _animator.SetBool(TypeOfMove.IsAttack.ToString(), false);
+        _animator.SetBool(PartsOfBattleMoves.Left.ToString(), false);
     }
     
     
