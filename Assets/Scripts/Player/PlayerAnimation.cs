@@ -52,13 +52,13 @@ namespace DefaultNamespace
             if (Animator == null) return;
             if (true)
             {
-                if(isAttack) Animator.SetBool(PartsOfAnimation.IsAttack.ToString(), true);
-                else Animator.SetBool(PartsOfAnimation.IsBlock.ToString(), true);
+                if(isAttack) Animator.SetBool(TypeOfMove.IsAttack.ToString(), true);
+                else Animator.SetBool(TypeOfMove.IsBlock.ToString(), true);
                 
                 
                 if (_power)
                 {
-                    Animator.SetBool(PartsOfAnimation.Up.ToString(), true);
+                    Animator.SetBool(PartsOfBattleMoves.Up.ToString(), true);
                     return;
                 }
 
@@ -66,22 +66,22 @@ namespace DefaultNamespace
                 {
                     if (deltaX > 0)
                     {
-                        Animator.SetBool(PartsOfAnimation.Right.ToString(), true);
+                        Animator.SetBool(PartsOfBattleMoves.Right.ToString(), true);
                     }
                     else
                     {
-                        Animator.SetBool(PartsOfAnimation.Left.ToString(), true);
+                        Animator.SetBool(PartsOfBattleMoves.Left.ToString(), true);
                     }
                 }
                 else
                 {
                     if (deltaX < 0)
                     {
-                        Animator.SetBool(PartsOfAnimation.Right.ToString(), true);
+                        Animator.SetBool(PartsOfBattleMoves.Right.ToString(), true);
                     }
                     else
                     {
-                        Animator.SetBool(PartsOfAnimation.Left.ToString(), true);
+                        Animator.SetBool(PartsOfBattleMoves.Left.ToString(), true);
                     }
                 }
                 

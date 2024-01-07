@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using DefaultNamespace.Enums;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -8,7 +10,11 @@ namespace DefaultNamespace
         public PlayerAnimation Animation;
         public PlayerStamina Stamina;
         private bool _force;
-
+        
+        
+        //Треба мати назву удару що він зараз буде робити, щоб мати можливість в майбутньому парувати її
+        public PartsOfBattleMoves _CurrentMove;
+        
         private void Awake()
         {
             Animation = GetComponent<PlayerAnimation>();

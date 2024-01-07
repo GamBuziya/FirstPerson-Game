@@ -1842,7 +1842,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2141987026869303133, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
   m_PrefabInstance: {fileID: 2025113674834956534}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1326599003}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ddc5a17bf6b940a9afdcde1ce1647e28, type: 3}
@@ -1853,7 +1853,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 704425920380729454, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
   m_PrefabInstance: {fileID: 2025113674834956534}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1326599003}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e39bf30c68b5a499849e11098e9b54, type: 3}
@@ -1993,6 +1993,25 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1326599003 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 99683411360573057, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+  m_PrefabInstance: {fileID: 2025113674834956534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1326599016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1326599003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a428b86b3b2d49a8b2503e7a35ff1f71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation: {fileID: 0}
+  Stamina: {fileID: 0}
 --- !u!1 &1365271215
 GameObject:
   m_ObjectHideFlags: 0
@@ -3929,7 +3948,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 99683411360573057, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1326599016}
   m_SourcePrefab: {fileID: 100100000, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
 --- !u!23 &2289172521816160637
 MeshRenderer:
