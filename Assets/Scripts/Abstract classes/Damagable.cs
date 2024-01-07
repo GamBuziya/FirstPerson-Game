@@ -33,6 +33,17 @@ namespace DefaultNamespace.Abstract_classes
             if(Health < MaxHealth) Health += points;
         }
         
-        
+        private void DeathChecker()
+        {
+            if (Health <= 0)
+            {
+                Death();
+            }
+        }
+
+        private void Death()
+        {
+            
+        }
     }
 }

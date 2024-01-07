@@ -21,21 +21,21 @@ public class PlayerUI : MonoBehaviour
     
     public float _durationTimer = 0;
 
-    private PlayerHealthController _player;
+    private Player _player;
     private float _currentHealth;
 
 
     private void Start()
     {
-        _player = GetComponent<PlayerHealthController>();
-        _currentHealth = _player._playerHealth.Health;
+        _player = GetComponent<Player>();
+        _currentHealth = _player.PlayerHealth.Health;
         _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, 0);
     }
     
     private void Update()
     {
-        _currentHealth = _player._playerHealth.Health;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _player._playerHealth.MaxHealth);
+        _currentHealth = _player.PlayerHealth.Health;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _player.PlayerHealth.MaxHealth);
         UpdateHealthUI();
         
         if (_hitEffect.color.a > 0)
@@ -57,7 +57,7 @@ public class PlayerUI : MonoBehaviour
         float fillB = _backHealth.fillAmount;
         float fillA = _frontHealth.fillAmount;
 
-        float certainHealth = _currentHealth / _player._playerHealth.MaxHealth;
+        float certainHealth = _currentHealth / _player.PlayerHealth.MaxHealth;
         
         if (certainHealth < fillB)
         {

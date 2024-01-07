@@ -3,7 +3,6 @@
     public interface IAnimationReset
     {
         void ResetBlock();
-        void ResetFirstAttack();
-        void ResetSecondAttack();
+        void ResetAttack();
     }
 }

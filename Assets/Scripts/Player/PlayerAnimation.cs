@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -10,66 +11,42 @@ namespace DefaultNamespace
     public class PlayerAnimation : MonoBehaviour, IAnimationReset
     {
         public Animator Animator;
-        public bool isAttack = false;
-        public bool secondAttack = false;
-        public int StaminaCost = 30;
-
-        private PlayerStamina _stamina;
-
+        private Player _player;
 
         private void Awake()
         {
-            _stamina = GetComponent<PlayerStamina>();
+            _player = GetComponent<Player>();
         }
 
-        public void Attack()
+        public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
         {
             if(Animator == null) return;
-            if (!isAttack && _stamina.Stamina >= StaminaCost)
-            {
-                Animator.SetBool("FirstAttack", true);
-                isAttack = true;
-                return;
-            }
-            
-            if (isAttack && _stamina.Stamina >= 2*StaminaCost)
-            {
-                Animator.SetBool("SecondAttack", true);
-                secondAttack = true;
-            }
-
+            Animator.SetBool(partsOfBattleMoves.ToString(), true);
+            Animator.SetBool(typeOfMove.ToString(), true);
         }
-
-        public void Block()
-        {
-            if(Animator == null) return;
-            Animator.SetBool("Block", true);
-        }
-
-
+        
+        
         public void ResetBlock()
         {
-            Animator.SetBool("Block", false);
+            Animator.SetBool("IsBlock", false);
+            _player.BattleController.ResetMoves();
+            ResetParts();
         }
 
-        public void ResetFirstAttack()
+        public void ResetAttack()
         {
-            _stamina.StaminaDamage(StaminaCost);
-            if (!secondAttack)
-            {
-                Animator.SetBool("FirstAttack", false);
-                isAttack = false;
-                
-            }
+            Animator.SetBool("IsAttack", false);
+            _player.BattleController.ResetMoves();
+            ResetParts();
         }
 
-        public void ResetSecondAttack()
+        public void ResetParts()
         {
-            _stamina.StaminaDamage(StaminaCost);
-            Animator.SetBool("FirstAttack", false);
-            Animator.SetBool("SecondAttack", false);
-            isAttack = false;
-            secondAttack = false;
+            Animator.SetBool(PartsOfBattleMoves.Left.ToString(), false);
+            Animator.SetBool(PartsOfBattleMoves.Right.ToString(), false);
+            Animator.SetBool(PartsOfBattleMoves.Up.ToString(), false);
         }
+        
+    
     }
 }

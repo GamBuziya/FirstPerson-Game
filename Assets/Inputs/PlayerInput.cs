@@ -89,6 +89,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PowerButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""8ae396ab-ae87-4e02-b250-e709eac74cc3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -210,6 +219,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""RMK"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d97c457c-a3ce-4495-a677-68452b14081c"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PowerButton"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -743,6 +763,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_OnFoot_SpeedUp = m_OnFoot.FindAction("SpeedUp", throwIfNotFound: true);
         m_OnFoot_LMK = m_OnFoot.FindAction("LMK", throwIfNotFound: true);
         m_OnFoot_RMK = m_OnFoot.FindAction("RMK", throwIfNotFound: true);
+        m_OnFoot_PowerButton = m_OnFoot.FindAction("PowerButton", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -823,6 +844,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_OnFoot_SpeedUp;
     private readonly InputAction m_OnFoot_LMK;
     private readonly InputAction m_OnFoot_RMK;
+    private readonly InputAction m_OnFoot_PowerButton;
     public struct OnFootActions
     {
         private @PlayerInput m_Wrapper;
@@ -834,6 +856,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @SpeedUp => m_Wrapper.m_OnFoot_SpeedUp;
         public InputAction @LMK => m_Wrapper.m_OnFoot_LMK;
         public InputAction @RMK => m_Wrapper.m_OnFoot_RMK;
+        public InputAction @PowerButton => m_Wrapper.m_OnFoot_PowerButton;
         public InputActionMap Get() { return m_Wrapper.m_OnFoot; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -864,6 +887,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RMK.started += instance.OnRMK;
             @RMK.performed += instance.OnRMK;
             @RMK.canceled += instance.OnRMK;
+            @PowerButton.started += instance.OnPowerButton;
+            @PowerButton.performed += instance.OnPowerButton;
+            @PowerButton.canceled += instance.OnPowerButton;
         }
 
         private void UnregisterCallbacks(IOnFootActions instance)
@@ -889,6 +915,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @RMK.started -= instance.OnRMK;
             @RMK.performed -= instance.OnRMK;
             @RMK.canceled -= instance.OnRMK;
+            @PowerButton.started -= instance.OnPowerButton;
+            @PowerButton.performed -= instance.OnPowerButton;
+            @PowerButton.canceled -= instance.OnPowerButton;
         }
 
         public void RemoveCallbacks(IOnFootActions instance)
@@ -1033,6 +1062,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnSpeedUp(InputAction.CallbackContext context);
         void OnLMK(InputAction.CallbackContext context);
         void OnRMK(InputAction.CallbackContext context);
+        void OnPowerButton(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

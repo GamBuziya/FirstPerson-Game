@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
     public PlayerInput.OnFootActions onFoot;
     private PlayerMotor _motor;
     private PlayerLook _look;
-    private PlayerAnimation _playerAnimation;
+    private Player _player;
     
     void Awake()
     {
@@ -20,7 +20,7 @@ public class InputManager : MonoBehaviour
         
         _motor = GetComponent<PlayerMotor>();
         _look = GetComponent<PlayerLook>();
-        _playerAnimation = GetComponent<PlayerAnimation>();
+        _player = GetComponent<Player>();
         
         //Підв'язка методу до дії
         onFoot.Jump.performed += context =>  _motor.Jump();
@@ -28,9 +28,13 @@ public class InputManager : MonoBehaviour
         
         
         //Удари
-        onFoot.LMK.performed += context => _playerAnimation.Attack();
+        onFoot.PowerButton.started += context => _player.BattleController.ChangeForce();
+        onFoot.PowerButton.canceled += context => _player.BattleController.ChangeForce();
         
-        onFoot.RMK.performed += context => _playerAnimation.Block();
+        onFoot.LMK.performed += context => _player.BattleController.Attack();
+        
+        onFoot.RMK.started += context => _player.BattleController.Block();
+        onFoot.RMK.canceled += context => _player.BattleController.ResetBlock();
         
     }
 
@@ -43,6 +47,12 @@ public class InputManager : MonoBehaviour
     {
         _look.UpdateLook(_playerInput.OnFoot.Look.ReadValue<Vector2>());
     }
+
+    private void Update()
+    {
+        _player.BattleController.UpdateMousePosition(_playerInput.OnFoot.Look.ReadValue<Vector2>());
+    }
+
 
     private void OnEnable()
     {
