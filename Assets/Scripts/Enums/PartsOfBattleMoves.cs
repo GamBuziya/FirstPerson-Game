@@ -2,8 +2,9 @@
 {
     public enum PartsOfBattleMoves
     {
-        Right = 0,
-        Left = 1,
-        Up = 2
+        Nothing = 0,
+        Right = 1,
+        Left = 2,
+        Up = 3
     }
 }

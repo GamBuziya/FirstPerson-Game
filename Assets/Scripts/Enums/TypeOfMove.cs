@@ -2,6 +2,7 @@
 {
     public enum TypeOfMove
     {
+        Nothing,
         IsAttack,
         IsBlock
     }
