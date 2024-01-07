@@ -13,8 +13,8 @@ namespace DefaultNamespace
         [SerializeField] private int _basicAttackStaminaCost = 30;
         [SerializeField] private int _forceAttackStaminaCost = 40;
 
-        public PlayerAnimation Animation;
-        public StaminaController StaminaController;
+        public PlayerAnimation Animation; //Треба отримати
+        public StaminaController StaminaController; //Підійде для Enemy
         private MoveParametrsController _battleMoves;
         private bool _force = false;
 
@@ -37,7 +37,7 @@ namespace DefaultNamespace
         }
         
 
-        public void Attack()
+        public override void Attack()
         {
             if (Animation == null) return;
 
@@ -62,7 +62,7 @@ namespace DefaultNamespace
 
         }
 
-        public void Block()
+        public override void Block()
         {
             if (Animation == null) return;
 

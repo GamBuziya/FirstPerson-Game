@@ -1,4 +1,5 @@
-﻿using DefaultNamespace.NonMonobehaviourClasses;
+﻿using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.NonMonobehaviourClasses;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -7,6 +8,7 @@ namespace DefaultNamespace
     {
         [SerializeField] private int MaxHealth = 100;
         
+        [SerializeField] public PlayerStaminaContoller Stamina;
         public PlayerBattleController BattleController;
         public PlayerHealth PlayerHealth;
         public WeaponTaker WeaponTaker;

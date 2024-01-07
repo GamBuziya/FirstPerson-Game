@@ -1,24 +1,20 @@
-﻿using System.Collections;
+﻿using System;
 using UnityEngine;
+using System.Collections;
 using UnityEngine.UI;
-using Random = UnityEngine.Random;
 
-
-namespace DefaultNamespace 
+namespace DefaultNamespace.Abstract_classes
 {
-    public class StaminaController : MonoBehaviour
+    public abstract class StaminaController : MonoBehaviour
     {
-        public float Stamina;
-        
         [SerializeField] private float _maxStamina;
         [SerializeField] private Image _frontStamina;
         [SerializeField] private Image _backStamina;
         
-        
+        public float Stamina;
 
         private void Start()
         {
-            Stamina = _maxStamina;
             StartCoroutine(TakeStamina());
         }
 
@@ -26,9 +22,8 @@ namespace DefaultNamespace
         {
             Stamina = Mathf.Clamp(Stamina, 0, _maxStamina);
             UpdateStaminaUI();
-            
         }
-
+        
         private void UpdateStaminaUI()
         {
             float fillB = _backStamina.fillAmount;
@@ -46,12 +41,7 @@ namespace DefaultNamespace
             _frontStamina.fillAmount = Mathf.Lerp(_frontStamina.fillAmount, certainStamina, Time.deltaTime*5);
             _backStamina.fillAmount = Mathf.Lerp(fillB, certainStamina, Time.deltaTime*5);
         }
-
-        public void StaminaDamage(int damage)
-        {
-            Stamina -= damage;
-        }
-
+        
         private IEnumerator TakeStamina()
         {
             while (true)
@@ -60,6 +50,11 @@ namespace DefaultNamespace
                 if (Stamina <= _maxStamina)
                     Stamina += 0.5f;
             }
+        }
+        
+        public void StaminaDamage(int damage)
+        {
+            Stamina -= damage;
         }
     }
 }

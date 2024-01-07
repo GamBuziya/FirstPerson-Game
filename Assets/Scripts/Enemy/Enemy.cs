@@ -31,7 +31,16 @@ public class Enemy : MonoBehaviour
         CanSee();
         _currentState = _stateMachine.ActiveState.ToString();
     }
-
+   
+    
+    
+    
+    
+    
+    
+    
+    
+    
     public bool CanSee()
     {
         if (Vector3.Distance(transform.position, Player.transform.position) < _sightDistance)
