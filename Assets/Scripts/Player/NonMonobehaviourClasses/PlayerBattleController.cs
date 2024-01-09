@@ -3,6 +3,7 @@ using System.Security.Cryptography.X509Certificates;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enums;
 using DefaultNamespace.NonMonobehaviourClasses;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -23,7 +24,7 @@ namespace DefaultNamespace
         public PartsOfBattleMoves _currentMove = PartsOfBattleMoves.Nothing;
         public TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
 
-
+        
         public void UpdateMousePosition(Vector2 readValue)
         {
             _battleMoves.UpdateSide(readValue);
@@ -39,7 +40,7 @@ namespace DefaultNamespace
 
         public override void Attack()
         {
-            if (Animation == null) return;
+            if (Animation.Animator == null) return;
 
             if (_force)
             {
@@ -64,7 +65,7 @@ namespace DefaultNamespace
 
         public override void Block()
         {
-            if (Animation == null) return;
+            if (Animation.Animator == null) return;
 
             _battleMoves.GetMoveParametrs(false, _force, out _currentMove, out _currentTypeOfMove);
             Animation.PlayAnimation(_currentMove, _currentTypeOfMove);

@@ -1,4 +1,5 @@
-﻿using DefaultNamespace.Abstract_classes;
+﻿using System;
+using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.NonMonobehaviourClasses;
 using UnityEngine;
 
@@ -20,6 +21,11 @@ namespace DefaultNamespace
             BattleController = new PlayerBattleController(Animation, StaminaController);
             PlayerHealth = new PlayerHealth(MaxHealth);
             WeaponTaker = new WeaponTaker(this);
+        }
+
+        private void Update()
+        {
+            
         }
 
         public void TakeWeapon()
