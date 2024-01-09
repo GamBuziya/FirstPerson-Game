@@ -8,16 +8,16 @@ using UnityEngine;
 
 public class Resets : MonoBehaviour
 {
-    private IAnimationReset _controller;
+    private AnimatorManager _controller;
 
     private void Awake()
     {
-        if (GetComponentInParent<IAnimationReset>() != null) SetController();
+        if (GetComponentInParent<AnimatorManager>() != null) SetController();
     }
 
     public void SetController()
     {
-        _controller = GetComponentInParent<IAnimationReset>();
+        _controller = GetComponentInParent<AnimatorManager>();
     }
 
     public void ResetBlock()
