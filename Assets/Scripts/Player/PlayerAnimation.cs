@@ -8,45 +8,12 @@ using UnityEngine.Events;
 
 namespace DefaultNamespace
 {
-    public class PlayerAnimation : MonoBehaviour, IAnimationReset
+    public class PlayerAnimation : AnimatorManager
     {
-        public Animator Animator;
-        private Player _player;
-
         private void Awake()
         {
-            _player = GetComponent<Player>();
-        }
-
-        public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
-        {
-            if(Animator == null) return;
-            Animator.SetBool(partsOfBattleMoves.ToString(), true);
-            Animator.SetBool(typeOfMove.ToString(), true);
+            _person = GetComponent<Player>();
         }
         
-        
-        public void ResetBlock()
-        {
-            Animator.SetBool("IsBlock", false);
-            _player.BattleController.ResetMoves();
-            ResetParts();
-        }
-
-        public void ResetAttack()
-        {
-            Animator.SetBool("IsAttack", false);
-            _player.BattleController.ResetMoves();
-            ResetParts();
-        }
-
-        public void ResetParts()
-        {
-            Animator.SetBool(PartsOfBattleMoves.Left.ToString(), false);
-            Animator.SetBool(PartsOfBattleMoves.Right.ToString(), false);
-            Animator.SetBool(PartsOfBattleMoves.Up.ToString(), false);
-        }
-        
-    
     }
 }
