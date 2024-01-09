@@ -11,25 +11,9 @@ namespace DefaultNamespace
 {
     public class PlayerBattleController : BattleController
     {
-        [SerializeField] private int _basicAttackStaminaCost = 30;
-        [SerializeField] private int _forceAttackStaminaCost = 40;
-
-        public PlayerAnimation Animation; //Треба отримати
-        public StaminaController StaminaController; //Підійде для Enemy
         private MoveParametrsController _battleMoves;
-        private bool _force = false;
-
-
-        //Треба мати назву удару що він зараз буде робити, щоб мати можливість в майбутньому парувати її
-        public PartsOfBattleMoves _currentMove = PartsOfBattleMoves.Nothing;
-        public TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
-
         
-        public void UpdateMousePosition(Vector2 readValue)
-        {
-            _battleMoves.UpdateSide(readValue);
-        }
-
+        
         public PlayerBattleController(PlayerAnimation Animation, StaminaController StaminaController)
         {
             this.Animation = Animation;
@@ -37,6 +21,10 @@ namespace DefaultNamespace
             _battleMoves = new MoveParametrsController();
         }
         
+        public void UpdateMousePosition(Vector2 readValue)
+        {
+            _battleMoves.UpdateSide(readValue);
+        }
 
         public override void Attack()
         {
@@ -76,21 +64,11 @@ namespace DefaultNamespace
         {
             Animation.ResetBlock();
         }
-
-        public void ResetMoves()
-        {
-            _currentMove = PartsOfBattleMoves.Nothing;
-            _currentTypeOfMove = TypeOfMove.Nothing;
-        }
-
-        public void ChangeForce()
-        {
-            _force = !_force;
-        }
-
+        
+        
         public void SetAnimator(Animator animator)
         {
             Animation.Animator = animator;
         }
-        }
+    }
 }

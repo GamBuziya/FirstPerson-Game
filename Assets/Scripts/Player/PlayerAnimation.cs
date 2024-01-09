@@ -28,6 +28,7 @@ namespace DefaultNamespace
         
         public void ResetBlock()
         {
+            if (Animator == null) return;
             Animator.SetBool("IsBlock", false);
             _player.BattleController.ResetMoves();
             ResetParts();
