@@ -10,7 +10,6 @@ namespace DefaultNamespace
 {
     public class PlayerAnimation : AnimatorManager
     {
-        
         private void Awake()
         {
             _person = GetComponent<Player>();

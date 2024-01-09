@@ -6,7 +6,7 @@ namespace DefaultNamespace.Abstract_classes
     public abstract class AnimatorManager : MonoBehaviour
     {
         public Animator Animator;
-        protected Player _person; // Зробити абстрактно
+        protected GameCharacter _person;
         
         public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
         {

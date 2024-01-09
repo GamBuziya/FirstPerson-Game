@@ -34,7 +34,13 @@ public class InputManager : MonoBehaviour
         onFoot.LMK.performed += context => _player.BattleController.Attack();
         
         onFoot.RMK.started += context => _player.BattleController.Block();
-        onFoot.RMK.canceled += context => _player.BattleController.ResetBlock();
+        onFoot.RMK.canceled += context =>
+        {
+            if (_player.BattleController is PlayerBattleController playerBattleController)
+            {
+                playerBattleController.ResetBlock();
+            }
+        };
         
     }
 
@@ -50,7 +56,10 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        _player.BattleController.UpdateMousePosition(_playerInput.OnFoot.Look.ReadValue<Vector2>());
+        if (_player.BattleController is PlayerBattleController playerBattleController)
+        {
+            playerBattleController.UpdateMousePosition(_playerInput.OnFoot.Look.ReadValue<Vector2>());
+        }
     }
 
 
