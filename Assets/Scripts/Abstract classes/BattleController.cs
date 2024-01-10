@@ -15,7 +15,7 @@ namespace DefaultNamespace.Abstract_classes
         
         
         protected StaminaController StaminaController;
-        protected PlayerAnimation Animation;
+        protected AnimatorManager Animation;
         
         protected bool _force = false;
         

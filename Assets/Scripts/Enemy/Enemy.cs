@@ -1,31 +1,47 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.Enemy;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : GameCharacter
 {
+    [SerializeField] private string _currentState;
+    
+    
+    // Enemy Moves
+    public GameObject Player { get; set; }
     public NavMeshAgent Agent { get => _agent;}
     public Path Path;   
     
-    private StateMachine _stateMachine;
-    private NavMeshAgent _agent;
-
-    public GameObject Player { get; set; }
+    
     private float _sightDistance = 13f;
     private float _fieldOfView = 70f;
+    
+    private StateMachine _stateMachine;
+    private NavMeshAgent _agent;
+    
+    //-----------------
 
-    [SerializeField] private string _currentState;
+    private EnemyAnimation _animation;
 
-    void Start()
+    void Awake()
     {
+        Player = GameObject.FindGameObjectWithTag("Player");
+        Stamina = GetComponent<EnemyStaminaController>();
+        Health = new EnemyHealth(MaxHealth);
+        _animation = GetComponent<EnemyAnimation>();
         _stateMachine = GetComponent<StateMachine>();
         _agent = GetComponent<NavMeshAgent>();
+        
         _stateMachine.Initialise();
-        Player = GameObject.FindGameObjectWithTag("Player");
+        
+        
+        BattleController = new EnemyBattleController(_animation, Stamina);
     }
-
+    
     private void Update()
     {
         CanSee();

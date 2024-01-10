@@ -14,7 +14,7 @@ namespace DefaultNamespace
             var Animation = GetComponent<PlayerAnimation>();
             var StaminaController = GetComponent<StaminaController>();
             BattleController = new PlayerBattleController(Animation, StaminaController);
-            PlayerHealth = new PlayerHealth(MaxHealth);
+            Health = new PlayerHealth(MaxHealth);
             WeaponTaker = new WeaponTaker(this);
         }
         

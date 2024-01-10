@@ -8,7 +8,7 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected int MaxHealth = 100;
         
         public BattleController BattleController;
-        public Damagable PlayerHealth;
+        public Damagable Health;
         
     }
 }

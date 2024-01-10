@@ -44,9 +44,10 @@ namespace DefaultNamespace.Enemy.States
                 Enemy.Agent.speed = 0f;
                 _attackTimer += Time.deltaTime;
                     
-                if (_attackTimer > 0.2f + Random.Range(0, 0.2f))
+                if (_attackTimer > 0.5f + Random.Range(0, 0.2f))
                 {
-                    StateMachine.EnemyAnimation.Attack();
+                    Debug.Log("A");
+                    StateMachine.Enemy.BattleController.Attack();
                     _attackTimer = 0;
                 }
                     

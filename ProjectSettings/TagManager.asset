@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Flame
   - Weapon
+  - EnemyCanvas
   layers:
   - Default
   - TransparentFX

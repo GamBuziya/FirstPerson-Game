@@ -13,7 +13,7 @@ public class PlayerCollision : MonoBehaviour
     private void Awake()
     {
         _player = GetComponent<Player>();
-        SubscribeToCollisionEvent(() => _player.PlayerHealth.BasicTakeDamage(30));
+        SubscribeToCollisionEvent(() => _player.Health.BasicTakeDamage(30));
     }
 
     private void OnCollisionEnter(Collision other)
