@@ -12,7 +12,11 @@ public class Resets : MonoBehaviour
 
     private void Awake()
     {
-        if (GetComponentInParent<AnimatorManager>() != null) SetController();
+        if (GetComponentInParent<AnimatorManager>() != null)
+        {
+            SetController();
+        }
+        
     }
 
     public void SetController()

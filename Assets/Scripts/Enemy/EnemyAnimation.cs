@@ -5,9 +5,12 @@ using DefaultNamespace.Enums;
 using UnityEngine;
 
 
-public class EnemyAnimation : MonoBehaviour, IAnimationReset
+public class EnemyAnimation : AnimatorManager
 {
-    private Animator _animator;
+    private void Awake()
+    {
+        _person = GetComponent<Enemy>();
+    }
 
     void Start()
     {
@@ -15,7 +18,7 @@ public class EnemyAnimation : MonoBehaviour, IAnimationReset
         _animators = GetComponentsInChildren<Animator>();
         if (_animators.Length > 0)
         {
-            _animator = _animators[0];
+            Animator = _animators[0];
         }
         else
         {
@@ -24,26 +27,18 @@ public class EnemyAnimation : MonoBehaviour, IAnimationReset
     }
     
 
-    public void Attack()
+    public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
     {
-        _animator.SetBool(PartsOfBattleMoves.Left.ToString(), true);
-        _animator.SetBool(TypeOfMove.IsAttack.ToString(), true);
+        base.PlayAnimation(partsOfBattleMoves, typeOfMove); // Виклик базового методу
+
         StartCoroutine(WaitAndReset());
     }
-
-    public void ResetBlock()
-    {
-        _animator.SetBool(TypeOfMove.IsBlock.ToString(), false);
-    }
-
+    
     public void ResetAttack()
     {
+        base.ResetAttack();
         StopCoroutine(WaitAndReset());
-        _animator.SetBool(TypeOfMove.IsAttack.ToString(), false);
-        _animator.SetBool(PartsOfBattleMoves.Left.ToString(), false);
     }
-    
-    
     
     private IEnumerator WaitAndReset()
     {

@@ -25,8 +25,12 @@ namespace DefaultNamespace.Abstract_classes
 
         public void ResetAttack()
         {
+            if (_person.BattleController == null)
+            {
+                Debug.Log("BattleController problem");
+            }
             Animator.SetBool("IsAttack", false);
-            _person.BattleController.ResetMoves();
+            //_person.BattleController.ResetMoves();
             ResetParts();
         }
 

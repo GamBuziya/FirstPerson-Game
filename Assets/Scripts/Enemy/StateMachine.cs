@@ -6,11 +6,11 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     public BaseState ActiveState;
-    public EnemyAnimation EnemyAnimation;
+    public Enemy Enemy;
     
     private void Start()
     {
-        EnemyAnimation = GetComponent<EnemyAnimation>();
+        Enemy = GetComponent<Enemy>();
     }
 
     public void Initialise()

@@ -28,14 +28,14 @@ public class PlayerUI : MonoBehaviour
     private void Start()
     {
         _player = GetComponent<Player>();
-        _currentHealth = _player.PlayerHealth.Health;
+        _currentHealth = _player.Health.Health;
         _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, 0);
     }
     
     private void Update()
     {
-        _currentHealth = _player.PlayerHealth.Health;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _player.PlayerHealth.MaxHealth);
+        _currentHealth = _player.Health.Health;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _player.Health.MaxHealth);
         UpdateHealthUI();
         
         if (_hitEffect.color.a > 0)
@@ -57,7 +57,7 @@ public class PlayerUI : MonoBehaviour
         float fillB = _backHealth.fillAmount;
         float fillA = _frontHealth.fillAmount;
 
-        float certainHealth = _currentHealth / _player.PlayerHealth.MaxHealth;
+        float certainHealth = _currentHealth / _player.Health.MaxHealth;
         
         if (certainHealth < fillB)
         {
