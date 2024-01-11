@@ -11,7 +11,6 @@ namespace DefaultNamespace.Enemy
     public class EnemyBattleController : BattleController
     {
         private float _time;
-        private int counter = 0;
         public EnemyBattleController(AnimatorManager Animation, StaminaController StaminaController, float time)
         {
             this.Animation = Animation;
@@ -21,7 +20,13 @@ namespace DefaultNamespace.Enemy
         
         public override async void Attack()
         {
-            var randomMove = (PartsOfBattleMoves)Random.Range(1, 4);
+            PartsOfBattleMoves randomMove;
+            if(_currentMove == PartsOfBattleMoves.Nothing)  randomMove = (PartsOfBattleMoves)Random.Range(1, 4);
+            else
+            {
+                Debug.Log("_currentMove");
+                randomMove = _currentMove;
+            }
             await DelayedAttack(randomMove);
         }
         
@@ -31,8 +36,6 @@ namespace DefaultNamespace.Enemy
 
             if (randomMove == PartsOfBattleMoves.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
             {
-                counter++;
-                Debug.Log("A " + counter++);
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(delayTime));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
@@ -40,13 +43,15 @@ namespace DefaultNamespace.Enemy
             }
             else if (randomMove == PartsOfBattleMoves.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
+                randomMove = (PartsOfBattleMoves)Random.Range(1, 3);
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(delayTime));
-                Animation.PlayAnimation((PartsOfBattleMoves)Random.Range(1, 3), TypeOfMove.IsAttack);
+                Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_basicAttackStaminaCost);
             }
             else if (randomMove != PartsOfBattleMoves.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
+                Debug.Log("default " + randomMove );
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(delayTime));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);

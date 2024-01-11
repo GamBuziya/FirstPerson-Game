@@ -1,10 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
-using UnityEngine;
-using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
