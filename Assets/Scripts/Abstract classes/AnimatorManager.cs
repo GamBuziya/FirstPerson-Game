@@ -30,7 +30,7 @@ namespace DefaultNamespace.Abstract_classes
                 Debug.Log("BattleController problem");
             }
             Animator.SetBool("IsAttack", false);
-            //_person.BattleController.ResetMoves();
+            _person.BattleController.ResetMoves();
             ResetParts();
         }
 

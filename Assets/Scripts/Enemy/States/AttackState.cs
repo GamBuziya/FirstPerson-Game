@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using DefaultNamespace.Enums;
+using UnityEngine;
 
 namespace DefaultNamespace.Enemy.States
 {
@@ -43,10 +44,9 @@ namespace DefaultNamespace.Enemy.States
             {
                 Enemy.Agent.speed = 0f;
                 _attackTimer += Time.deltaTime;
-                    
-                if (_attackTimer > 0.5f + Random.Range(0, 0.2f))
+                
+                if (_attackTimer > 0.1 + Random.Range(0.2f, 0.5f) && StateMachine.Enemy.BattleController.GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
-                    Debug.Log("A");
                     StateMachine.Enemy.BattleController.Attack();
                     _attackTimer = 0;
                 }
