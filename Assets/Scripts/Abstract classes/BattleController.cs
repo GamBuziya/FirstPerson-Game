@@ -10,9 +10,11 @@ namespace DefaultNamespace.Abstract_classes
         protected int _forceAttackStaminaCost = 40;
         
         //Треба мати назву удару що він зараз буде робити, щоб мати можливість в майбутньому парувати її
-        public PartsOfBattleMoves _currentMove = PartsOfBattleMoves.Nothing;
-        public TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
-        
+        protected PartsOfBattleMoves _currentMove = PartsOfBattleMoves.Nothing;
+        protected TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
+
+        public PartsOfBattleMoves GetCurrentMove() => _currentMove;
+        public TypeOfMove GetCurrentTypeOfMove() => _currentTypeOfMove;
         
         protected StaminaController StaminaController;
         protected AnimatorManager Animation;

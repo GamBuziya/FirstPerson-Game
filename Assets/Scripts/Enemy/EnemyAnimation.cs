@@ -27,14 +27,14 @@ public class EnemyAnimation : AnimatorManager
     }
     
 
-    public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
+    public new void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
     {
         base.PlayAnimation(partsOfBattleMoves, typeOfMove); // Виклик базового методу
 
         StartCoroutine(WaitAndReset());
     }
     
-    public void ResetAttack()
+    public new void ResetAttack()
     {
         base.ResetAttack();
         StopCoroutine(WaitAndReset());

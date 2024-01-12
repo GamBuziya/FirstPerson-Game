@@ -1,16 +1,14 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Enemy : GameCharacter
 {
-    [SerializeField] private string _currentState;
-    
-    
+    [SerializeField] private Image _arrowImage;
+
+    [SerializeField] private float _timeForArrow;
     // Enemy Moves
     public GameObject Player { get; set; }
     public NavMeshAgent Agent { get => _agent;}
@@ -26,6 +24,7 @@ public class Enemy : GameCharacter
     //-----------------
 
     private EnemyAnimation _animation;
+    private EnemySideAttackUI _sideAttackUI;
 
     void Awake()
     {
@@ -37,15 +36,15 @@ public class Enemy : GameCharacter
         _agent = GetComponent<NavMeshAgent>();
         
         _stateMachine.Initialise();
-        
-        
-        BattleController = new EnemyBattleController(_animation, Stamina);
+
+        _sideAttackUI = new EnemySideAttackUI(_arrowImage);
+        BattleController = new EnemyBattleController(_animation, Stamina, _timeForArrow);
     }
     
     private void Update()
     {
+        _sideAttackUI.ChangeUI(BattleController.GetCurrentTypeOfMove(), BattleController.GetCurrentMove());
         CanSee();
-        _currentState = _stateMachine.ActiveState.ToString();
     }
 
     public bool CanSee()
