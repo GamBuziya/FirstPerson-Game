@@ -51,7 +51,6 @@ namespace DefaultNamespace.Enemy
             }
             else if (randomMove != PartsOfBattleMoves.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
-                Debug.Log("default " + randomMove );
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(delayTime));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);

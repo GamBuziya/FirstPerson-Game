@@ -7,12 +7,17 @@ using UnityEngine.Events;
 
 public class PlayerCollision : MonoBehaviour
 {
-    [SerializeField] private UnityEvent _OnWeaponCollisionEnter;
+    [SerializeField] private UnityEvent _IsDamaged;
+    [SerializeField] private UnityEvent _IsBlocked;
+    
     private Player _player;
+    private BlockChecker _checker;
 
     private void Awake()
     {
         _player = GetComponent<Player>();
+        _checker = new BlockChecker(_player);
+        
         SubscribeToCollisionEvent(() => _player.Health.BasicTakeDamage(30));
     }
 
@@ -20,13 +25,23 @@ public class PlayerCollision : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Weapon") && other.gameObject.layer == 7)
         {
-            _OnWeaponCollisionEnter.Invoke();
+            var isBlock = _checker.IsBlock(other.gameObject);
+            if (!isBlock)
+            {
+                Debug.Log("Not blocked, invoking damage event");
+                _IsDamaged.Invoke();
+            }
+            else
+            {
+                Debug.Log("Blocked, no damage");
+            }
+            
         }
     }
     
     
     private void SubscribeToCollisionEvent(UnityAction action)
     {
-        _OnWeaponCollisionEnter.AddListener(action);
+        _IsDamaged.AddListener(action);
     } 
 }
