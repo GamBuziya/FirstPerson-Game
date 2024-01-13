@@ -50,6 +50,11 @@ namespace DefaultNamespace.Enemy
             }
         }
 
+        public void DisableUI()
+        {
+            _arrow.enabled = false;
+        }
+
 
     }
 }

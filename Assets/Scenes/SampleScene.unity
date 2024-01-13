@@ -378,6 +378,67 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 82619965}
   m_CullTransparentMesh: 1
+--- !u!1001 &137844102
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 15.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402178, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402191, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_Name
+      value: Blood Effect
+      objectReference: {fileID: 0}
+    - target: {fileID: 414520594313402191, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1e8926e9de45bcd4892c20ee7f2b9e36, type: 3}
 --- !u!1 &180239117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,6 +3894,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3027081942084630660, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      propertyPath: _particleEffect
+      value: 
+      objectReference: {fileID: 7210390216215930889, guid: dc721be970cf6e24d8df2e3c07de8856, type: 3}
+    - target: {fileID: 3027081942084630660, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: _IsDamaged.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3967,3 +4032,4 @@ SceneRoots:
   - {fileID: 1150133591}
   - {fileID: 436991385}
   - {fileID: 1081226007}
+  - {fileID: 137844102}

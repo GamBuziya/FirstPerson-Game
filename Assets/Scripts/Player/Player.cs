@@ -11,9 +11,10 @@ namespace DefaultNamespace
 
         private void Awake()
         {
-            var Animation = GetComponent<PlayerAnimation>();
+            Animator = GetComponent<PlayerAnimation>();
+            var playerAnimator = (PlayerAnimation)Animator;
             var StaminaController = GetComponent<StaminaController>();
-            BattleController = new PlayerBattleController(Animation, StaminaController);
+            BattleController = new PlayerBattleController(playerAnimator, StaminaController);
             Health = new PlayerHealth(MaxHealth);
             WeaponTaker = new WeaponTaker(this);
         }
