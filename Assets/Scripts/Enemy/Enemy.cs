@@ -22,23 +22,25 @@ public class Enemy : GameCharacter
     private NavMeshAgent _agent;
     
     //-----------------
-
-    private EnemyAnimation _animation;
+    
     private EnemySideAttackUI _sideAttackUI;
+
+    public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
 
     void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Stamina = GetComponent<EnemyStaminaController>();
         Health = new EnemyHealth(MaxHealth);
-        _animation = GetComponent<EnemyAnimation>();
+        
+        Animator = GetComponent<EnemyAnimation>();
         _stateMachine = GetComponent<StateMachine>();
         _agent = GetComponent<NavMeshAgent>();
         
         _stateMachine.Initialise();
 
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
-        BattleController = new EnemyBattleController(_animation, Stamina, _timeForArrow);
+        BattleController = new EnemyBattleController(this, _timeForArrow);
     }
     
     private void Update()

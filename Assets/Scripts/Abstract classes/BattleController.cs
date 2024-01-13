@@ -9,7 +9,7 @@ namespace DefaultNamespace.Abstract_classes
         protected int _basicAttackStaminaCost = 30;
         protected int _forceAttackStaminaCost = 40;
         
-        //Треба мати назву удару що він зараз буде робити, щоб мати можливість в майбутньому парувати її
+        
         protected PartsOfBattleMoves _currentMove = PartsOfBattleMoves.Nothing;
         protected TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
 

@@ -9,6 +9,7 @@ namespace DefaultNamespace.Abstract_classes
         
         public BattleController BattleController;
         public Damagable Health;
-        
+        public AnimatorManager Animator;
+        public bool IsStun = false;
     }
 }

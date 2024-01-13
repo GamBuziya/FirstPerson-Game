@@ -25,10 +25,6 @@ namespace DefaultNamespace.Abstract_classes
 
         public void ResetAttack()
         {
-            if (_person.BattleController == null)
-            {
-                Debug.Log("BattleController problem");
-            }
             Animator.SetBool("IsAttack", false);
             _person.BattleController.ResetMoves();
             ResetParts();
@@ -40,5 +36,20 @@ namespace DefaultNamespace.Abstract_classes
             Animator.SetBool(PartsOfBattleMoves.Right.ToString(), false);
             Animator.SetBool(PartsOfBattleMoves.Up.ToString(), false);
         }
+
+        public void EnemyParriedEffect()
+        {
+            if (_person is global::Enemy enemy)
+            {
+                enemy.GetEnemySideAttackUI().DisableUI();
+            }
+            
+            Debug.Log("Запускаєм парирування");
+            Animator.SetBool("IsParried", true);
+            ResetAttack();
+        }
+        
+        
+        
     }
 }

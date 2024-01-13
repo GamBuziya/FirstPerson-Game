@@ -31,12 +31,12 @@ namespace DefaultNamespace.Enemy
                     break;
                 case PartsOfBattleMoves.Right:
                     _arrow.enabled = true;
-                    quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 0f); 
+                    quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 180f); 
                     _arrow.transform.rotation = quaternion;
                     break;
                 case PartsOfBattleMoves.Left:
                     _arrow.enabled = true;
-                    quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 180f);
+                    quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 0f);
                     _arrow.transform.rotation = quaternion;
                     break;
                 case PartsOfBattleMoves.Up:
@@ -48,6 +48,11 @@ namespace DefaultNamespace.Enemy
                     _arrow.enabled = false;
                     break;
             }
+        }
+
+        public void DisableUI()
+        {
+            _arrow.enabled = false;
         }
 
 

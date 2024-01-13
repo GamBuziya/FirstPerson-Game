@@ -11,10 +11,12 @@ namespace DefaultNamespace.Enemy
     public class EnemyBattleController : BattleController
     {
         private float _time;
-        public EnemyBattleController(AnimatorManager Animation, StaminaController StaminaController, float time)
+        private global::Enemy enemy;
+        public EnemyBattleController(global::Enemy enemy, float time)
         {
-            this.Animation = Animation;
-            this.StaminaController = StaminaController;
+            this.enemy = enemy; 
+            this.Animation = enemy.Animator;
+            this.StaminaController = enemy.Stamina;
             _time = time;
         }
         
@@ -22,11 +24,7 @@ namespace DefaultNamespace.Enemy
         {
             PartsOfBattleMoves randomMove;
             if(_currentMove == PartsOfBattleMoves.Nothing)  randomMove = (PartsOfBattleMoves)Random.Range(1, 4);
-            else
-            {
-                Debug.Log("_currentMove");
-                randomMove = _currentMove;
-            }
+            else randomMove = _currentMove;
             await DelayedAttack(randomMove);
         }
         
@@ -34,6 +32,15 @@ namespace DefaultNamespace.Enemy
         {
             float delayTime = _time;
 
+            if (enemy.IsStun)
+            {
+                enemy.BattleController.ResetMoves();
+                await Task.Delay(TimeSpan.FromSeconds(delayTime));
+                enemy.IsStun = false;
+                return;
+            }
+            
+            
             if (randomMove == PartsOfBattleMoves.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
             {
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
@@ -51,7 +58,6 @@ namespace DefaultNamespace.Enemy
             }
             else if (randomMove != PartsOfBattleMoves.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
-                Debug.Log("default " + randomMove );
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(delayTime));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
