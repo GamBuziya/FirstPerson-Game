@@ -1,3 +1,4 @@
+using System;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
 using UnityEngine;
@@ -45,8 +46,12 @@ public class Enemy : GameCharacter
     
     private void Update()
     {
-        _sideAttackUI.ChangeUI(BattleController.GetCurrentTypeOfMove(), BattleController.GetCurrentMove());
         CanSee();
+    }
+
+    private void LateUpdate()
+    {
+        _sideAttackUI.ChangeUI(BattleController.GetCurrentTypeOfMove(), BattleController.GetCurrentMove());
     }
 
     public bool CanSee()
