@@ -45,7 +45,7 @@ namespace DefaultNamespace.Enemy.States
                 Enemy.Agent.speed = 0f;
                 _attackTimer += Time.deltaTime;
                 
-                if (_attackTimer > Random.Range(0.5f, 1f) && StateMachine.Enemy.BattleController.GetCurrentTypeOfMove() == TypeOfMove.Nothing)
+                if (_attackTimer > 2f && StateMachine.Enemy.BattleController.GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
                     StateMachine.Enemy.BattleController.Attack();
                     _attackTimer = 0;
