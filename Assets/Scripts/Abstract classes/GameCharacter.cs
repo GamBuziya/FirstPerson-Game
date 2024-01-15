@@ -9,7 +9,7 @@ namespace DefaultNamespace.Abstract_classes
         
         public LayerMask EnemyLayer;
         public BattleController BattleController;
-        public Damagable Health;
+        public HealthPoints Health;
         public AnimatorManager Animator;
         public bool IsStun = false;
     }

@@ -15,7 +15,7 @@ namespace DefaultNamespace.Enemy
             _arrow = arrow;
         }
 
-        public void ChangeUI(TypeOfMove getCurrentTypeOfMove, PartsOfBattleMoves move)
+        public void ChangeUI(TypeOfMove getCurrentTypeOfMove, SideOfMove move)
         {
             if (getCurrentTypeOfMove != TypeOfMove.IsAttack)
             {
@@ -26,20 +26,20 @@ namespace DefaultNamespace.Enemy
             Quaternion quaternion = _arrow.transform.rotation;
             switch (move)
             {
-                case PartsOfBattleMoves.Nothing:
+                case SideOfMove.Nothing:
                     _arrow.enabled = false;
                     break;
-                case PartsOfBattleMoves.Right:
+                case SideOfMove.Right:
                     _arrow.enabled = true;
                     quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 180f); 
                     _arrow.transform.rotation = quaternion;
                     break;
-                case PartsOfBattleMoves.Left:
+                case SideOfMove.Left:
                     _arrow.enabled = true;
                     quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 0f);
                     _arrow.transform.rotation = quaternion;
                     break;
-                case PartsOfBattleMoves.Up:
+                case SideOfMove.Up:
                     _arrow.enabled = true;
                     quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, -90f);
                     _arrow.transform.rotation = quaternion;

@@ -12,8 +12,30 @@ namespace DefaultNamespace.Abstract_classes
         protected GameCharacter _hero;
         protected BlockChecker _checker;
         protected LayerMask _enemyLayer;
-        
-        protected abstract void OnCollisionEnter(Collision other);
+
+        protected void OnCollisionEnter(Collision other)
+        {
+            Debug.Log("A");
+            if (other.gameObject.CompareTag("Weapon") && (_enemyLayer & (1 << other.gameObject.layer)) != 0)
+            {
+                Debug.Log("b");
+                var isBlock = _checker.IsBlock(other.gameObject);
+                if (!isBlock)
+                {
+                    Debug.Log("c");
+                    _IsDamaged.Invoke();
+                }
+                else
+                {
+                    PlayParticleEffect(other.contacts[0].point);
+                    var enemyCharacter = other.gameObject.GetComponentInParent<GameCharacter>();
+                    enemyCharacter.IsStun = true;
+                    _IsBlocked.Invoke();
+                    enemyCharacter.Animator.EnemyParriedEffect();
+                }
+            
+            }
+        }
         protected void SubscribeToAttack(UnityAction action)
         {
             _IsDamaged.AddListener(action);

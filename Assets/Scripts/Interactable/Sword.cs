@@ -19,9 +19,11 @@ public class Sword : Interactable, ITaken
 
     public void Take(GameObject weaponObject)
     {
+        var slot = GameObject.Find("WeaponSlot");
+        gameObject.layer = slot.layer;
         IsEquipped = true;
         BasicCondition = "";
-        weaponObject.transform.SetParent(GameObject.Find("WeaponSlot").transform);
+        weaponObject.transform.SetParent(slot.transform);
         weaponObject.GetComponent<Animator>().enabled = true;
         
         gameObject.GetComponent<Rigidbody>().useGravity = false;

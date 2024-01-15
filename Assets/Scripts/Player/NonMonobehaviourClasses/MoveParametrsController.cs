@@ -17,7 +17,7 @@ namespace DefaultNamespace.NonMonobehaviourClasses
         }
         
         
-        public void GetMoveParametrs(bool isAttack, bool force, out PartsOfBattleMoves partsOfBattleMoves, out TypeOfMove typeOfMove)
+        public void GetMoveParametrs(bool isAttack, bool force, out SideOfMove sideOfMove, out TypeOfMove typeOfMove)
         {
             float deltaX = _mouseX - _prevMouseX;
             deltaX = MoreAccuracy(deltaX);
@@ -27,19 +27,19 @@ namespace DefaultNamespace.NonMonobehaviourClasses
             
                 if (force)
                 {
-                    partsOfBattleMoves = PartsOfBattleMoves.Up;
+                    sideOfMove = SideOfMove.Up;
                     return;
                 }
 
             if (isAttack)
             {
-                if (deltaX > 0) partsOfBattleMoves = PartsOfBattleMoves.Right;
-                else partsOfBattleMoves = PartsOfBattleMoves.Left;
+                if (deltaX > 0) sideOfMove = SideOfMove.Right;
+                else sideOfMove = SideOfMove.Left;
             }
             else
             {
-                if (deltaX < 0) partsOfBattleMoves = PartsOfBattleMoves.Right;
-                else partsOfBattleMoves = PartsOfBattleMoves.Left;
+                if (deltaX < 0) sideOfMove = SideOfMove.Right;
+                else sideOfMove = SideOfMove.Left;
             }
         }
         

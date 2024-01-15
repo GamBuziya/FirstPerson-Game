@@ -22,13 +22,13 @@ namespace DefaultNamespace.Enemy
         
         public override async void Attack()
         {
-            PartsOfBattleMoves randomMove;
-            if(_currentMove == PartsOfBattleMoves.Nothing)  randomMove = (PartsOfBattleMoves)Random.Range(1, 4);
+            SideOfMove randomMove;
+            if(_currentMove == SideOfMove.Nothing)  randomMove = (SideOfMove)Random.Range(1, 4);
             else randomMove = _currentMove;
             await DelayedAttack(randomMove);
         }
         
-        private async Task DelayedAttack(PartsOfBattleMoves randomMove)
+        private async Task DelayedAttack(SideOfMove randomMove)
         {
             float delayTime = _time;
 
@@ -41,22 +41,22 @@ namespace DefaultNamespace.Enemy
             }
             
             
-            if (randomMove == PartsOfBattleMoves.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
+            if (randomMove == SideOfMove.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
             {
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_forceAttackStaminaCost);
             }
-            else if (randomMove == PartsOfBattleMoves.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
+            else if (randomMove == SideOfMove.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
-                randomMove = (PartsOfBattleMoves)Random.Range(1, 3);
+                randomMove = (SideOfMove)Random.Range(1, 3);
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_basicAttackStaminaCost);
             }
-            else if (randomMove != PartsOfBattleMoves.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
+            else if (randomMove != SideOfMove.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
@@ -65,7 +65,7 @@ namespace DefaultNamespace.Enemy
             }
         }
 
-        private void SetAttackData(PartsOfBattleMoves move, TypeOfMove type)
+        private void SetAttackData(SideOfMove move, TypeOfMove type)
         {
             _currentMove = move;
             _currentTypeOfMove = type;

@@ -8,10 +8,10 @@ namespace DefaultNamespace.Abstract_classes
         public Animator Animator;
         protected GameCharacter _person;
         
-        public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
+        public void PlayAnimation(SideOfMove sideOfMove, TypeOfMove typeOfMove)
         {
             if(Animator == null) return;
-            Animator.SetBool(partsOfBattleMoves.ToString(), true);
+            Animator.SetBool(sideOfMove.ToString(), true);
             Animator.SetBool(typeOfMove.ToString(), true);
         }
         
@@ -32,9 +32,9 @@ namespace DefaultNamespace.Abstract_classes
 
         public void ResetParts()
         {
-            Animator.SetBool(PartsOfBattleMoves.Left.ToString(), false);
-            Animator.SetBool(PartsOfBattleMoves.Right.ToString(), false);
-            Animator.SetBool(PartsOfBattleMoves.Up.ToString(), false);
+            Animator.SetBool(SideOfMove.Left.ToString(), false);
+            Animator.SetBool(SideOfMove.Right.ToString(), false);
+            Animator.SetBool(SideOfMove.Up.ToString(), false);
         }
 
         public void EnemyParriedEffect()

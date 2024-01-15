@@ -2,12 +2,12 @@
 
 namespace DefaultNamespace.Abstract_classes
 {
-    public abstract class Damagable
+    public abstract class HealthPoints
     {
         public int Health;
         public int MaxHealth;
 
-        public Damagable(int health)
+        public HealthPoints(int health)
         {
             MaxHealth = health;
             Health = health;
@@ -26,6 +26,7 @@ namespace DefaultNamespace.Abstract_classes
         protected virtual void TakeDamage(int damage)
         {
             if(Health > 0) Health -= damage;
+            Debug.Log("Health" + Health);
         }
 
         protected virtual void TakeHeal(int points)

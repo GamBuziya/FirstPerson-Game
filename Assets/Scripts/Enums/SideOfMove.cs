@@ -1,6 +1,6 @@
 ﻿namespace DefaultNamespace.Enums
 {
-    public enum PartsOfBattleMoves
+    public enum SideOfMove
     {
         Nothing = 0,
         Right = 1,

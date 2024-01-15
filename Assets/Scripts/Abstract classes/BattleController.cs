@@ -10,10 +10,10 @@ namespace DefaultNamespace.Abstract_classes
         protected int _forceAttackStaminaCost = 40;
         
         
-        protected PartsOfBattleMoves _currentMove = PartsOfBattleMoves.Nothing;
+        protected SideOfMove _currentMove = SideOfMove.Nothing;
         protected TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
 
-        public PartsOfBattleMoves GetCurrentMove() => _currentMove;
+        public SideOfMove GetCurrentMove() => _currentMove;
         public TypeOfMove GetCurrentTypeOfMove() => _currentTypeOfMove;
         
         protected StaminaController StaminaController;
@@ -23,7 +23,7 @@ namespace DefaultNamespace.Abstract_classes
         
         public void ResetMoves()
         {
-            _currentMove = PartsOfBattleMoves.Nothing;
+            _currentMove = SideOfMove.Nothing;
             _currentTypeOfMove = TypeOfMove.Nothing;
         }
         

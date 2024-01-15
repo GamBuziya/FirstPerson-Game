@@ -2,7 +2,7 @@
 
 namespace DefaultNamespace.Enemy
 {
-    public class EnemyHealth : Damagable
+    public class EnemyHealth : HealthPoints
     {
         public EnemyHealth(int health) : base(health)
         {

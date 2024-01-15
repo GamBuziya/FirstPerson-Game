@@ -1,19 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Abstract_classes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : MonoBehaviour
+public class PlayerUI : HealthUI
 {
 
     [SerializeField] private TextMeshProUGUI _promptText;
-
-    [Header("Health Bar")]
-    [SerializeField] private Image _frontHealth;
-    [SerializeField] private Image _backHealth;
-
+    
     [Header("Damaged Effect")] 
     [SerializeField] private Image _hitEffect;
     [SerializeField] private float _fullADuration;
@@ -21,21 +18,17 @@ public class PlayerUI : MonoBehaviour
     
     public float _durationTimer = 0;
 
-    private Player _player;
-    private float _currentHealth;
-
-
     private void Start()
     {
-        _player = GetComponent<Player>();
-        _currentHealth = _player.Health.Health;
+        _hero = GetComponent<Player>();
+        _currentHealth = _hero.Health.Health;
         _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, 0);
     }
     
     private void Update()
     {
-        _currentHealth = _player.Health.Health;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _player.Health.MaxHealth);
+        _currentHealth = _hero.Health.Health;
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _hero.Health.MaxHealth);
         UpdateHealthUI();
         
         if (_hitEffect.color.a > 0)
@@ -49,28 +42,6 @@ public class PlayerUI : MonoBehaviour
                 _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, temp);
             }
             
-        }
-    }
-    
-    private void UpdateHealthUI()
-    {
-        float fillB = _backHealth.fillAmount;
-        float fillA = _frontHealth.fillAmount;
-
-        float certainHealth = _currentHealth / _player.Health.MaxHealth;
-        
-        if (certainHealth < fillB)
-        {
-            _backHealth.color = Color.red;
-            _frontHealth.fillAmount = certainHealth;
-            _backHealth.fillAmount = Mathf.Lerp(fillB, certainHealth, Time.deltaTime);
-        }
-
-        if (certainHealth > fillA)
-        {
-            _backHealth.color = Color.green;
-            _backHealth.fillAmount = certainHealth;
-            _frontHealth.fillAmount = Mathf.Lerp(fillA, certainHealth, Time.deltaTime);
         }
     }
 
