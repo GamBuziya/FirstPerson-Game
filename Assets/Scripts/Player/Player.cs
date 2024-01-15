@@ -2,6 +2,7 @@
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.NonMonobehaviourClasses;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 namespace DefaultNamespace
 {
@@ -18,7 +19,9 @@ namespace DefaultNamespace
             Health = new PlayerHealth(MaxHealth);
             WeaponTaker = new WeaponTaker(this);
         }
+
         
+
         public void TakeWeapon()
         {
             WeaponTaker.TakeWeapon();

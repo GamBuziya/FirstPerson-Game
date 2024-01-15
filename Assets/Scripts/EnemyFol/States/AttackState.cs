@@ -45,7 +45,10 @@ namespace DefaultNamespace.Enemy.States
                 Enemy.Agent.speed = 0f;
                 _attackTimer += Time.deltaTime;
                 
-                if (_attackTimer > Random.Range(0.3f, 0.7f) && StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
+                if (StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
+                    
+                
+                if (_attackTimer > Random.Range(0.3f, 1f) && StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
                     StateMachine.Enemy.GetBattleController().Attack();
                     _attackTimer = 0;

@@ -54,6 +54,7 @@ public class Enemy : GameCharacter
     private void Update()
     {
         CanSee();
+        ((EnemyBattleController)BattleController).BattleControllerUpdate();
     }
 
     private void LateUpdate()

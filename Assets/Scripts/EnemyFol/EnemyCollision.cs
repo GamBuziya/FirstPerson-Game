@@ -8,7 +8,7 @@ namespace DefaultNamespace.EnemyFol
         private void Awake()
         {
             _hero = GetComponent<global::Enemy>();
-            _checker = new BlockChecker(_hero);
+            _checker = new BlockChecker();
             _enemyLayer = _hero.GetEnemyLayer();
             SubscribeToAttack(() => _hero.GetHealthPoints().BasicTakeDamage(30));
         }

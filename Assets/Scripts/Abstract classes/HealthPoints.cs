@@ -29,7 +29,6 @@ namespace DefaultNamespace.Abstract_classes
         protected virtual void TakeDamage(int damage)
         {
             if(Health > 0) Health -= damage;
-            Debug.Log("Health" + Health);
         }
 
         protected virtual void TakeHeal(int points)

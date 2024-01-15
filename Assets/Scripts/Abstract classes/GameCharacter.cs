@@ -14,8 +14,7 @@ namespace DefaultNamespace.Abstract_classes
         protected HealthUI _healthUI;
         protected bool IsStun = false;
 
-
-        public void SetHealthUI(HealthUI healthUI) => _healthUI = _healthUI;
+        
         public StaminaController GetStamina() => Stamina;
         public LayerMask GetEnemyLayer() => EnemyLayer;
         public BattleController GetBattleController() => BattleController;
