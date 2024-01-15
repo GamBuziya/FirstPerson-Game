@@ -5,15 +5,16 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class AnimatorManager : MonoBehaviour
     {
-        public Animator Animator;
+        protected Animator Animator;
         protected GameCharacter _person;
+
+        public Animator GetAnimator() => Animator;
+        public void SetAnimator(Animator animator) => Animator = animator;
         
-        public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
+        public void PlayAnimation(SideOfMove sideOfMove, TypeOfMove typeOfMove)
         {
-            Debug.Log("Play Animation" + _person.name + typeOfMove);
-            Debug.Log("Play Animation" + partsOfBattleMoves );
             if(Animator == null) return;
-            Animator.SetBool(partsOfBattleMoves.ToString(), true);
+            Animator.SetBool(sideOfMove.ToString(), true);
             Animator.SetBool(typeOfMove.ToString(), true);
         }
         
@@ -21,22 +22,22 @@ namespace DefaultNamespace.Abstract_classes
         {
             if (Animator == null) return;
             Animator.SetBool("IsBlock", false);
-            _person.BattleController.ResetMoves();
+            _person.GetBattleController().ResetMoves();
             ResetParts();
         }
 
         public void ResetAttack()
         {
             Animator.SetBool("IsAttack", false);
-            _person.BattleController.ResetMoves();
+            _person.GetBattleController().ResetMoves();
             ResetParts();
         }
 
         public void ResetParts()
         {
-            Animator.SetBool(PartsOfBattleMoves.Left.ToString(), false);
-            Animator.SetBool(PartsOfBattleMoves.Right.ToString(), false);
-            Animator.SetBool(PartsOfBattleMoves.Up.ToString(), false);
+            Animator.SetBool(SideOfMove.Left.ToString(), false);
+            Animator.SetBool(SideOfMove.Right.ToString(), false);
+            Animator.SetBool(SideOfMove.Up.ToString(), false);
         }
 
         public void EnemyParriedEffect()

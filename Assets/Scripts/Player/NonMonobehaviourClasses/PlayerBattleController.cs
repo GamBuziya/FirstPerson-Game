@@ -28,7 +28,7 @@ namespace DefaultNamespace
 
         public override void Attack()
         {
-            if (Animation.Animator == null) return;
+            if (Animation.GetAnimator() == null) return;
 
             if (_force)
             {
@@ -51,9 +51,9 @@ namespace DefaultNamespace
 
         }
 
-        public override void Block()
+        public void Block()
         {
-            if (Animation.Animator == null) return;
+            if (Animation.GetAnimator() == null) return;
 
             _battleMoves.GetMoveParametrs(false, _force, out _currentMove, out _currentTypeOfMove);
             Animation.PlayAnimation(_currentMove, _currentTypeOfMove);
@@ -68,7 +68,7 @@ namespace DefaultNamespace
         
         public void SetAnimator(Animator animator)
         {
-            Animation.Animator = animator;
+            Animation.SetAnimator(animator);
         }
     }
 }

@@ -20,7 +20,8 @@ GameObject:
   - component: {fileID: 7813005532750296851}
   - component: {fileID: 3027081942084630660}
   - component: {fileID: 6939364773227829886}
-  m_Layer: 0
+  - component: {fileID: 7029400640446246963}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -190,9 +191,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39bf30c68b5a499849e11098e9b54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _promptText: {fileID: 0}
   _frontHealth: {fileID: 0}
   _backHealth: {fileID: 0}
+  _promptText: {fileID: 0}
   _hitEffect: {fileID: 0}
   _fullADuration: 1
   _recoverSpeed: 2
@@ -222,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 664e0b9be8ff9b240a3a39559efa6933, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _OnWeaponCollisionEnter:
+  _IsDamaged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 704425920380729454}
@@ -237,6 +238,10 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  _IsBlocked:
+    m_PersistentCalls:
+      m_Calls: []
+  _particleEffect: {fileID: 7210390216215930889, guid: dc721be970cf6e24d8df2e3c07de8856, type: 3}
 --- !u!114 &6939364773227829886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,8 +254,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c576a017ecc4ab1b770bd0db200c5ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Stamina: {fileID: 7029400640446246963}
   MaxHealth: 100
-  Stamina: {fileID: 0}
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  Animator: {fileID: 7813005532750296851}
+  IsStun: 0
+--- !u!114 &7029400640446246963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99683411360573057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b322b7d8fcae431e90af16ef541afbad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxStamina: 120
+  _frontStamina: {fileID: 0}
+  _backStamina: {fileID: 0}
+  Stamina: 120
 --- !u!1 &7531284264709940320
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,7 +286,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4943278427733894591}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: WeaponSlot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -293,7 +319,7 @@ GameObject:
   - component: {fileID: 895085967063109604}
   - component: {fileID: 6296668537648969147}
   - component: {fileID: 4144624470842578621}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

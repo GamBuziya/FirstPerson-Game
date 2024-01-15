@@ -2,12 +2,15 @@
 
 namespace DefaultNamespace.Abstract_classes
 {
-    public abstract class Damagable
+    public abstract class HealthPoints
     {
-        public int Health;
-        public int MaxHealth;
+        protected int MaxHealth;
+        protected int Health;
 
-        public Damagable(int health)
+        public int GetHealth() => Health;
+        public int GetMaxHealth() => MaxHealth;
+
+        public HealthPoints(int health)
         {
             MaxHealth = health;
             Health = health;
@@ -15,7 +18,6 @@ namespace DefaultNamespace.Abstract_classes
 
         public void BasicTakeDamage(int damage)
         {
-            Debug.Log("IsDamaged");
             TakeDamage(damage);
         }
         

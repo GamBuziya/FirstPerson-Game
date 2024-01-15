@@ -28,15 +28,21 @@ public class InputManager : MonoBehaviour
         
         
         //Удари
-        onFoot.PowerButton.started += context => _player.BattleController.ChangeForce();
-        onFoot.PowerButton.canceled += context => _player.BattleController.ChangeForce();
+        onFoot.PowerButton.started += context => _player.GetBattleController().ChangeForce();
+        onFoot.PowerButton.canceled += context => _player.GetBattleController().ChangeForce();
         
-        onFoot.LMK.performed += context => _player.BattleController.Attack();
+        onFoot.LMK.performed += context => _player.GetBattleController().Attack();
         
-        onFoot.RMK.started += context => _player.BattleController.Block();
+        onFoot.RMK.started += context =>
+        {
+            if (_player.GetBattleController() is PlayerBattleController playerBattleController)
+            {
+                playerBattleController.Block();
+            }
+        };
         onFoot.RMK.canceled += context =>
         {
-            if (_player.BattleController is PlayerBattleController playerBattleController)
+            if (_player.GetBattleController() is PlayerBattleController playerBattleController)
             {
                 playerBattleController.ResetBlock();
             }
@@ -56,7 +62,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (_player.BattleController is PlayerBattleController playerBattleController)
+        if (_player.GetBattleController() is PlayerBattleController playerBattleController)
         {
             playerBattleController.UpdateMousePosition(_playerInput.OnFoot.Look.ReadValue<Vector2>());
         }
