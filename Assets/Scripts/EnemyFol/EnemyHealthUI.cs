@@ -11,13 +11,13 @@ namespace EnemyFol
         private void Start()
         {
             _hero = GetComponent<Enemy>();
-            _currentHealth = _hero.Health.Health;
+            _currentHealth = _hero.GetHealthPoints().GetHealth();
         }
 
         private void Update()
         {
-            _currentHealth = _hero.Health.Health;
-            _currentHealth = Mathf.Clamp(_currentHealth, 0, _hero.Health.MaxHealth);
+            _currentHealth = _hero.GetHealthPoints().GetHealth();
+            _currentHealth = Mathf.Clamp(_currentHealth, 0, _hero.GetHealthPoints().GetMaxHealth());
             UpdateHealthUI();
         }
     }

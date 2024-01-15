@@ -9,7 +9,6 @@ public class PlayerMotor : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _gravity = -9.8f;
     [SerializeField] private float _jumpHeight = 1f;
-    [SerializeField] private bool _isGrounded;
     [SerializeField] private int _SpeedupStaminaCost = 20;
     
     
@@ -17,6 +16,8 @@ public class PlayerMotor : MonoBehaviour
     private Player _player;
     private Vector3 _velocityVector;
     private Vector3 _worldSpaceInput;
+    
+    private bool _isGrounded;
     
     void Awake()
     {
@@ -56,7 +57,7 @@ public class PlayerMotor : MonoBehaviour
 
     public void SpeedUp()
     {
-        if (_player.Stamina.Stamina > _SpeedupStaminaCost)
+        if (_player.GetStamina().Stamina > _SpeedupStaminaCost)
         {
             Invoke("SpeedUpReset", 0.2f);
             _speed *= 3f;
@@ -67,6 +68,6 @@ public class PlayerMotor : MonoBehaviour
     private void SpeedUpReset()
     {
         _speed /= 3f;
-        _player.Stamina.StaminaDamage(_SpeedupStaminaCost);
+        _player.GetStamina().StaminaDamage(_SpeedupStaminaCost);
     }
 }

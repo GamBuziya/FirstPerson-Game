@@ -4,8 +4,11 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class HealthPoints
     {
-        public int Health;
-        public int MaxHealth;
+        protected int MaxHealth;
+        protected int Health;
+
+        public int GetHealth() => Health;
+        public int GetMaxHealth() => MaxHealth;
 
         public HealthPoints(int health)
         {

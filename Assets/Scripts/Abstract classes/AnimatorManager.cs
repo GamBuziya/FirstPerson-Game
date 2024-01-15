@@ -5,8 +5,11 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class AnimatorManager : MonoBehaviour
     {
-        public Animator Animator;
+        protected Animator Animator;
         protected GameCharacter _person;
+
+        public Animator GetAnimator() => Animator;
+        public void SetAnimator(Animator animator) => Animator = animator;
         
         public void PlayAnimation(SideOfMove sideOfMove, TypeOfMove typeOfMove)
         {
@@ -19,14 +22,14 @@ namespace DefaultNamespace.Abstract_classes
         {
             if (Animator == null) return;
             Animator.SetBool("IsBlock", false);
-            _person.BattleController.ResetMoves();
+            _person.GetBattleController().ResetMoves();
             ResetParts();
         }
 
         public void ResetAttack()
         {
             Animator.SetBool("IsAttack", false);
-            _person.BattleController.ResetMoves();
+            _person.GetBattleController().ResetMoves();
             ResetParts();
         }
 

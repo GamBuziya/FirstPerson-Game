@@ -13,8 +13,8 @@ namespace DefaultNamespace
         {
             Animator = GetComponent<PlayerAnimation>();
             var playerAnimator = (PlayerAnimation)Animator;
-            var StaminaController = GetComponent<StaminaController>();
-            BattleController = new PlayerBattleController(playerAnimator, StaminaController);
+            Stamina = GetComponent<StaminaController>();
+            BattleController = new PlayerBattleController(playerAnimator, Stamina);
             Health = new PlayerHealth(MaxHealth);
             WeaponTaker = new WeaponTaker(this);
         }

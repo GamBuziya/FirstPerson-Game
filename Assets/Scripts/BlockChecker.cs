@@ -23,17 +23,17 @@ namespace DefaultNamespace
                 return false;
             }
             
-            if (_hero.BattleController.GetCurrentTypeOfMove() != TypeOfMove.IsBlock) return false;
+            if (_hero.GetBattleController().GetCurrentTypeOfMove() != TypeOfMove.IsBlock) return false;
 
-            if (_hero.BattleController.GetCurrentMove() == enemyCharacter.BattleController.GetCurrentMove() &&  _hero.BattleController.GetCurrentMove() == SideOfMove.Up)
+            if (_hero.GetBattleController().GetCurrentMove() == enemyCharacter.GetBattleController().GetCurrentMove() &&  _hero.GetBattleController().GetCurrentMove() == SideOfMove.Up)
             {
                 return true;
             }
 
-            if(_hero.BattleController.GetCurrentMove() == SideOfMove.Left && enemyCharacter.BattleController.GetCurrentMove() == SideOfMove.Right) 
+            if(_hero.GetBattleController().GetCurrentMove() == SideOfMove.Left && enemyCharacter.GetBattleController().GetCurrentMove() == SideOfMove.Right) 
                 return true;
-            if (_hero.BattleController.GetCurrentMove() == SideOfMove.Right &&
-                enemyCharacter.BattleController.GetCurrentMove() == SideOfMove.Left)
+            if (_hero.GetBattleController().GetCurrentMove() == SideOfMove.Right &&
+                enemyCharacter.GetBattleController().GetCurrentMove() == SideOfMove.Left)
                 return true;
 
             return false;

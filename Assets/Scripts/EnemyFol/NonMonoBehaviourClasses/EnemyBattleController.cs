@@ -15,8 +15,8 @@ namespace DefaultNamespace.Enemy
         public EnemyBattleController(global::Enemy enemy, float time)
         {
             this.enemy = enemy; 
-            this.Animation = enemy.Animator;
-            this.StaminaController = enemy.Stamina;
+            this.Animation = enemy.GetAnimatorManager();
+            this.StaminaController = enemy.GetStamina();
             _time = time;
         }
         
@@ -32,11 +32,11 @@ namespace DefaultNamespace.Enemy
         {
             float delayTime = _time;
 
-            if (enemy.IsStun)
+            if (enemy.GetStun())
             {
-                enemy.BattleController.ResetMoves();
+                enemy.GetBattleController().ResetMoves();
                 await Task.Delay(TimeSpan.FromSeconds(delayTime));
-                enemy.IsStun = false;
+                enemy.SetStun(false);
                 return;
             }
             

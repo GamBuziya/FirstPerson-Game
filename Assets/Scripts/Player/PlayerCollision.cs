@@ -12,7 +12,7 @@ public class PlayerCollision : CollisionManager
     {
         _hero = GetComponent<Player>();
         _checker = new BlockChecker(_hero);
-        _enemyLayer = _hero.EnemyLayer;
-        SubscribeToAttack(() => _hero.Health.BasicTakeDamage(30));
+        _enemyLayer = _hero.GetEnemyLayer();
+        SubscribeToAttack(() => _hero.GetHealthPoints().BasicTakeDamage(30));
     }
 }

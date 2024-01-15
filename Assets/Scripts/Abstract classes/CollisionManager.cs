@@ -29,9 +29,9 @@ namespace DefaultNamespace.Abstract_classes
                 {
                     PlayParticleEffect(other.contacts[0].point);
                     var enemyCharacter = other.gameObject.GetComponentInParent<GameCharacter>();
-                    enemyCharacter.IsStun = true;
+                    enemyCharacter.SetStun(true);
                     _IsBlocked.Invoke();
-                    enemyCharacter.Animator.EnemyParriedEffect();
+                    enemyCharacter.GetAnimatorManager().EnemyParriedEffect();
                 }
             
             }

@@ -4,13 +4,26 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class GameCharacter : MonoBehaviour
     {
-        [SerializeField] public StaminaController Stamina;
         [SerializeField] protected int MaxHealth = 100;
+        [SerializeField] protected LayerMask EnemyLayer;
         
-        public LayerMask EnemyLayer;
-        public BattleController BattleController;
-        public HealthPoints Health;
-        public AnimatorManager Animator;
-        public bool IsStun = false;
+        protected StaminaController Stamina;
+        protected BattleController BattleController;
+        protected HealthPoints Health;
+        protected AnimatorManager Animator;
+        protected bool IsStun = false;
+        
+        public StaminaController GetStamina() => Stamina;
+        public LayerMask GetEnemyLayer() => EnemyLayer;
+        public BattleController GetBattleController() => BattleController;
+
+        public HealthPoints GetHealthPoints() => Health;
+
+        public AnimatorManager GetAnimatorManager() => Animator;
+
+        public bool GetStun() => IsStun;
+        public void SetStun(bool temp) => IsStun = temp;
+
+
     }
 }

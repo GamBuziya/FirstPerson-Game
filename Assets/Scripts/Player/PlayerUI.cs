@@ -21,14 +21,14 @@ public class PlayerUI : HealthUI
     private void Start()
     {
         _hero = GetComponent<Player>();
-        _currentHealth = _hero.Health.Health;
+        _currentHealth = _hero.GetHealthPoints().GetHealth();
         _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, 0);
     }
     
     private void Update()
     {
-        _currentHealth = _hero.Health.Health;
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _hero.Health.MaxHealth);
+        _currentHealth = _hero.GetHealthPoints().GetHealth();
+        _currentHealth = Mathf.Clamp(_currentHealth, 0, _hero.GetHealthPoints().GetMaxHealth());
         UpdateHealthUI();
         
         if (_hitEffect.color.a > 0)

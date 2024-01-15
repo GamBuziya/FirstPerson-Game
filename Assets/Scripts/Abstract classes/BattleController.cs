@@ -12,14 +12,14 @@ namespace DefaultNamespace.Abstract_classes
         
         protected SideOfMove _currentMove = SideOfMove.Nothing;
         protected TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
-
-        public SideOfMove GetCurrentMove() => _currentMove;
-        public TypeOfMove GetCurrentTypeOfMove() => _currentTypeOfMove;
         
         protected StaminaController StaminaController;
         protected AnimatorManager Animation;
         
         protected bool _force = false;
+        
+        public SideOfMove GetCurrentMove() => _currentMove;
+        public TypeOfMove GetCurrentTypeOfMove() => _currentTypeOfMove;
         
         public void ResetMoves()
         {
