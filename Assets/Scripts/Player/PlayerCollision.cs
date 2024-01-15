@@ -6,26 +6,20 @@ using DefaultNamespace.Abstract_classes;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PlayerCollision : MonoBehaviour
+public class PlayerCollision : CollisionManager
 {
-    [SerializeField] private UnityEvent _IsDamaged;
-    [SerializeField] private UnityEvent _IsBlocked;
-    [SerializeField] private ParticleSystem _particleEffect;
-    
-    private Player _player;
-    private BlockChecker _checker;
 
     private void Awake()
     {
-        _player = GetComponent<Player>();
-        _checker = new BlockChecker(_player);
-        
-        SubscribeToAttack(() => _player.Health.BasicTakeDamage(30));
+        _hero = GetComponent<Player>();
+        _checker = new BlockChecker(_hero);
+        _enemyLayer = _hero.EnemyLayer;
+        SubscribeToAttack(() => _hero.Health.BasicTakeDamage(30));
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected override void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Weapon") && other.gameObject.layer == 7)
+        if (other.gameObject.CompareTag("Weapon") && (_enemyLayer & (1 << other.gameObject.layer)) != 0)
         {
             var isBlock = _checker.IsBlock(other.gameObject);
             if (!isBlock)
@@ -44,18 +38,4 @@ public class PlayerCollision : MonoBehaviour
         }
     }
     
-    private void PlayParticleEffect(Vector3 position)
-    {
-        if (_particleEffect != null)
-        {
-            ParticleSystem particleInstance = Instantiate(_particleEffect, position, Quaternion.identity);
-            particleInstance.Play();
-            Destroy(particleInstance.gameObject, particleInstance.main.duration);
-        }
-    }
-    
-    private void SubscribeToAttack(UnityAction action)
-    {
-        _IsDamaged.AddListener(action);
-    }
 }

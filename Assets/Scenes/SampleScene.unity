@@ -3937,6 +3937,10 @@ PrefabInstance:
       propertyPath: Stamina
       value: 
       objectReference: {fileID: 1326599030}
+    - target: {fileID: 6939364773227829886, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      propertyPath: EnemyLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4496111340486124857, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
     m_RemovedGameObjects: []

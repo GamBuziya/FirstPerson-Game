@@ -30,13 +30,11 @@ namespace DefaultNamespace.Enemy
                     _arrow.enabled = false;
                     break;
                 case PartsOfBattleMoves.Right:
-                    Debug.Log("PartsOfBattleMoves.Right");
                     _arrow.enabled = true;
                     quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 180f); 
                     _arrow.transform.rotation = quaternion;
                     break;
                 case PartsOfBattleMoves.Left:
-                    Debug.Log("PartsOfBattleMoves.Left");
                     _arrow.enabled = true;
                     quaternion.eulerAngles = new Vector3(quaternion.eulerAngles.x, quaternion.eulerAngles.y, 0f);
                     _arrow.transform.rotation = quaternion;

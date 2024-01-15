@@ -7,6 +7,7 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] public StaminaController Stamina;
         [SerializeField] protected int MaxHealth = 100;
         
+        public LayerMask EnemyLayer;
         public BattleController BattleController;
         public Damagable Health;
         public AnimatorManager Animator;
