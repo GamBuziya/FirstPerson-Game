@@ -15,7 +15,6 @@ namespace DefaultNamespace.Abstract_classes
 
         public void BasicTakeDamage(int damage)
         {
-            Debug.Log("IsDamaged");
             TakeDamage(damage);
         }
         

@@ -44,9 +44,7 @@ namespace DefaultNamespace.Enemy
             if (randomMove == PartsOfBattleMoves.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
             {
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
-                Debug.Log("randomMove до" + randomMove);
-                await Task.Delay(TimeSpan.FromSeconds(3));
-                Debug.Log("randomMove після" + randomMove);
+                await Task.Delay(TimeSpan.FromSeconds(_time));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_forceAttackStaminaCost);
             }
@@ -54,18 +52,14 @@ namespace DefaultNamespace.Enemy
             {
                 randomMove = (PartsOfBattleMoves)Random.Range(1, 3);
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
-                Debug.Log("randomMove до" + randomMove);
-                await Task.Delay(TimeSpan.FromSeconds(3));
-                Debug.Log("randomMove після" + randomMove);
+                await Task.Delay(TimeSpan.FromSeconds(_time));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_basicAttackStaminaCost);
             }
             else if (randomMove != PartsOfBattleMoves.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
                 SetAttackData(randomMove, TypeOfMove.IsAttack);
-                Debug.Log("randomMove до" + randomMove);
-                await Task.Delay(TimeSpan.FromSeconds(3));
-                Debug.Log("randomMove після" + randomMove);
+                await Task.Delay(TimeSpan.FromSeconds(_time));
                 Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_basicAttackStaminaCost);
             }

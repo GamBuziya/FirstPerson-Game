@@ -10,8 +10,6 @@ namespace DefaultNamespace.Abstract_classes
         
         public void PlayAnimation(PartsOfBattleMoves partsOfBattleMoves, TypeOfMove typeOfMove)
         {
-            Debug.Log("Play Animation" + _person.name + typeOfMove);
-            Debug.Log("Play Animation" + partsOfBattleMoves );
             if(Animator == null) return;
             Animator.SetBool(partsOfBattleMoves.ToString(), true);
             Animator.SetBool(typeOfMove.ToString(), true);
