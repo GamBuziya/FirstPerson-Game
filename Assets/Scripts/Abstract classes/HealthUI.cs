@@ -1,10 +1,6 @@
-﻿using DefaultNamespace;
-using DefaultNamespace.Abstract_classes;
-using TMPro;
+﻿
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine;
-
 namespace DefaultNamespace.Abstract_classes
 {
     public abstract class HealthUI : MonoBehaviour
@@ -38,5 +34,6 @@ namespace DefaultNamespace.Abstract_classes
                 _frontHealth.fillAmount = Mathf.Lerp(fillA, certainHealth, Time.deltaTime);
             }
         }
+        
     }
 }

@@ -51,7 +51,7 @@ namespace DefaultNamespace
 
         }
 
-        public override void Block()
+        public void Block()
         {
             if (Animation.GetAnimator() == null) return;
 

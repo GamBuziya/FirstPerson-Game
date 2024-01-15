@@ -33,7 +33,6 @@ namespace DefaultNamespace.Abstract_classes
         }
         
         public abstract void Attack();
-
-        public abstract void Block();
+        
     }
 }

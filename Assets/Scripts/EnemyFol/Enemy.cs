@@ -1,6 +1,7 @@
 using System;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
+using EnemyFol;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -28,20 +29,26 @@ public class Enemy : GameCharacter
 
     public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
 
-    void Awake()
+    void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Stamina = GetComponent<EnemyStaminaController>();
         Health = new EnemyHealth(MaxHealth);
-        
+    
         Animator = GetComponent<EnemyAnimation>();
         _stateMachine = GetComponent<StateMachine>();
         _agent = GetComponent<NavMeshAgent>();
-        
+    
         _stateMachine.Initialise();
 
+        _healthUI = GetComponent<EnemyHealthUI>();
+        if (_healthUI != null)
+        {
+            ((EnemyHealthUI)_healthUI).SetCurrentHealthPoint(this);
+        }
+
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
-        BattleController = new EnemyBattleController(this, _timeForArrow);
+        BattleController = new EnemyBattleController(this, _timeForArrow, GameObject.Find("Player").GetComponent<GameCharacter>());
     }
     
     private void Update()

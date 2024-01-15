@@ -33,7 +33,13 @@ public class InputManager : MonoBehaviour
         
         onFoot.LMK.performed += context => _player.GetBattleController().Attack();
         
-        onFoot.RMK.started += context => _player.GetBattleController().Block();
+        onFoot.RMK.started += context =>
+        {
+            if (_player.GetBattleController() is PlayerBattleController playerBattleController)
+            {
+                playerBattleController.Block();
+            }
+        };
         onFoot.RMK.canceled += context =>
         {
             if (_player.GetBattleController() is PlayerBattleController playerBattleController)

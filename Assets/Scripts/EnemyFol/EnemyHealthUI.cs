@@ -1,7 +1,4 @@
 ﻿using DefaultNamespace.Abstract_classes;
-using TMPro;
-using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine;
 
 namespace EnemyFol
@@ -11,7 +8,11 @@ namespace EnemyFol
         private void Start()
         {
             _hero = GetComponent<Enemy>();
-            _currentHealth = _hero.GetHealthPoints().GetHealth();
+        }
+
+        public void SetCurrentHealthPoint(Enemy hero)
+        {
+            _currentHealth = hero.GetHealthPoints().GetHealth();
         }
 
         private void Update()
