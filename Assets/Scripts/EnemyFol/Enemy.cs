@@ -27,7 +27,13 @@ public class Enemy : GameCharacter
     
     private EnemySideAttackUI _sideAttackUI;
 
+    private CanvasDisabler _canvasDisabler;
+
+    public CanvasDisabler GetCanvasDisabler() => _canvasDisabler;
+
     public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
+    
+    
 
     void Start()
     {
@@ -49,6 +55,10 @@ public class Enemy : GameCharacter
 
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
         BattleController = new EnemyBattleController(this, _timeForArrow, GameObject.Find("Player").GetComponent<GameCharacter>());
+
+        
+        var temp = _healthUI.GetComponentInChildren<Canvas>();
+        _canvasDisabler = new CanvasDisabler(temp);
     }
     
     private void Update()

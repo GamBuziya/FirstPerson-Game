@@ -16,6 +16,7 @@ namespace DefaultNamespace.Enemy.States
         {
             if (Enemy.CanSee())
             {
+                Enemy.GetCanvasDisabler().CanvasEnable();
                 Attack();
                 _losePlayerTimer = 0;
                 _moveTimer += Time.deltaTime;
@@ -30,6 +31,7 @@ namespace DefaultNamespace.Enemy.States
                 if (_losePlayerTimer > 7)
                 {
                     StateMachine.ChangeState(new PatrolState());
+                    Enemy.GetCanvasDisabler().CanvasDisabled();
                 }
             }
         }
@@ -40,6 +42,8 @@ namespace DefaultNamespace.Enemy.States
 
         private void Attack()
         {
+            if(Enemy.GetStamina().Stamina < 30) StateMachine.ChangeState(new LowStaminaState());
+            
             if (Vector3.Distance(Enemy.gameObject.transform.position, Enemy.Player.transform.position) <= 2.3f)
             {
                 Enemy.Agent.speed = 0f;
@@ -48,7 +52,7 @@ namespace DefaultNamespace.Enemy.States
                 if (StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
                     
                 
-                if (_attackTimer > Random.Range(0.3f, 1f) && StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
+                if (_attackTimer > Random.Range(0, 0.3f) && StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
                     StateMachine.Enemy.GetBattleController().Attack();
                     _attackTimer = 0;
