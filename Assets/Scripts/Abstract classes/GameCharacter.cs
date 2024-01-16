@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace DefaultNamespace.Abstract_classes
 {
@@ -6,6 +7,7 @@ namespace DefaultNamespace.Abstract_classes
     {
         [SerializeField] protected int MaxHealth = 100;
         [SerializeField] protected LayerMask EnemyLayer;
+        [SerializeField] protected UnityEvent _attackEvent;
         
         protected StaminaController Stamina;
         protected BattleController BattleController;
@@ -14,7 +16,8 @@ namespace DefaultNamespace.Abstract_classes
         protected HealthUI _healthUI;
         protected bool IsStun = false;
 
-        
+
+        public UnityEvent GetAttackEvent() => _attackEvent;
         public StaminaController GetStamina() => Stamina;
         public LayerMask GetEnemyLayer() => EnemyLayer;
         public BattleController GetBattleController() => BattleController;

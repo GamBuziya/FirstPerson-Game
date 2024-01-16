@@ -5,6 +5,7 @@ using DefaultNamespace.Enums;
 using DefaultNamespace.NonMonobehaviourClasses;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace DefaultNamespace
@@ -12,7 +13,6 @@ namespace DefaultNamespace
     public class PlayerBattleController : BattleController
     {
         private MoveParametrsController _battleMoves;
-        
         
         public PlayerBattleController(PlayerAnimation Animation, StaminaController StaminaController)
         {
