@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
     public BaseState ActiveState;
     public Enemy Enemy;
-    
+
     private void Start()
     {
         Enemy = GetComponent<Enemy>();
@@ -37,9 +38,9 @@ public class StateMachine : MonoBehaviour
         
         if (ActiveState != null)
         {
-            //Setup new state
             ActiveState.StateMachine = this;
             ActiveState.Enemy = GetComponent<Enemy>();
+            ActiveState.Player = GameObject.Find("Player").GetComponent<Player>();
             ActiveState.Enter();
         }
     }

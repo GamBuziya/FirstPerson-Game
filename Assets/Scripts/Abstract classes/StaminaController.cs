@@ -48,7 +48,7 @@ namespace DefaultNamespace.Abstract_classes
             {
                 yield return new WaitForSeconds(0.1f);
                 if (Stamina <= _maxStamina)
-                    Stamina += 1f;
+                    Stamina += 0.7f;
             }
         }
         
