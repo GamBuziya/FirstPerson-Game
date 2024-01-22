@@ -1,6 +1,7 @@
 using System;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
+using DefaultNamespace.EnemyFol;
 using EnemyFol;
 using UnityEngine;
 using UnityEngine.AI;
@@ -29,17 +30,19 @@ public class Enemy : GameCharacter
 
     private CanvasDisabler _canvasDisabler;
 
+    public StateMachine GetStateMachine() => _stateMachine;
     public CanvasDisabler GetCanvasDisabler() => _canvasDisabler;
 
     public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
-    
-    
 
-    void Start()
+    private bool IsDead = false;
+
+    private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Stamina = GetComponent<EnemyStaminaController>();
         Health = new EnemyHealth(MaxHealth);
+        
     
         Animator = GetComponent<EnemyAnimation>();
         _stateMachine = GetComponent<StateMachine>();
@@ -54,17 +57,25 @@ public class Enemy : GameCharacter
         }
 
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
-        BattleController = new EnemyBattleController(this, _timeForArrow, GameObject.Find("Player").GetComponent<GameCharacter>());
 
-        
         var temp = _healthUI.GetComponentInChildren<Canvas>();
         _canvasDisabler = new CanvasDisabler(temp);
+        
+        Health.DeathEvent.AddListener(_canvasDisabler.CanvasDisabled);
+        Health.DeathEvent.AddListener(Death);
+    }
+
+    void Start()
+    {
+        BattleController = new EnemyBattleController(this, _timeForArrow, GameObject.Find("Player").GetComponent<GameCharacter>());
     }
     
     private void Update()
     {
-        CanSee();
-        ((EnemyBattleController)BattleController).BattleControllerUpdate();
+        if(!IsDead)
+        {
+            ((EnemyBattleController)BattleController).BattleControllerUpdate();
+        }
     }
 
     private void LateUpdate()
@@ -96,6 +107,14 @@ public class Enemy : GameCharacter
         }
 
         return false;
+    }
+
+    private void Death()
+    {
+        IsDead = true;
+        GetComponent<EnemyCollision>().enabled = false;
+        _stateMachine.enabled = false;
+        _agent.enabled = false;
     }
     
 }

@@ -5,39 +5,40 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class AnimatorManager : MonoBehaviour
     {
-        protected Animator Animator;
+        protected Animator WeaponAnimator;
         protected GameCharacter _person;
 
-        public Animator GetAnimator() => Animator;
-        public void SetAnimator(Animator animator) => Animator = animator;
+        public Animator GetAnimator() => WeaponAnimator;
+        public void SetAnimator(Animator animator) => WeaponAnimator = animator;
         
-        public void PlayAnimation(SideOfMove sideOfMove, TypeOfMove typeOfMove)
+        public void PlayFightAnimation(SideOfMove sideOfMove, TypeOfMove typeOfMove)
         {
-            if(Animator == null) return;
-            Animator.SetBool(sideOfMove.ToString(), true);
-            Animator.SetBool(typeOfMove.ToString(), true);
+            if(WeaponAnimator == null) return;
+            WeaponAnimator.SetBool(sideOfMove.ToString(), true);
+            WeaponAnimator.SetBool(typeOfMove.ToString(), true);
         }
+        
         
         public void ResetBlock()
         {
-            if (Animator == null) return;
-            Animator.SetBool("IsBlock", false);
+            if (WeaponAnimator == null) return;
+            WeaponAnimator.SetBool("IsBlock", false);
             _person.GetBattleController().ResetMoves();
             ResetParts();
         }
 
         public void ResetAttack()
         {
-            Animator.SetBool("IsAttack", false);
+            WeaponAnimator.SetBool("IsAttack", false);
             _person.GetBattleController().ResetMoves();
             ResetParts();
         }
 
         public void ResetParts()
         {
-            Animator.SetBool(SideOfMove.Left.ToString(), false);
-            Animator.SetBool(SideOfMove.Right.ToString(), false);
-            Animator.SetBool(SideOfMove.Up.ToString(), false);
+            WeaponAnimator.SetBool(SideOfMove.Left.ToString(), false);
+            WeaponAnimator.SetBool(SideOfMove.Right.ToString(), false);
+            WeaponAnimator.SetBool(SideOfMove.Up.ToString(), false);
         }
 
         public void EnemyParriedEffect()
@@ -46,7 +47,7 @@ namespace DefaultNamespace.Abstract_classes
             {
                 enemy.GetEnemySideAttackUI().DisableUI();
             }
-            Animator.SetBool("IsParried", true);
+            WeaponAnimator.SetBool("IsParried", true);
             ResetAttack();
         }
         
