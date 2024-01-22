@@ -6,7 +6,7 @@ namespace DefaultNamespace.Enemy.States
 {
     public class LowStaminaState : BaseState
     {
-        private float speed = 1f;
+        private float _speed = 1f;
 
         public override void Enter()
         {
@@ -16,13 +16,14 @@ namespace DefaultNamespace.Enemy.States
         {
             if (Enemy != null && StateMachine != null && Player != null && Enemy.GetStamina().Stamina < 30)
             {
-                Vector3 directionToPlayer = Player.transform.position - Enemy.transform.position;
+                var transform = Player.transform;
+                Vector3 directionToPlayer = transform.position - Enemy.transform.position;
                 
-                Enemy.transform.LookAt(Player.transform);
+                Enemy.transform.LookAt(transform);
                 
                 directionToPlayer.Normalize();
                 
-                Enemy.transform.Translate(-directionToPlayer * speed * Time.deltaTime, Space.World);
+                Enemy.transform.Translate(-directionToPlayer * (_speed * Time.deltaTime), Space.World);
             }
             else
             {

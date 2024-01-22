@@ -1,47 +1,53 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.Enemy.States;
 using DefaultNamespace.Enums;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
 public class EnemyAnimation : AnimatorManager
 {
-    private void Awake()
-    {
-        _person = GetComponent<Enemy>();
-    }
+    private Animator _enemyAnimator;
+    private Enemy _temp;
 
     void Start()
     {
-        Animator[] _animators;
-        _animators = GetComponentsInChildren<Animator>();
-        if (_animators.Length > 0)
+        _person = GetComponent<Enemy>();
+        _enemyAnimator = GetComponent<Animator>();
+        WeaponAnimator = GameObject.FindWithTag("Weapon").GetComponent<Animator>();
+        
+        _person.GetHealthPoints().DeathEvent.AddListener(DeathAnimation);
+        _temp = (Enemy)_person;
+        
+    }
+
+    void LateUpdate()
+    {
+        if (_temp.GetStateMachine().ActiveState is AttackState || _temp.GetStateMachine().ActiveState is LowStaminaState)
         {
-            Animator = _animators[0];
+            StateAnimation(true);
         }
         else
         {
-            Debug.LogError("No animators found in the hierarchy.");
+            Debug.Log("aaaa");
+            StateAnimation(false);
         }
     }
-    
 
-    public new void PlayAnimation(SideOfMove sideOfMove, TypeOfMove typeOfMove)
+    public void DeathAnimation()
     {
-        base.PlayAnimation(sideOfMove, typeOfMove); // Виклик базового методу
+        Debug.Log("Death");
+        _enemyAnimator.SetTrigger("IsDead");
+    }
 
-        StartCoroutine(WaitAndReset());
+    public void StateAnimation(bool state)
+    {
+        _enemyAnimator.SetBool("IsAgressive", state);
     }
     
-    public new void ResetAttack()
-    {
-        base.ResetAttack();
-        StopCoroutine(WaitAndReset());
-    }
     
-    private IEnumerator WaitAndReset()
-    {
-        yield return new WaitForSeconds(0.4f);
-    }
+    
+    
 }

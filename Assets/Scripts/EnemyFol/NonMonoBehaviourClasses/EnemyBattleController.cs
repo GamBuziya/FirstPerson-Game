@@ -23,7 +23,7 @@ namespace DefaultNamespace.Enemy
         public EnemyBattleController(global::Enemy enemy, float time, GameCharacter player)
         {
             _time = time;
-            this._hero = enemy; 
+            _hero = enemy; 
             Animation = enemy.GetAnimatorManager();
             StaminaController = enemy.GetStamina();
             _enemySideOfMove = player.GetBattleController().GetCurrentMove();
@@ -41,7 +41,7 @@ namespace DefaultNamespace.Enemy
             {
                 _isBlock = true;
                 var temp = Random.Range(0f, 4f);
-                if (temp < 1.5f)
+                if (temp < 4f)
                 {
                     await SetCorrectBlock(_enemySideOfMove);
                 }
@@ -74,7 +74,7 @@ namespace DefaultNamespace.Enemy
             {
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
-                Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
+                Animation.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_forceAttackStaminaCost);
             }
             else if (randomMove == SideOfMove.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
@@ -82,14 +82,14 @@ namespace DefaultNamespace.Enemy
                 randomMove = (SideOfMove)Random.Range(1, 3);
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
-                Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
+                Animation.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_basicAttackStaminaCost);
             }
             else if (randomMove != SideOfMove.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
             {
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
-                Animation.PlayAnimation(randomMove, TypeOfMove.IsAttack);
+                Animation.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
                 StaminaController.StaminaDamage(_basicAttackStaminaCost);
             }
         }
@@ -101,21 +101,21 @@ namespace DefaultNamespace.Enemy
             
             if (side == SideOfMove.Up)
             {
-                Animation.PlayAnimation(side, TypeOfMove.IsBlock);
+                Animation.PlayFightAnimation(side, TypeOfMove.IsBlock);
                 SetData(side, TypeOfMove.IsBlock);
                 await Task.Delay(TimeSpan.FromSeconds(0.5f));
                 ResetBlock();
             }
             else if(side == SideOfMove.Left )
             {
-                Animation.PlayAnimation(SideOfMove.Right, TypeOfMove.IsBlock);
+                Animation.PlayFightAnimation(SideOfMove.Right, TypeOfMove.IsBlock);
                 SetData(SideOfMove.Right, TypeOfMove.IsBlock);
                 await Task.Delay(TimeSpan.FromSeconds(0.5f));
                 ResetBlock();
             }
             else
             {
-                Animation.PlayAnimation(SideOfMove.Left, TypeOfMove.IsBlock);
+                Animation.PlayFightAnimation(SideOfMove.Left, TypeOfMove.IsBlock);
                 SetData(SideOfMove.Left, TypeOfMove.IsBlock);
                 await Task.Delay(TimeSpan.FromSeconds(0.5f));
                 ResetBlock();

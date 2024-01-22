@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.Events;
 
 namespace DefaultNamespace.Abstract_classes
 {
     public abstract class HealthPoints
     {
+        public UnityEvent DeathEvent;
         protected int MaxHealth;
         protected int Health;
 
@@ -12,6 +14,7 @@ namespace DefaultNamespace.Abstract_classes
 
         public HealthPoints(int health)
         {
+            DeathEvent = new UnityEvent();
             MaxHealth = health;
             Health = health;
         }
@@ -29,6 +32,7 @@ namespace DefaultNamespace.Abstract_classes
         protected virtual void TakeDamage(int damage)
         {
             if(Health > 0) Health -= damage;
+            DeathChecker();
         }
 
         protected virtual void TakeHeal(int points)
@@ -46,7 +50,7 @@ namespace DefaultNamespace.Abstract_classes
 
         private void Death()
         {
-            
+            DeathEvent.Invoke();
         }
     }
 }

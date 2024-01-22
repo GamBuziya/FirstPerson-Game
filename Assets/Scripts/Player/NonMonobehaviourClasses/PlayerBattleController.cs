@@ -5,6 +5,7 @@ using DefaultNamespace.Enums;
 using DefaultNamespace.NonMonobehaviourClasses;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.Serialization;
 
 namespace DefaultNamespace
@@ -12,7 +13,6 @@ namespace DefaultNamespace
     public class PlayerBattleController : BattleController
     {
         private MoveParametrsController _battleMoves;
-        
         
         public PlayerBattleController(PlayerAnimation Animation, StaminaController StaminaController)
         {
@@ -35,7 +35,7 @@ namespace DefaultNamespace
                 if (StaminaController.Stamina >= _forceAttackStaminaCost)
                 {
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
-                    Animation.PlayAnimation(_currentMove, _currentTypeOfMove);
+                    Animation.PlayFightAnimation(_currentMove, _currentTypeOfMove);
                     StaminaController.StaminaDamage(_forceAttackStaminaCost);
                 }
             }
@@ -44,7 +44,7 @@ namespace DefaultNamespace
                 if (StaminaController.Stamina >= _basicAttackStaminaCost)
                 {
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
-                    Animation.PlayAnimation(_currentMove, _currentTypeOfMove);
+                    Animation.PlayFightAnimation(_currentMove, _currentTypeOfMove);
                     StaminaController.StaminaDamage(_basicAttackStaminaCost);
                 }
             }
@@ -56,7 +56,7 @@ namespace DefaultNamespace
             if (Animation.GetAnimator() == null) return;
 
             _battleMoves.GetMoveParametrs(false, _force, out _currentMove, out _currentTypeOfMove);
-            Animation.PlayAnimation(_currentMove, _currentTypeOfMove);
+            Animation.PlayFightAnimation(_currentMove, _currentTypeOfMove);
         }
 
 
