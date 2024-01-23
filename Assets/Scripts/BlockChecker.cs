@@ -13,10 +13,6 @@ namespace DefaultNamespace
             var enemyCharacter = enemy.GetComponentInParent<GameCharacter>();
             var heroCharacter = hero.GetComponent<GameCharacter>();
             
-            //Debug.Log("enemy.name" + enemyCharacter);
-            //Debug.Log("hero.name" + heroCharacter);
-            Debug.Log("enemyCharacter" + enemyCharacter.GetBattleController().GetCurrentMove());
-            Debug.Log("heroCharacter" + heroCharacter.GetBattleController().GetCurrentMove());
             if (enemyCharacter == null)
             {
                 Debug.Log("IsEmpty");

@@ -18,6 +18,7 @@ namespace DefaultNamespace.Enemy
         
         private bool _isBlock = false;
         private float _time;
+        private float _stunTime = 0;
 
         private GameCharacter _enemy;
         public EnemyBattleController(global::Enemy enemy, float time, GameCharacter player)
@@ -39,6 +40,7 @@ namespace DefaultNamespace.Enemy
             
             if (_enemyTypeOfMove == TypeOfMove.IsAttack && !_isBlock && _hero.CanSee() && !_hero.GetStun())
             {
+                Debug.Log("Block1");
                 _isBlock = true;
                 var temp = Random.Range(0f, 4f);
                 if (temp < 4f)
@@ -48,6 +50,18 @@ namespace DefaultNamespace.Enemy
                 else
                 {
                     await SetCorrectBlock((SideOfMove)Random.Range(1,4));
+                }
+            }
+            
+            if (_hero.GetStun())
+            {
+                _stunTime += Time.deltaTime;
+                Debug.Log(_stunTime);
+                if (_stunTime > 1f)
+                {
+                    Debug.Log("StunGetOut");
+                    _hero.SetStun(false);
+                    _stunTime = 0;
                 }
             }
         }
@@ -65,9 +79,9 @@ namespace DefaultNamespace.Enemy
 
             if (_hero.GetStun())
             {
-                _hero.GetBattleController().ResetMoves();
-                await Task.Delay(TimeSpan.FromSeconds(delayTime));
-                _hero.SetStun(false);
+                //_hero.GetBattleController().ResetMoves();
+                //await Task.Delay(TimeSpan.FromSeconds(delayTime));
+                //_hero.SetStun(false);
                 return;
             }
             if (randomMove == SideOfMove.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
