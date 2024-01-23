@@ -50,6 +50,7 @@ namespace DefaultNamespace.Abstract_classes
 
         private void Death()
         {
+            
             DeathEvent.Invoke();
         }
     }

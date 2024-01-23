@@ -1,4 +1,5 @@
 using System;
+using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.EnemyFol;
@@ -112,6 +113,7 @@ public class Enemy : GameCharacter
     private void Death()
     {
         IsDead = true;
+        GameObject.Find("SoundSystem").GetComponent<Sounds>().PlayDeathSound();
         GetComponent<EnemyCollision>().enabled = false;
         _stateMachine.enabled = false;
         _agent.enabled = false;

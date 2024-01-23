@@ -31,7 +31,6 @@ public class EnemyAnimation : AnimatorManager
         }
         else
         {
-            Debug.Log("aaaa");
             StateAnimation(false);
         }
     }
