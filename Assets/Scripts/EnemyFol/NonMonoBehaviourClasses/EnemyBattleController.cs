@@ -2,11 +2,8 @@
 using System.Threading.Tasks;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enums;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
-using Update = Unity.VisualScripting.Update;
 
 namespace DefaultNamespace.Enemy
 {
@@ -67,6 +64,7 @@ namespace DefaultNamespace.Enemy
         }
         public override async void Attack()
         {
+            Debug.Log("Enemy Attack");
             SideOfMove randomMove;
             if(_currentMove == SideOfMove.Nothing)  randomMove = (SideOfMove)Random.Range(1, 4);
             else randomMove = _currentMove;
@@ -84,6 +82,8 @@ namespace DefaultNamespace.Enemy
                 //_hero.SetStun(false);
                 return;
             }
+            
+            
             if (randomMove == SideOfMove.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
             {
                 SetData(randomMove, TypeOfMove.IsAttack);

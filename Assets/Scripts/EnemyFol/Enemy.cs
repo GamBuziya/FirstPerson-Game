@@ -46,6 +46,9 @@ public class Enemy : GameCharacter
         
     
         Animator = GetComponent<EnemyAnimation>();
+        
+        
+        Debug.Log("Animator" + Animator);
         _stateMachine = GetComponent<StateMachine>();
         _agent = GetComponent<NavMeshAgent>();
     

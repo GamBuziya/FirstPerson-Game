@@ -6,7 +6,7 @@ namespace DefaultNamespace.Abstract_classes
     public abstract class AnimatorManager : MonoBehaviour
     {
         protected Animator WeaponAnimator;
-        protected GameCharacter _person;
+        public GameCharacter _person;
 
         public Animator GetAnimator() => WeaponAnimator;
         public void SetAnimator(Animator animator) => WeaponAnimator = animator;

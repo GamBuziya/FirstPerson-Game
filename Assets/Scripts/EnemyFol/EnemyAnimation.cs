@@ -16,8 +16,20 @@ public class EnemyAnimation : AnimatorManager
     {
         _person = GetComponent<Enemy>();
         _enemyAnimator = GetComponent<Animator>();
-        WeaponAnimator = GameObject.FindWithTag("Weapon").GetComponent<Animator>();
-        
+
+        var temp = _person.GetComponentsInChildren<Transform>(true);
+
+        foreach (var childTransform in temp)
+        {
+            var childGameObject = childTransform.gameObject;
+
+            if (childGameObject.CompareTag("Weapon"))
+            {
+                WeaponAnimator = childGameObject.GetComponent<Animator>();
+                break;
+            }
+        }
+
         _person.GetHealthPoints().DeathEvent.AddListener(DeathAnimation);
         _temp = (Enemy)_person;
         
