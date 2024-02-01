@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enums;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 using Random = UnityEngine.Random;
