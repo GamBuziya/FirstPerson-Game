@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: fa844c1685b958b4295ade2bae92dfb9
+guid: f7ea1e267c583bb4f809ee617a1940ca
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,57 +8,57 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Armor
-    second: {fileID: 2100000, guid: 8699d92d3b5480148a0eb8ce7169be4e, type: 2}
+    second: {fileID: 2100000, guid: 5ac29bbf827e6ea42a834230345c9d10, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Buckle
-    second: {fileID: 2100000, guid: d9823da197ae70f46a3cced044b8af3e, type: 2}
+    second: {fileID: 2100000, guid: f27e276ab33522d43b3108000d4e081b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Helmet
-    second: {fileID: 2100000, guid: a5a298954f0500840a99ba86e491a49c, type: 2}
+    second: {fileID: 2100000, guid: 09eb67df726a3434c8c202eabc1b846e, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Horns
-    second: {fileID: 2100000, guid: cdf6739d7937f9645a413062231166f7, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 98dbee5ed9a263841a93bae74098f925, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.001
-    second: {fileID: 2100000, guid: 81e9298a8b4cc334ca3c6d165ceeea10, type: 2}
+    second: {fileID: 2100000, guid: 61557ac2ac53ca949966241604de1773, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Material.002
-    second: {fileID: 2100000, guid: 7187b7ce79683cf48b70495700bd5018, type: 2}
+    second: {fileID: 2100000, guid: 63c3f8830d0fa584086ff7d84f315561, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.003
-    second: {fileID: 2100000, guid: eecf613e4590b1c42ad7ff99453781bc, type: 2}
+      name: Material.005
+    second: {fileID: 2100000, guid: 634edfc90878b264d82600c916958af4, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Mouse
-    second: {fileID: 2100000, guid: 08d0ba563ee1d9544b91dd16062be5b1, type: 2}
+    second: {fileID: 2100000, guid: 3ff0b25c3a772f94cb3c041dc2c778aa, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: Skin
-    second: {fileID: 2100000, guid: 4d5a6af910aa21e41a816ac8650b0926, type: 2}
+    second: {fileID: 2100000, guid: 049a47f7128066d458316d85cb06367f, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: UnderCloths
-    second: {fileID: 2100000, guid: 46932e26749aeff4dab1c6b24edaeda0, type: 2}
+    second: {fileID: 2100000, guid: 6f023312d8d5ae844b730e36bf9df93b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: strap
-    second: {fileID: 2100000, guid: c58b2d880555e014a9a99b1200309a61, type: 2}
+    second: {fileID: 2100000, guid: 1a2dff860677eeb43bce3b82a636fc46, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
