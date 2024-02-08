@@ -202,7 +202,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DefaultNamespace.WeaponTaker, Assembly-CSharp
+        m_TargetAssemblyTypeName: DefaultNamespace.Player, Assembly-CSharp
         m_MethodName: TakeWeapon
         m_Mode: 1
         m_Arguments:
