@@ -1,5 +1,6 @@
 using System;
 using DefaultNamespace;
+using DefaultNamespace.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -25,8 +26,8 @@ public class InputManager : MonoBehaviour
         //Підв'язка методу до дії
         onFoot.Jump.performed += context =>  _motor.Jump();
         onFoot.SpeedUp.performed += context =>  _motor.SpeedUp();
-        
-        
+
+        onFoot.Interact.performed += context => GameEventManager.Instance.InputEvents.SubmitPressed();
         //Удари
         onFoot.PowerButton.started += context => _player.GetBattleController().ChangeForce();
         onFoot.PowerButton.canceled += context => _player.GetBattleController().ChangeForce();
