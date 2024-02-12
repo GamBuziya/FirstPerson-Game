@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using DefaultNamespace.Events;
 using UnityEngine;
 
 namespace DefaultNamespace.QuestsSystem
@@ -13,7 +14,80 @@ namespace DefaultNamespace.QuestsSystem
             _questMap = CreateQuestMap();
 
             Quest quest = GetQuestById("CollectWheatQuest");
-            Debug.Log(quest.Info.DisplayName);
+        }
+
+        private void OnEnable()
+        {
+            GameEventManager.Instance.QuestEvents.onStartQuest += StartQuest;
+            GameEventManager.Instance.QuestEvents.onAdvanceQuest += AdvanceQuest;
+            GameEventManager.Instance.QuestEvents.onFinishQuest += FinishQuest;
+        }
+        
+        private void OnDisable()
+        {
+            GameEventManager.Instance.QuestEvents.onStartQuest -= StartQuest;
+            GameEventManager.Instance.QuestEvents.onAdvanceQuest -= AdvanceQuest;
+            GameEventManager.Instance.QuestEvents.onFinishQuest -= FinishQuest;
+        }
+
+        private void Start()
+        {
+            foreach (var quest in _questMap.Values)
+            {
+                GameEventManager.Instance.QuestEvents.QuestStateChange(quest);
+            }
+        }
+
+        private void Update()
+        {
+            foreach (var quest in _questMap.Values)
+            {
+                if (quest.State == QuestState.REQUIREMENTS_NOT_MET && CheckRequirementsMet(quest))
+                {
+                    ChangeQuestState(quest.Info.Id, QuestState.CAN_START);
+                }
+            }
+        }
+
+        private void ChangeQuestState(string id, QuestState state)
+        {
+            Quest quest = GetQuestById(id);
+
+            quest.State = state;
+            GameEventManager.Instance.QuestEvents.QuestStateChange(quest);
+        }
+        
+        
+        private bool CheckRequirementsMet(Quest quest)
+        {
+            bool meetsRequirements = true;
+
+            foreach (var prerequisiteQuestInfo in quest.Info.QuestsPrerequisites)
+            {
+                if (GetQuestById(prerequisiteQuestInfo.Id).State != QuestState.FINISHED)
+                {
+                    meetsRequirements = false;
+                }
+            }
+
+            return meetsRequirements;
+        }
+        
+        private void StartQuest(String id)
+        {
+            Quest quest = GetQuestById(id);
+            quest.InstantiateCurrentQuestStep(this.transform);
+            ChangeQuestState(quest.Info.Id, QuestState.IN_PROGRESS);
+        }
+
+        private void AdvanceQuest(string id)
+        {
+            Debug.Log("Advance Quest: " + id);
+        }
+
+        private void FinishQuest(string id)
+        {
+            Debug.Log("Finish Quest: " + id);
         }
 
         private Dictionary<string, Quest> CreateQuestMap()
