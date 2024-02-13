@@ -40,7 +40,8 @@ public class QuestPoint : MonoBehaviour
     {
         //ТУТ ЛОГІКА АКТИВАЦІЇ КВЕСТУ
         if (!_playerIsNear) return;
-
+        
+        Debug.Log("SubmitPressed" + _currentQuestState);
         if (_currentQuestState.Equals(QuestState.CAN_START) && _startPoint)
         {
             GameEventManager.Instance.QuestEvents.StartQuest(_questId);

@@ -26,13 +26,26 @@ public class CollectWheatQuestStep : QuestStep
             Debug.Log("ISnt wheat");
             return;
         }
-        if (_wheatToCollect < _wheatToComplete)
+        if (_wheatToCollect <= _wheatToComplete)
         {
             _wheatToCollect++;
+            UpdateState();
         }
         else
         {
             FinishQuestStep();
         }
+    }
+
+    private void UpdateState()
+    {
+        string state = _wheatToCollect.ToString();
+        ChangeState(state);
+    }
+
+    protected override void SetQuestStepState(string state)
+    {
+        this._wheatToCollect = System.Int32.Parse(state);
+        UpdateState();
     }
 }
