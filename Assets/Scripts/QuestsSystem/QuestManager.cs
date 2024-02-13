@@ -167,7 +167,6 @@ namespace DefaultNamespace.QuestsSystem
                 string serializedData = JsonUtility.ToJson(questData);
                 PlayerPrefs.SetString(quest.Info.Id, serializedData);
                 
-                Debug.Log(serializedData);
             }
             catch (System.Exception e)
             {
