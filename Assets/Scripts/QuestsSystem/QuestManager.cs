@@ -82,12 +82,26 @@ namespace DefaultNamespace.QuestsSystem
 
         private void AdvanceQuest(string id)
         {
-            Debug.Log("Advance Quest: " + id);
+            Quest quest = GetQuestById(id);
+            
+            quest.MoveToNextStep();
+
+            if (quest.CurrentStepExists())
+            {
+                quest.InstantiateCurrentQuestStep(this.transform);
+            }
+            //Якщо закінчили
+            else
+            {
+                ChangeQuestState(quest.Info.Id, QuestState.CAN_FINISH);
+            }
         }
 
         private void FinishQuest(string id)
         {
-            Debug.Log("Finish Quest: " + id);
+            Quest quest = GetQuestById(id);
+            ChangeQuestState(quest.Info.Id, QuestState.FINISHED);
+            //Щось ще для запуску після закінчення квесту
         }
 
         private Dictionary<string, Quest> CreateQuestMap()

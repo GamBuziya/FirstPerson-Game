@@ -5,13 +5,13 @@ using UnityEngine;
 public class CorrectUI : MonoBehaviour
 {
     public Transform playerFace;
-    private Canvas[] enemyCanvases;
+    private Canvas[] _enemyCanvases;
     private Camera _cam;
 
     void Start()
     {
         _cam = Camera.main;
-        enemyCanvases = FindObjectsOfType<Canvas>();
+        _enemyCanvases = FindObjectsOfType<Canvas>();
     }
 
     void Update()
@@ -21,7 +21,7 @@ public class CorrectUI : MonoBehaviour
 
     void RotateEnemyCanvasesTowardsPlayer()
     {
-        foreach (Canvas canvas in enemyCanvases)
+        foreach (Canvas canvas in _enemyCanvases)
         {
             if (canvas.CompareTag("EnemyCanvas"))
             {
