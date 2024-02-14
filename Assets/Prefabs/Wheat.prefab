@@ -268,3 +268,4 @@ MonoBehaviour:
   UseEvents: 0
   BasicCondition: Take
   SecondCondition: 
+  _name: Wheat

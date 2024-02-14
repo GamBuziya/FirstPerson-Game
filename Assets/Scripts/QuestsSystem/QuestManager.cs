@@ -132,7 +132,7 @@ namespace DefaultNamespace.QuestsSystem
             return idToQuestMap;
         }
 
-        private Quest GetQuestById(String id)
+        public Quest GetQuestById(String id)
         {
             Quest quest = _questMap[id];
             if (quest == null)
