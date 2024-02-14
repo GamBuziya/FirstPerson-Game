@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a59047c5bf14bb8acec644345824530, type: 3}
+  m_Name: FindSticksQuestStep
+  m_EditorClassIdentifier: 
+  StartDialog:
+  - Text: HEY! HEY!
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: I need a help!!!
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: Robbers attacked me and took almost everything, I was beaten and my leg
+      was broken
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: SHIT, i can't feel my fingers
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: My name is Rob, please, please help me
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: My father will not remain in debt, i SWEAR!!!
+    IsEnd: 0
+    IsQuestion: 1
+    AnswerOption1: And how can I help you?
+    AnswerOption2: So.... And what can you offer?
+    option1Index: 7
+    option2Index: 6
+  - Text: He will find something to thank you for, just please don't leave me here...
+      I don't want to die
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: I have already walked this way and knew that it was dangerous, so I was
+      insured, but now I have no strength.
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: How to go straight through the forest, there is a big tree, next to it
+      is my stash.... a little potion to get back on your feet
+    IsEnd: 0
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  - Text: Bring it and find 3 sticks so I can walk
+    IsEnd: 1
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  RepeatQuest:
+  - Text: Find 3 sticks and potion please!!!
+    IsEnd: 1
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  EndDialog: []
+  ID_Quest: BringHomeQuest

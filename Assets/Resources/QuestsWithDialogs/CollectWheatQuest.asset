@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a59047c5bf14bb8acec644345824530, type: 3}
-  m_Name: QuestInfoSO
+  m_Name: CollectWheatQuest
   m_EditorClassIdentifier: 
   StartDialog:
   - Text: Hi! I need your help...
@@ -20,12 +20,6 @@ MonoBehaviour:
     AnswerOption2: 
     option1Index: 0
     option2Index: 0
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
   - Text: I have to collect my wheat, but I`m to old and i need help
     IsEnd: 0
     IsQuestion: 0
@@ -33,12 +27,6 @@ MonoBehaviour:
     AnswerOption2: 
     option1Index: 0
     option2Index: 0
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
   - Text: Can you help me please?
     IsEnd: 0
     IsQuestion: 1
@@ -46,12 +34,6 @@ MonoBehaviour:
     AnswerOption2: NO
     option1Index: 3
     option2Index: 3
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
   - Text: Thank you!
     IsEnd: 1
     IsQuestion: 0
@@ -59,12 +41,20 @@ MonoBehaviour:
     AnswerOption2: 0
     option1Index: 0
     option2Index: 0
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  RepeatQuest: []
-  EndDialog: []
+  RepeatQuest:
+  - Text: Help me collect 10 wheat please
+    IsEnd: 1
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
+  EndDialog:
+  - Text: Thank You so much
+    IsEnd: 1
+    IsQuestion: 0
+    AnswerOption1: 
+    AnswerOption2: 
+    option1Index: 0
+    option2Index: 0
   ID_Quest: CollectWheatQuest

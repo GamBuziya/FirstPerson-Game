@@ -7,11 +7,13 @@ using UnityEngine;
 
 namespace DefaultNamespace.Interactable
 {
-    public class Seeds : global::Interactable
+    public class TakenObject : global::Interactable
     {
+        [SerializeField] private string _name;
         protected override void Interact()
         {
-            GameEventManager.Instance.ItemEvent.ItemCollected("Wheat");
+            Debug.Log(_name);
+            GameEventManager.Instance.ItemEvent.ItemCollected(_name);
             Destroy(gameObject);
         }
     }

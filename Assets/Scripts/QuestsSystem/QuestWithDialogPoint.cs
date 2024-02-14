@@ -7,7 +7,7 @@ using DefaultNamespace.QuestsSystem;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
-public class QuestPoint : MonoBehaviour
+public class QuestWithDialogPoint : MonoBehaviour
 {
     [Header("Quest")] [SerializeField] private QuestWithDialogsSo _questWithDialogs;
 
@@ -15,6 +15,8 @@ public class QuestPoint : MonoBehaviour
     [SerializeField] private bool _startPoint = true;
 
     [SerializeField] private bool _finishPoint = true;
+
+    [SerializeField] private Transform _NPC;
     
     private bool _playerIsNear = false;
     private string _questId;
@@ -53,7 +55,6 @@ public class QuestPoint : MonoBehaviour
     private void SubmitPressed()
     {
         
-        Debug.Log("SubmitPressed" + _currentQuestState);
         if (_currentQuestState.Equals(QuestState.CAN_START) && _startPoint)
         {
             GameEventManager.Instance.QuestEvents.StartQuest(_questId);
@@ -92,19 +93,18 @@ public class QuestPoint : MonoBehaviour
 
     private void PlayDialog()
     {
-        Debug.Log("PlayDialog " + _currentQuestState);
         if (!_playerIsNear) return;
         
         switch (_currentQuestState)
         {
             case QuestState.CAN_START:
-                _dialogManager.DialogStart(_questWithDialogs.StartDialog, transform);
+                _dialogManager.DialogStart(_questWithDialogs.StartDialog, _NPC);
                 break;
             case QuestState.IN_PROGRESS:
-                _dialogManager.DialogStart(_questWithDialogs.RepeatQuest, transform);
+                _dialogManager.DialogStart(_questWithDialogs.RepeatQuest, _NPC);
                 break;
             case QuestState.CAN_FINISH:
-                _dialogManager.DialogStart(_questWithDialogs.EndDialog, transform);
+                _dialogManager.DialogStart(_questWithDialogs.EndDialog, _NPC);
                 break;
         }
     }
