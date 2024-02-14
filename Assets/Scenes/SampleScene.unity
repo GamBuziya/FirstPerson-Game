@@ -3699,7 +3699,6 @@ GameObject:
   - component: {fileID: 788420736}
   - component: {fileID: 788420738}
   - component: {fileID: 788420737}
-  - component: {fileID: 788420739}
   m_Layer: 0
   m_Name: QuestFarmer
   m_TagString: Untagged
@@ -3735,7 +3734,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda8e321b90e39f4db26bc7d9d9ea67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _questInfoForPoint: {fileID: 11400000, guid: 8fcf638ddd9785342a5ae357f04bd29b, type: 2}
+  _questWithDialogs: {fileID: 11400000, guid: b89b4650c2d8eab43bb8c03d3b75e3ed, type: 2}
   _startPoint: 1
   _finishPoint: 1
 --- !u!65 &788420738
@@ -3759,72 +3758,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3.0217078, y: 4.9443297, z: 3.2403293}
   m_Center: {x: -0.032224752, y: 1.9721594, z: 1.1201566}
---- !u!114 &788420739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 788420735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ea6e92f5d7ece46be1f24d2e05d722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _dialogStrings:
-  - Text: Hello!!
-    IsEnd: 0
-    IsQuestion: 0
-    AnswerOption1: 
-    AnswerOption2: 
-    option1Index: 0
-    option2Index: 0
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - Text: How are you?
-    IsEnd: 0
-    IsQuestion: 1
-    AnswerOption1: Ok
-    AnswerOption2: Fuck you
-    option1Index: 3
-    option2Index: 2
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - Text: No FUCK YOU LEATHER MAN
-    IsEnd: 1
-    IsQuestion: 0
-    AnswerOption1: 
-    AnswerOption2: 
-    option1Index: 0
-    option2Index: 0
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - Text: It`s good
-    IsEnd: 1
-    IsQuestion: 0
-    AnswerOption1: 
-    AnswerOption2: 
-    option1Index: 0
-    option2Index: 0
-    StartDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-    EndDialogEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  _npcTransform: {fileID: 5394643592107714462}
 --- !u!4 &806376438 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4093639486830472, guid: 957bb31991bce1640a18d0a109c71f3d, type: 3}
@@ -4645,7 +4578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2296409da8c5e04459686a19c35e2db6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _timeMultiplier: 2000
+  _timeMultiplier: 300
   _startHour: 12
   _sunLight: {fileID: 327981253}
   _sunriseHour: 7
@@ -6228,51 +6161,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4632176470643508, guid: 08b7d3dcb8d6b9247b1800cd79905e16, type: 3}
   m_PrefabInstance: {fileID: 1246266495}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1270418455
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1270418456}
-  - component: {fileID: 1270418457}
-  m_Layer: 0
-  m_Name: QuestManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1270418456
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270418455}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1699763135}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1270418457
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270418455}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1011640226439f81cac3c51927c352, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoadQuestState: 1
 --- !u!4 &1270716407 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4632176470643508, guid: 08b7d3dcb8d6b9247b1800cd79905e16, type: 3}
@@ -8138,51 +8026,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 910343317753862457, guid: 8180076d0d16c6343a26f97675d67503, type: 3}
   m_PrefabInstance: {fileID: 1221595265}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1699763134
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1699763135}
-  - component: {fileID: 1699763136}
-  m_Layer: 0
-  m_Name: Managers
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1699763135
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699763134}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 114.34352, y: 2.6488643, z: 0.03462485}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1270418456}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1699763136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1699763134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fc7e6e47a4849f98c6cfd13e5386aa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1722429680 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 910343317753862457, guid: 8180076d0d16c6343a26f97675d67503, type: 3}
@@ -10452,6 +10295,67 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1326599066}
   m_SourcePrefab: {fileID: 100100000, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+--- !u!1001 &2388529885399825087
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3620486300610408152, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: LoadQuestState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 114.34352
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.6488643
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.03462485
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3732151445959797747, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786267956811634909, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
+      propertyPath: m_Name
+      value: Managers
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ccd6c5c9dc8573c40a2cc0d9ca1181b4, type: 3}
 --- !u!4 &5394643592107714462 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8831992446346871883, guid: 17c02e5cd7f52244b9983e23e6ef0ca2, type: 3}
@@ -10620,4 +10524,4 @@ SceneRoots:
   - {fileID: 996481375}
   - {fileID: 506937990}
   - {fileID: 395555695}
-  - {fileID: 1699763135}
+  - {fileID: 2388529885399825087}

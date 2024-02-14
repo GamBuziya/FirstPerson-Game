@@ -27,7 +27,7 @@ public class InputManager : MonoBehaviour
         onFoot.Jump.performed += context =>  _motor.Jump();
         onFoot.SpeedUp.performed += context =>  _motor.SpeedUp();
 
-        onFoot.Interact.performed += context => GameEventManager.Instance.InputEvents.SubmitPressed();
+        onFoot.Interact.performed += context => GameEventManager.Instance.InputEvents.Interacted();
         //Удари
         onFoot.PowerButton.started += context => _player.GetBattleController().ChangeForce();
         onFoot.PowerButton.canceled += context => _player.GetBattleController().ChangeForce();

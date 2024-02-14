@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -89,11 +90,10 @@ namespace DefaultNamespace.DialogSystem
             {
                 DialogString line = _dialogList[_currentDialogIndex];
                 
-                line.StartDialogEvent?.Invoke();
 
                 if (line.IsQuestion)
                 {
-                    yield return StartCoroutine(TypeText(line.Text));
+                    yield return StartCoroutine(TypeText(line));
                     _option1Button.interactable = true;
                     _option2Button.interactable = true;
 
@@ -107,12 +107,12 @@ namespace DefaultNamespace.DialogSystem
                 }
                 else
                 {
-                    yield return StartCoroutine(TypeText(line.Text));
+                    yield return StartCoroutine(TypeText(line));
                 }
-
+                
                 _optionSelected = false;
             }
-
+            
             DialogueEnded();
         }
 
@@ -124,10 +124,10 @@ namespace DefaultNamespace.DialogSystem
             _currentDialogIndex = index;
         }
 
-        private IEnumerator TypeText(string text)
+        private IEnumerator TypeText(DialogString text)
         {
             _dialogueText.text = "";
-            foreach (var letter in text.ToCharArray())
+            foreach (var letter in text.Text.ToCharArray())
             {
                 _dialogueText.text += letter;
                 yield return new WaitForSeconds(_typingSpeed);
@@ -137,10 +137,11 @@ namespace DefaultNamespace.DialogSystem
             {
                 yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
             }
-
+            
+            
             if (_dialogList[_currentDialogIndex].IsEnd)
                 DialogueEnded();
-
+            
             _currentDialogIndex++;
         }
 
@@ -156,6 +157,8 @@ namespace DefaultNamespace.DialogSystem
             _characterController.enabled = true;
 
             IsDialog = false;
+            
+            GameEventManager.Instance.InputEvents.SubmitPressed();
         }
     }
 }

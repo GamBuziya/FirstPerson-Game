@@ -16,9 +16,6 @@ namespace DefaultNamespace.DialogSystem
         public string AnswerOption2;
         public int option1Index;
         public int option2Index;
-
-        [Header("Triggered Events")] 
-        public UnityEvent StartDialogEvent;
-        public UnityEvent EndDialogEvent;
+        
     }
 }

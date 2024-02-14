@@ -1,13 +1,15 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.DialogSystem;
 using DefaultNamespace.Events;
+using DefaultNamespace.QuestsSystem;
 using UnityEngine;
 
 [RequireComponent(typeof(BoxCollider))]
 public class QuestPoint : MonoBehaviour
 {
-    [Header("Quest")] [SerializeField] private QuestInfoSO _questInfoForPoint;
+    [Header("Quest")] [SerializeField] private QuestWithDialogsSo _questWithDialogs;
 
     [Header("Config")] 
     [SerializeField] private bool _startPoint = true;
@@ -17,29 +19,39 @@ public class QuestPoint : MonoBehaviour
     private bool _playerIsNear = false;
     private string _questId;
     private QuestState _currentQuestState;
+    private DialogManager _dialogManager;
 
 
     private void Awake()
     {
-        _questId = _questInfoForPoint.Id;
+        _dialogManager = GameObject.Find("Player").GetComponent<DialogManager>();
+    }
+
+    private void Start()
+    {
+        var questManager = GameObject.Find("Managers").GetComponentInChildren<QuestManager>();
+        if (questManager.GetQuestById(_questWithDialogs.ID_Quest) != null)
+        {
+            _questId = questManager.GetQuestById(_questWithDialogs.ID_Quest).Info.Id;
+        }
     }
 
     private void OnEnable()
     {
         GameEventManager.Instance.QuestEvents.onQuestStateChange += QuestStateChange;
         GameEventManager.Instance.InputEvents.onSubmitPressed += SubmitPressed;
+        GameEventManager.Instance.InputEvents.onInteract += PlayDialog;
     }
     
     private void OnDisable()
     {
         GameEventManager.Instance.QuestEvents.onQuestStateChange -= QuestStateChange;
         GameEventManager.Instance.InputEvents.onSubmitPressed -= SubmitPressed;
+        GameEventManager.Instance.InputEvents.onInteract -= PlayDialog;
     }
 
     private void SubmitPressed()
     {
-        //ТУТ ЛОГІКА АКТИВАЦІЇ КВЕСТУ
-        if (!_playerIsNear) return;
         
         Debug.Log("SubmitPressed" + _currentQuestState);
         if (_currentQuestState.Equals(QuestState.CAN_START) && _startPoint)
@@ -75,6 +87,25 @@ public class QuestPoint : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             _playerIsNear = false;
+        }
+    }
+
+    private void PlayDialog()
+    {
+        Debug.Log("PlayDialog " + _currentQuestState);
+        if (!_playerIsNear) return;
+        
+        switch (_currentQuestState)
+        {
+            case QuestState.CAN_START:
+                _dialogManager.DialogStart(_questWithDialogs.StartDialog, transform);
+                break;
+            case QuestState.IN_PROGRESS:
+                _dialogManager.DialogStart(_questWithDialogs.RepeatQuest, transform);
+                break;
+            case QuestState.CAN_FINISH:
+                _dialogManager.DialogStart(_questWithDialogs.EndDialog, transform);
+                break;
         }
     }
 }
