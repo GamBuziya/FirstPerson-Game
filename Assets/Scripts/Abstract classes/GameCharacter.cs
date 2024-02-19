@@ -7,6 +7,8 @@ namespace DefaultNamespace.Abstract_classes
     {
         [SerializeField] protected int MaxHealth = 100;
         [SerializeField] protected LayerMask EnemyLayer;
+        
+        [Header("Attack Event Controller")]
         [SerializeField] protected UnityEvent _attackEvent;
         
         protected StaminaController Stamina;

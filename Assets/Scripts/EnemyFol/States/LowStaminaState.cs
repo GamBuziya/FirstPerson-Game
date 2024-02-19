@@ -11,6 +11,7 @@ namespace DefaultNamespace.Enemy.States
         public override void Enter()
         {
         }
+        
 
         public override void Perform()
         {
@@ -27,7 +28,7 @@ namespace DefaultNamespace.Enemy.States
             }
             else
             {
-                StateMachine.ChangeState(new PatrolState());
+                StateMachine.ChangeState(new PeaseState());
             }
         }
 

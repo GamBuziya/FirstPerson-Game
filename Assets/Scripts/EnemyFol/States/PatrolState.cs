@@ -19,7 +19,15 @@ public class PatrolState : BaseState
     public override void Perform()
     {
         PatrolCycle();
-        if(Enemy.CanSee()) StateMachine.ChangeState(new AttackState());
+        if (Enemy.CanSee())
+        {
+            if(Enemy.IsAngry) StateMachine.ChangeState(new AttackState());
+            else if(Enemy.Path != null)
+            {
+                StateMachine.ChangeState(new PeaseState());
+            }
+            
+        }
     }
 
     public override void Exit()
