@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Enemy.States;
 using UnityEngine;
 
 public class StateMachine : MonoBehaviour
 {
     public BaseState ActiveState;
+    public MoveToState MoveToState;
     public Enemy Enemy;
 
     private void Start()
@@ -16,7 +18,7 @@ public class StateMachine : MonoBehaviour
 
     public void Initialise()
     {
-        ChangeState(new PatrolState());
+        ChangeState(new PeaseState());
     }
 
     // Update is called once per frame

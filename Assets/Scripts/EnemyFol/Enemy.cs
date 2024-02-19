@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
@@ -13,11 +14,14 @@ public class Enemy : GameCharacter
     [SerializeField] private Image _arrowImage;
 
     [SerializeField] private float _timeForArrow;
+    
+    [SerializeField] public bool IsAngry;
+
     // Enemy Moves
     public GameObject Player { get; set; }
     public NavMeshAgent Agent { get => _agent;}
-    public Path Path;   
-    
+    public Path Path;
+    public Path PointsList;
     
     private float _sightDistance = 13f;
     private float _fieldOfView = 70f;
@@ -35,6 +39,7 @@ public class Enemy : GameCharacter
     public CanvasDisabler GetCanvasDisabler() => _canvasDisabler;
 
     public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
+    
 
     private bool IsDead = false;
 

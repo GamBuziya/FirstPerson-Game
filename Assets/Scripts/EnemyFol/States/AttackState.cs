@@ -30,7 +30,7 @@ namespace DefaultNamespace.Enemy.States
                 _losePlayerTimer += Time.deltaTime;
                 if (_losePlayerTimer > 7)
                 {
-                    StateMachine.ChangeState(new PatrolState());
+                    StateMachine.ChangeState(new PeaseState());
                     Enemy.GetCanvasDisabler().CanvasDisabled();
                 }
             }
