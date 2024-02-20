@@ -16,6 +16,8 @@ namespace DefaultNamespace.Enemy.States
 
         public override void Perform()
         {
+            Debug.Log("AAAA");
+            Debug.Log("Destination point:" + _destinationPoint.position);
             Enemy.Agent.SetDestination(_destinationPoint.position);
             if (Vector3.Distance(Enemy.transform.position, _destinationPoint.position) <= 1f)
             {

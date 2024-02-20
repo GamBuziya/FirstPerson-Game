@@ -11,6 +11,7 @@ namespace DefaultNamespace.Events
         public QuestEvents QuestEvents;
         public InputEvents InputEvents;
         public CollectItemEvent ItemEvent;
+        public MoveToEvent MoveToEvent;
 
         private void Awake()
         {
@@ -20,6 +21,7 @@ namespace DefaultNamespace.Events
             }
             
             Instance = this;
+            MoveToEvent = new MoveToEvent();
             ItemEvent = new CollectItemEvent();
             InputEvents = new InputEvents();
             QuestEvents = new QuestEvents();
