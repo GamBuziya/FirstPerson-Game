@@ -17,3 +17,4 @@ MonoBehaviour:
   QuestsPrerequisites: []
   QuestStepPrefabs:
   - {fileID: 7924332662385528812, guid: 77fd12c7caea78446befa39d3e0fb86c, type: 3}
+  - {fileID: 1653069860324002071, guid: 6c1ceaefcafdd4045bd0cdf7e6a25019, type: 3}

@@ -9,7 +9,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class QuestWithDialogPoint : MonoBehaviour
 {
-    [Header("Quest")] [SerializeField] private QuestWithDialogsSo _questWithDialogs;
+    [Header("Quest")] [SerializeField] private QuestInfoSO _questSo;
 
     [Header("Config")] 
     [SerializeField] private bool _startPoint = true;
@@ -22,6 +22,8 @@ public class QuestWithDialogPoint : MonoBehaviour
     private string _questId;
     private QuestState _currentQuestState;
     private DialogManager _dialogManager;
+    private QuestManager _questManager;
+    private Quest _quest;
 
 
     private void Awake()
@@ -31,11 +33,8 @@ public class QuestWithDialogPoint : MonoBehaviour
 
     private void Start()
     {
-        var questManager = GameObject.Find("Managers").GetComponentInChildren<QuestManager>();
-        if (questManager.GetQuestById(_questWithDialogs.ID_Quest) != null)
-        {
-            _questId = questManager.GetQuestById(_questWithDialogs.ID_Quest).Info.Id;
-        }
+        _questId = _questSo.Id;
+        _quest = GameObject.Find("Managers").GetComponentInChildren<QuestManager>().GetQuestById(_questId);
     }
 
     private void OnEnable()
@@ -94,17 +93,17 @@ public class QuestWithDialogPoint : MonoBehaviour
     private void PlayDialog()
     {
         if (!_playerIsNear) return;
-        
+        var currentdialogs = _quest.GetCurrentDialogsSo();
         switch (_currentQuestState)
         {
             case QuestState.CAN_START:
-                _dialogManager.DialogStart(_questWithDialogs.StartDialog, _NPC);
+                _dialogManager.DialogStart(currentdialogs.StartDialog, _NPC);
                 break;
             case QuestState.IN_PROGRESS:
-                _dialogManager.DialogStart(_questWithDialogs.RepeatQuest, _NPC);
+                _dialogManager.DialogStart(currentdialogs.RepeatQuest, _NPC);
                 break;
             case QuestState.CAN_FINISH:
-                _dialogManager.DialogStart(_questWithDialogs.EndDialog, _NPC);
+                _dialogManager.DialogStart(currentdialogs.EndDialog, _NPC);
                 break;
         }
     }
