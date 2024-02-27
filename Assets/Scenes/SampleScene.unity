@@ -4018,7 +4018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda8e321b90e39f4db26bc7d9d9ea67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _questWithDialogs: {fileID: 11400000, guid: b89b4650c2d8eab43bb8c03d3b75e3ed, type: 2}
+  _questSo: {fileID: 0}
   _startPoint: 1
   _finishPoint: 1
   _NPC: {fileID: 0}
@@ -4227,7 +4227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda8e321b90e39f4db26bc7d9d9ea67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _questWithDialogs: {fileID: 11400000, guid: e52451691b1969149bf57ed6db5d0bd4, type: 2}
+  _questSo: {fileID: 11400000, guid: 19b4db1ec1335ff4d9f9a77a1b2e56b3, type: 2}
   _startPoint: 1
   _finishPoint: 1
   _NPC: {fileID: 1039619653}
@@ -10867,15 +10867,15 @@ PrefabInstance:
       objectReference: {fileID: 484501581}
     - target: {fileID: 1312410785556395014, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 19.6
+      value: 18.1
       objectReference: {fileID: 0}
     - target: {fileID: 1312410785556395014, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.91
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 1312410785556395014, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.2
+      value: -5.9
       objectReference: {fileID: 0}
     - target: {fileID: 1312410785556395014, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -11194,7 +11194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 904645237996427571, guid: a8bcc9d8a761de6449567f90dfc7d596, type: 3}
       propertyPath: IsAngry
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3258558574091238140, guid: a8bcc9d8a761de6449567f90dfc7d596, type: 3}
       propertyPath: m_Name
@@ -11202,7 +11202,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3258558574091238140, guid: a8bcc9d8a761de6449567f90dfc7d596, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4416938693765514737, guid: a8bcc9d8a761de6449567f90dfc7d596, type: 3}
       propertyPath: m_LocalScale.x

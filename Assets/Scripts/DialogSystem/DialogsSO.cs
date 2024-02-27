@@ -3,8 +3,8 @@ using UnityEngine;
 
 namespace DefaultNamespace.DialogSystem
 {
-    [CreateAssetMenu(fileName = "QuestInfoSO", menuName = "ScriptableObject/QuestWithDialogsSo ", order = 2)]
-    public class QuestWithDialogsSo : ScriptableObject
+    [CreateAssetMenu(fileName = "QuestInfoSO", menuName = "ScriptableObject/DialogsSo ", order = 2)]
+    public class DialogsSO : ScriptableObject
     {
         [field: SerializeField]
         public List<DialogString> StartDialog;
@@ -13,8 +13,7 @@ namespace DefaultNamespace.DialogSystem
         [field: SerializeField]
         public List<DialogString> EndDialog;
 
-        [field: SerializeField]
-        public string ID_Quest;
+
 
     }
 }

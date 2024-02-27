@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 405d2794fd5fbf64bba93a044c6a8d7f, type: 3}
-  m_Name: BringHomeQuest
+  m_Name: FightQuestStep
   m_EditorClassIdentifier: 
-  <Id>k__BackingField: BringHomeQuest
-  DisplayName: Bring me home
+  <Id>k__BackingField: FightQuestStep
+  DisplayName: 
   QuestsPrerequisites: []
   QuestStepPrefabs:
-  - {fileID: 7924332662385528812, guid: 77fd12c7caea78446befa39d3e0fb86c, type: 3}
-  - {fileID: 1653069860324002071, guid: 6c1ceaefcafdd4045bd0cdf7e6a25019, type: 3}
+  - {fileID: 920079131593736628, guid: 3922954df9aa0154d9c9ecb8e0cc161c, type: 3}

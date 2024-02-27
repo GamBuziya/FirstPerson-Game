@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.DialogSystem;
 using UnityEngine;
 
 public class Quest
@@ -72,6 +73,21 @@ public class Quest
         }
 
         return questStepPrefab;
+    }
+
+    public DialogsSO GetCurrentDialogsSo()
+    {
+        DialogsSO dialogs = null;
+        if (CurrentStepExists())
+        {
+            dialogs = Info.QuestStepPrefabs[_currentQuestStepIndex].GetComponent<DialogData>()._Dialogs;
+        }
+        else
+        {
+            Debug.LogWarning("Tried to get quest dialogs, but stepindex was out of range indicating that");
+        }
+
+        return dialogs;
     }
 
     public void StoreQuestStepState(QuestStepState questStepState, int stepIndex)
