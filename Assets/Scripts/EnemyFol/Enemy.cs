@@ -47,7 +47,7 @@ public class Enemy : GameCharacter
     {
         Player = GameObject.FindGameObjectWithTag("Player");
         Stamina = GetComponent<EnemyStaminaController>();
-        Health = new EnemyHealth(MaxHealth);
+        Health = new EnemyHealth(_maxHealth);
         
     
         Animator = GetComponent<EnemyAnimation>();

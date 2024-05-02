@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Abstract_classes;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace DefaultNamespace.Abstract_classes
@@ -6,8 +7,8 @@ namespace DefaultNamespace.Abstract_classes
     public abstract class GameCharacter : MonoBehaviour
     {
         [Header("GameStats")]
-        [SerializeField] protected int MaxHealth = 100;
-        [SerializeField] protected float MaxStamina = 100;
+        [SerializeField] protected int _maxHealth = 100;
+        [SerializeField] protected float _maxStamina = 100;
         [SerializeField] protected LayerMask EnemyLayer;
         
         [Header("Attack Event Controller")]
@@ -21,9 +22,12 @@ namespace DefaultNamespace.Abstract_classes
         protected HealthUI _healthUI;
         protected bool IsStun = false;
 
-        public int CurrentHealth { get; protected set; }
-        public float CurrentStamina { get; protected set; }
+        public int CurrentHealth;
+        public float CurrentStamina;
 
+
+        public StaminaManager _staminaManager { get; protected set; }
+        
         
         public UnityEvent GetAttackEvent() => _attackEvent;
         public StaminaController GetStamina() => Stamina;
@@ -36,6 +40,12 @@ namespace DefaultNamespace.Abstract_classes
 
         public bool GetStun() => IsStun;
         public void SetStun(bool temp) => IsStun = temp;
+
+
+        public void StaminaDamage(int damage)
+        {
+            _staminaManager.StaminaDamage(damage, ref CurrentStamina);
+        }
 
 
     }

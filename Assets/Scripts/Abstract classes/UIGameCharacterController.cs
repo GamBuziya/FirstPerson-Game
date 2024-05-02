@@ -17,20 +17,22 @@ namespace DefaultNamespace
         [SerializeField] private Image _backStamina;
 
         private float _maxStamina;
-        private float _currentStamina;
 
         private int _maxHealth;
-        private int _currentHealth;
+
+        private GameCharacter _gameCharacter;
 
         private void Start()
         {
-            _maxHealth = GetComponent<GameCharacter>().CurrentHealth;
-            _maxStamina = GetComponent<GameCharacter>().CurrentStamina;
+            _gameCharacter = GetComponent<GameCharacter>();
+            _maxHealth = _gameCharacter.CurrentHealth;
+            _maxStamina = _gameCharacter.CurrentStamina;
+            
         }
 
         private void Update()
         {
-            _currentStamina = Mathf.Clamp(_currentStamina, 0, _maxStamina);
+            _gameCharacter.CurrentStamina = Mathf.Clamp(_gameCharacter.CurrentStamina, 0, _maxStamina);
         }
 
         private void LateUpdate()
@@ -43,7 +45,7 @@ namespace DefaultNamespace
         {
             float fillB = _backStamina.fillAmount;
 
-            float certainStamina = _currentStamina / _maxStamina;
+            float certainStamina = _gameCharacter.CurrentStamina / _maxStamina;
         
             if (certainStamina < fillB)
             {
