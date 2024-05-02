@@ -5,6 +5,7 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class GameCharacter : MonoBehaviour
     {
+        [Header("GameStats")]
         [SerializeField] protected int MaxHealth = 100;
         [SerializeField] protected LayerMask EnemyLayer;
         
