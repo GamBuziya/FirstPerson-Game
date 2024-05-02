@@ -6,6 +6,11 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class BattleController
     {
+        //
+        protected GameCharacter _gameCharacter;
+        //
+        
+        
         protected int _basicAttackStaminaCost = 30;
         protected int _forceAttackStaminaCost = 40;
         
@@ -13,8 +18,8 @@ namespace DefaultNamespace.Abstract_classes
         protected SideOfMove _currentMove = SideOfMove.Nothing;
         protected TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
         
-        protected StaminaController StaminaController;
-        protected AnimatorManager Animation;
+        //protected StaminaController StaminaController;
+        protected AnimatorManager _animator;
         
         protected bool _force = false;
         

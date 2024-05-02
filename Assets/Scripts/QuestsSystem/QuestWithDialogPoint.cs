@@ -33,8 +33,8 @@ public class QuestWithDialogPoint : MonoBehaviour
 
     private void Start()
     {
-        _questId = _questSo.Id;
-        _quest = GameObject.Find("Managers").GetComponentInChildren<QuestManager>().GetQuestById(_questId);
+        //_questId = _questSo.Id;
+        //_quest = GameObject.Find("Managers").GetComponentInChildren<QuestManager>().GetQuestById(_questId);
     }
 
     private void OnEnable()

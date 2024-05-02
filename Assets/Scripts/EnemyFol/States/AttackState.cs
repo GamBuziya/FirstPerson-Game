@@ -42,7 +42,7 @@ namespace DefaultNamespace.Enemy.States
 
         private void Attack()
         {
-            if(Enemy.GetStamina().Stamina < 30) StateMachine.ChangeState(new LowStaminaState());
+            if(Enemy.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
             
             if (Vector3.Distance(Enemy.gameObject.transform.position, Enemy.Player.transform.position) <= 2.3f)
             {

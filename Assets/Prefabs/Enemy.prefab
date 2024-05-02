@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 4666052044787587912}
   - component: {fileID: 5189464261248807091}
   - component: {fileID: 2075493629733417990}
-  - component: {fileID: 8015128844274937537}
   - component: {fileID: 7150706013457400947}
   - component: {fileID: 5098680235146191481}
+  - component: {fileID: 6674062803731615640}
   - component: {fileID: 3754610703992504405}
   m_Layer: 7
   m_Name: Enemy
@@ -99,16 +99,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7123c478447e63b4ea05d9eed8d22b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  _maxHealth: 100
+  _maxStamina: 100
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 8
   _attackEvent:
     m_PersistentCalls:
       m_Calls: []
+  CurrentHealth: 0
+  CurrentStamina: 0
   _arrowImage: {fileID: 1443956169949540600}
   _timeForArrow: 0.5
+  IsAngry: 1
   Path: {fileID: 0}
+  PointsList: {fileID: 0}
 --- !u!114 &5189464261248807091
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -134,22 +139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977462192caa4944b1dcf7bce732d77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8015128844274937537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 501121836977916000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80159f19e674495ca960cf3aa4d6f040, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxStamina: 70
-  _frontStamina: {fileID: 1354437515610074984}
-  _backStamina: {fileID: 4555837443439889887}
-  Stamina: 70
 --- !u!114 &7150706013457400947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -207,6 +196,20 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _particleEffect: {fileID: 7210390216215930889, guid: dc721be970cf6e24d8df2e3c07de8856, type: 3}
+--- !u!114 &6674062803731615640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501121836977916000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c877e54e81894edb941fca55b91b9574, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _frontStamina: {fileID: 1354437515610074984}
+  _backStamina: {fileID: 4555837443439889887}
 --- !u!95 &3754610703992504405
 Animator:
   serializedVersion: 5
@@ -534,7 +537,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4457226279311092548}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -1107,6 +1110,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3397812948363972346}
     m_Modifications:
+    - target: {fileID: 1080844091820294126, guid: cd6cb06038f6c8e4481dea1bc6c925e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.397
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080844091820294126, guid: cd6cb06038f6c8e4481dea1bc6c925e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.866
+      objectReference: {fileID: 0}
     - target: {fileID: 7391779558724201467, guid: cd6cb06038f6c8e4481dea1bc6c925e6, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.5

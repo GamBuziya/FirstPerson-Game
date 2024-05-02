@@ -149,7 +149,7 @@ Material:
     - _ZWrite: 0
     - __dirty: 0
     m_Colors:
-    - _Color: {r: 0.8792453, g: 0.84108937, b: 0.84108937, a: 1}
+    - _Color: {r: 0.25052485, g: 0.4490565, b: 0.18555354, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _GroundColor: {r: 0.051269468, g: 0.13013652, b: 0.027320892, a: 1}
     - _HueVariationColor: {r: 1, g: 0.5, b: 0, a: 0.2}

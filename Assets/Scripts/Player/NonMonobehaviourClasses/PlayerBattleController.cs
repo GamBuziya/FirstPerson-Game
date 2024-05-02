@@ -14,10 +14,10 @@ namespace DefaultNamespace
     {
         private MoveParametrsController _battleMoves;
         
-        public PlayerBattleController(PlayerAnimation Animation, StaminaController StaminaController)
+        public PlayerBattleController(Player player)
         {
-            this.Animation = Animation;
-            this.StaminaController = StaminaController;
+            _gameCharacter = player;
+            _animator = _gameCharacter.GetAnimatorManager();
             _battleMoves = new MoveParametrsController();
         }
         
@@ -28,24 +28,24 @@ namespace DefaultNamespace
 
         public override void Attack()
         {
-            if (Animation.GetAnimator() == null) return;
+            if (_animator.GetAnimator() == null) return;
 
             if (_force)
             {
-                if (StaminaController.Stamina >= _forceAttackStaminaCost)
+                if (_gameCharacter.GetCurrentStamina() >= _forceAttackStaminaCost)
                 {
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
-                    Animation.PlayFightAnimation(_currentMove, _currentTypeOfMove);
-                    StaminaController.StaminaDamage(_forceAttackStaminaCost);
+                    _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
+                    _gameCharacter.StaminaDamage(_forceAttackStaminaCost);
                 }
             }
             else
             {
-                if (StaminaController.Stamina >= _basicAttackStaminaCost)
+                if (_gameCharacter.GetCurrentStamina() >= _basicAttackStaminaCost)
                 {
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
-                    Animation.PlayFightAnimation(_currentMove, _currentTypeOfMove);
-                    StaminaController.StaminaDamage(_basicAttackStaminaCost);
+                    _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
+                    _gameCharacter.StaminaDamage(_basicAttackStaminaCost);
                 }
             }
 
@@ -53,22 +53,22 @@ namespace DefaultNamespace
 
         public void Block()
         {
-            if (Animation.GetAnimator() == null) return;
+            if (_animator.GetAnimator() == null) return;
 
             _battleMoves.GetMoveParametrs(false, _force, out _currentMove, out _currentTypeOfMove);
-            Animation.PlayFightAnimation(_currentMove, _currentTypeOfMove);
+            _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
         }
 
 
         public void ResetBlock()
         {
-            Animation.ResetBlock();
+            _animator.ResetBlock();
         }
         
         
         public void SetAnimator(Animator animator)
         {
-            Animation.SetAnimator(animator);
+            _animator.SetAnimator(animator);
         }
     }
 }

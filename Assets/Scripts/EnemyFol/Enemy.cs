@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Abstract_classes;
 using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
@@ -42,12 +43,21 @@ public class Enemy : GameCharacter
     
 
     private bool IsDead = false;
+    
+    private float timer = 0f;
+    private float interval = 0.1f;
 
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Stamina = GetComponent<EnemyStaminaController>();
-        Health = new EnemyHealth(MaxHealth);
+        //Stamina = GetComponent<EnemyStaminaController>();
+        
+        
+        _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
+        _currentStamina = _maxStamina;
+        
+        
+        Health = new EnemyHealth(_maxHealth);
         
     
         Animator = GetComponent<EnemyAnimation>();
@@ -73,6 +83,7 @@ public class Enemy : GameCharacter
 
     void Start()
     {
+        //Спробувати передавати Delegate
         BattleController = new EnemyBattleController(this, _timeForArrow, GameObject.Find("Player").GetComponent<GameCharacter>());
     }
     
@@ -81,6 +92,13 @@ public class Enemy : GameCharacter
         if(!IsDead)
         {
             ((EnemyBattleController)BattleController).BattleControllerUpdate();
+        }
+        
+        timer += Time.deltaTime;
+        if (timer >= interval)
+        {
+            _staminaManager.RegenerateStamina(ref _currentStamina);
+            timer = 0f;
         }
     }
 
