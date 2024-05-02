@@ -32,7 +32,7 @@ namespace DefaultNamespace
 
             if (_force)
             {
-                if (_gameCharacter.CurrentStamina >= _forceAttackStaminaCost)
+                if (_gameCharacter.GetCurrentStamina() >= _forceAttackStaminaCost)
                 {
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
                     _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
@@ -41,7 +41,7 @@ namespace DefaultNamespace
             }
             else
             {
-                if (_gameCharacter.CurrentStamina >= _basicAttackStaminaCost)
+                if (_gameCharacter.GetCurrentStamina() >= _basicAttackStaminaCost)
                 {
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
                     _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);

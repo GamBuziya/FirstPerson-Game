@@ -13,24 +13,24 @@ namespace DefaultNamespace.Abstract_classes
         
         [Header("Attack Event Controller")]
         [SerializeField] protected UnityEvent _attackEvent;
-        
-        
-        protected StaminaController Stamina;
+
+        //protected StaminaController Stamina;
         protected BattleController BattleController;
         protected HealthPoints Health;
         protected AnimatorManager Animator;
         protected HealthUI _healthUI;
         protected bool IsStun = false;
 
-        public int CurrentHealth;
-        public float CurrentStamina;
+        protected int _currentHealth;
+        protected float _currentStamina;
 
 
         public StaminaManager _staminaManager { get; protected set; }
-        
-        
+
+        public int GetCurrentHealth() => _currentHealth;
+        public float GetCurrentStamina() => _currentStamina;
+        public void SetCurrentStamina(float stamina) => _currentStamina = stamina;
         public UnityEvent GetAttackEvent() => _attackEvent;
-        public StaminaController GetStamina() => Stamina;
         public LayerMask GetEnemyLayer() => EnemyLayer;
         public BattleController GetBattleController() => BattleController;
 
@@ -44,7 +44,7 @@ namespace DefaultNamespace.Abstract_classes
 
         public void StaminaDamage(int damage)
         {
-            _staminaManager.StaminaDamage(damage, ref CurrentStamina);
+            _staminaManager.StaminaDamage(damage, ref _currentStamina);
         }
 
 

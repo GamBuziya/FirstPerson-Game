@@ -17,17 +17,13 @@ namespace DefaultNamespace
         private void Awake()
         {
             Animator = GetComponent<PlayerAnimation>();
+            
             _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
-            //Stamina = GetComponent<StaminaController>();
             BattleController = new PlayerBattleController(this);
             Health = new PlayerHealth(_maxHealth);
             
             WeaponTaker = new WeaponTaker(this);
-            
-            
-            CurrentStamina = _maxStamina;
-            //
-
+            _currentStamina = _maxStamina;
         }
 
 
@@ -37,7 +33,7 @@ namespace DefaultNamespace
             timer += Time.deltaTime;
             if (timer >= interval)
             {
-                _staminaManager.RegenerateStamina(ref CurrentStamina);
+                _staminaManager.RegenerateStamina(ref _currentStamina);
                 timer = 0f;
             }
         }

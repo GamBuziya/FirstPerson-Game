@@ -25,14 +25,14 @@ namespace DefaultNamespace
         private void Start()
         {
             _gameCharacter = GetComponent<GameCharacter>();
-            _maxHealth = _gameCharacter.CurrentHealth;
-            _maxStamina = _gameCharacter.CurrentStamina;
+            _maxHealth = _gameCharacter.GetCurrentHealth();
+            _maxStamina = _gameCharacter.GetCurrentStamina();
             
         }
 
         private void Update()
         {
-            _gameCharacter.CurrentStamina = Mathf.Clamp(_gameCharacter.CurrentStamina, 0, _maxStamina);
+            _gameCharacter.SetCurrentStamina(Mathf.Clamp(_gameCharacter.GetCurrentStamina(), 0, _maxStamina));
         }
 
         private void LateUpdate()
@@ -45,7 +45,7 @@ namespace DefaultNamespace
         {
             float fillB = _backStamina.fillAmount;
 
-            float certainStamina = _gameCharacter.CurrentStamina / _maxStamina;
+            float certainStamina = _gameCharacter.GetCurrentStamina() / _maxStamina;
         
             if (certainStamina < fillB)
             {

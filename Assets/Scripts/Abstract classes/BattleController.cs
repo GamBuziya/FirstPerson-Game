@@ -18,7 +18,7 @@ namespace DefaultNamespace.Abstract_classes
         protected SideOfMove _currentMove = SideOfMove.Nothing;
         protected TypeOfMove _currentTypeOfMove = TypeOfMove.Nothing;
         
-        protected StaminaController StaminaController;
+        //protected StaminaController StaminaController;
         protected AnimatorManager _animator;
         
         protected bool _force = false;

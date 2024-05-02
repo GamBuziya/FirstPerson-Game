@@ -15,7 +15,7 @@ namespace DefaultNamespace.Enemy.States
 
         public override void Perform()
         {
-            if (Enemy != null && StateMachine != null && Player != null && Enemy.GetStamina().Stamina < 30)
+            if (Enemy != null && StateMachine != null && Player != null && Enemy.GetCurrentStamina() < 30)
             {
                 var transform = Player.transform;
                 Vector3 directionToPlayer = transform.position - Enemy.transform.position;

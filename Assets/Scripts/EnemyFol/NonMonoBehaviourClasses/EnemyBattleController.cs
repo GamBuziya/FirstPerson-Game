@@ -11,7 +11,6 @@ namespace DefaultNamespace.Enemy
 {
     public class EnemyBattleController : BattleController
     {
-        private global::Enemy _hero;
         private SideOfMove _enemySideOfMove;
         private TypeOfMove _enemyTypeOfMove;
         
@@ -20,12 +19,12 @@ namespace DefaultNamespace.Enemy
         private float _stunTime = 0;
 
         private GameCharacter _enemy;
-        public EnemyBattleController(global::Enemy enemy, float time, GameCharacter player)
+        public EnemyBattleController(GameCharacter gameCharacter, float time, GameCharacter player)
         {
             _time = time;
-            _hero = enemy; 
-            _animator = enemy.GetAnimatorManager();
-            StaminaController = enemy.GetStamina();
+            _gameCharacter = gameCharacter; 
+            _animator = gameCharacter.GetAnimatorManager();
+            //StaminaController = enemy.GetStamina();
             _enemySideOfMove = player.GetBattleController().GetCurrentMove();
             _enemyTypeOfMove = player.GetBattleController().GetCurrentTypeOfMove();
   
@@ -36,8 +35,9 @@ namespace DefaultNamespace.Enemy
         {
             _enemySideOfMove = _enemy.GetBattleController().GetCurrentMove();
             _enemyTypeOfMove = _enemy.GetBattleController().GetCurrentTypeOfMove();
-            
-            if (_enemyTypeOfMove == TypeOfMove.IsAttack && !_isBlock && _hero.CanSee() && !_hero.GetStun())
+
+            var enemy = (global::Enemy)_gameCharacter;
+            if (_enemyTypeOfMove == TypeOfMove.IsAttack && !_isBlock && enemy.CanSee() && !enemy.GetStun())
             {
                 Debug.Log("Block1");
                 _isBlock = true;
@@ -52,14 +52,14 @@ namespace DefaultNamespace.Enemy
                 }
             }
             
-            if (_hero.GetStun())
+            if (enemy.GetStun())
             {
                 _stunTime += Time.deltaTime;
                 Debug.Log(_stunTime);
                 if (_stunTime > 1f)
                 {
                     Debug.Log("StunGetOut");
-                    _hero.SetStun(false);
+                    enemy.SetStun(false);
                     _stunTime = 0;
                 }
             }
@@ -74,36 +74,31 @@ namespace DefaultNamespace.Enemy
         
         private async Task DelayedAttack(SideOfMove randomMove)
         {
-            float delayTime = _time;
-
-            if (_hero.GetStun())
+            
+            if (randomMove == SideOfMove.Up && _gameCharacter.GetCurrentStamina() >= _forceAttackStaminaCost)
             {
-                //_hero.GetBattleController().ResetMoves();
-                //await Task.Delay(TimeSpan.FromSeconds(delayTime));
-                //_hero.SetStun(false);
-                return;
-            }
-            if (randomMove == SideOfMove.Up && StaminaController.Stamina >= _forceAttackStaminaCost)
-            {
+                Debug.Log("aaaaaaaa");
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 _animator.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
-                StaminaController.StaminaDamage(_forceAttackStaminaCost);
+                _gameCharacter.StaminaDamage(_forceAttackStaminaCost);
             }
-            else if (randomMove == SideOfMove.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
+            else if (randomMove == SideOfMove.Up && _gameCharacter.GetCurrentStamina() >= _basicAttackStaminaCost)
             {
+                Debug.Log("aaaaaaaa");
                 randomMove = (SideOfMove)Random.Range(1, 3);
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 _animator.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
-                StaminaController.StaminaDamage(_basicAttackStaminaCost);
+                _gameCharacter.StaminaDamage(_basicAttackStaminaCost);
             }
-            else if (randomMove != SideOfMove.Up && StaminaController.Stamina >= _basicAttackStaminaCost)
+            else if (randomMove != SideOfMove.Up && _gameCharacter.GetCurrentStamina() >= _basicAttackStaminaCost)
             {
+                Debug.Log("aaaaaaaa");
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 _animator.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
-                StaminaController.StaminaDamage(_basicAttackStaminaCost);
+                _gameCharacter.StaminaDamage(_basicAttackStaminaCost);
             }
         }
         
