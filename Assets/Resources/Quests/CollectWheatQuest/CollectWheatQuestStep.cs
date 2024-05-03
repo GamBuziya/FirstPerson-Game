@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace.Events;
 using UnityEngine;
 
 public class CollectWheatQuestStep : QuestStep
@@ -11,12 +10,12 @@ public class CollectWheatQuestStep : QuestStep
 
     private void OnEnable()
     {
-        GameEventManager.Instance.ItemEvent.onItemCollected += WheatCollected;
+        //GameEventManager.Instance.ItemEvent.onItemCollected += WheatCollected;
     }
 
     private void OnDisable()
     {
-        GameEventManager.Instance.ItemEvent.onItemCollected -= WheatCollected;
+        //GameEventManager.Instance.ItemEvent.onItemCollected -= WheatCollected;
     }
 
     private void WheatCollected(string name)

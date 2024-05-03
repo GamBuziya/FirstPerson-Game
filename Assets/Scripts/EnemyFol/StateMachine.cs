@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using DefaultNamespace.Enemy.States;
-using DefaultNamespace.Events;
 using UnityEngine;
 
 public class StateMachine : MonoBehaviour
@@ -15,7 +14,6 @@ public class StateMachine : MonoBehaviour
     private void Start()
     {
         Enemy = GetComponent<Enemy>();
-        GameEventManager.Instance.MoveToEvent.onMoveToEvent += MoveTo;
     }
 
     private void MoveTo(Transform destination, string ObjectName)

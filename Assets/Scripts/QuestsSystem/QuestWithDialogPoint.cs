@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.DialogSystem;
-using DefaultNamespace.Events;
 using DefaultNamespace.QuestsSystem;
 using UnityEngine;
 
@@ -39,16 +38,16 @@ public class QuestWithDialogPoint : MonoBehaviour
 
     private void OnEnable()
     {
-        GameEventManager.Instance.QuestEvents.onQuestStateChange += QuestStateChange;
-        GameEventManager.Instance.InputEvents.onSubmitPressed += SubmitPressed;
-        GameEventManager.Instance.InputEvents.onInteract += PlayDialog;
+        //GameEventManager.Instance.QuestEvents.onQuestStateChange += QuestStateChange;
+        //GameEventManager.Instance.InputEvents.onSubmitPressed += SubmitPressed;
+        //GameEventManager.Instance.InputEvents.onInteract += PlayDialog;
     }
     
     private void OnDisable()
     {
-        GameEventManager.Instance.QuestEvents.onQuestStateChange -= QuestStateChange;
-        GameEventManager.Instance.InputEvents.onSubmitPressed -= SubmitPressed;
-        GameEventManager.Instance.InputEvents.onInteract -= PlayDialog;
+        //GameEventManager.Instance.QuestEvents.onQuestStateChange -= QuestStateChange;
+        //GameEventManager.Instance.InputEvents.onSubmitPressed -= SubmitPressed;
+        //GameEventManager.Instance.InputEvents.onInteract -= PlayDialog;
     }
 
     private void SubmitPressed()
@@ -56,11 +55,11 @@ public class QuestWithDialogPoint : MonoBehaviour
         
         if (_currentQuestState.Equals(QuestState.CAN_START) && _startPoint)
         {
-            GameEventManager.Instance.QuestEvents.StartQuest(_questId);
+            //GameEventManager.Instance.QuestEvents.StartQuest(_questId);
         }
         else if(_currentQuestState.Equals(QuestState.CAN_FINISH) && _finishPoint)
         {
-            GameEventManager.Instance.QuestEvents.FinishQuest(_questId);
+            //GameEventManager.Instance.QuestEvents.FinishQuest(_questId);
         }
         
     }

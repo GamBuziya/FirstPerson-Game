@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace.Events;
 using UnityEngine;
 
 public class FindSticksQuestStep : QuestStep
@@ -11,12 +10,12 @@ public class FindSticksQuestStep : QuestStep
 
     private void OnEnable()
     {
-        GameEventManager.Instance.ItemEvent.onItemCollected += StickCollected;
+        //GameEventManager.Instance.ItemEvent.onItemCollected += StickCollected;
     }
 
     private void OnDisable()
     {
-        GameEventManager.Instance.ItemEvent.onItemCollected -= StickCollected;
+        //GameEventManager.Instance.ItemEvent.onItemCollected -= StickCollected;
     }
 
     private void StickCollected(string name)
