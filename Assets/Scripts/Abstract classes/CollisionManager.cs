@@ -23,6 +23,7 @@ namespace DefaultNamespace.Abstract_classes
         {
             if (_onCollision == true) return;
             
+            
             if (other.gameObject.CompareTag("Weapon") 
                 && (_enemyLayer & (1 << other.gameObject.layer)) != 0 
                 && other.gameObject.GetComponentInParent<GameCharacter>().GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsAttack)

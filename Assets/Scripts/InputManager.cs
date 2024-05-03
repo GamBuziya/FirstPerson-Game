@@ -12,6 +12,7 @@ public class InputManager : MonoBehaviour
     private PlayerMotor _motor;
     private PlayerLook _look;
     private Player _player;
+    private MagicManager _magicManager;
     
     void Awake()
     {
@@ -21,8 +22,10 @@ public class InputManager : MonoBehaviour
         _motor = GetComponent<PlayerMotor>();
         _look = GetComponent<PlayerLook>();
         _player = GetComponent<Player>();
+        _magicManager= GetComponent<MagicManager>();
         
         //Підв'язка методу до дії
+        onFoot.MagicButton.performed += context => _magicManager.ShootProjectile();
         onFoot.Jump.performed += context =>  _motor.Jump();
         onFoot.SpeedUp.performed += context =>  _motor.SpeedUp();
 

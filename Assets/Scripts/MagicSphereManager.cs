@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicFireTut : MonoBehaviour
+public class MagicSphereManager : MonoBehaviour
 {
     [SerializeField] private GameObject _impactVFX;
     private bool collided;
