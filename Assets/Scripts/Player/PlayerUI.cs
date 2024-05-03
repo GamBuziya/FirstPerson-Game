@@ -18,13 +18,13 @@ public class PlayerUI : UIGameCharacterController
     
     public float _durationTimer = 0;
 
-    private void Start()
+    private new void Start()
     {
         base.Start();
         _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, 0);
     }
     
-    private void Update()
+    private new void Update()
     {
         base.Update();
         

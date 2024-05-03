@@ -1,7 +1,6 @@
 ﻿using System;
 using DefaultNamespace.Abstract_classes;
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace DefaultNamespace

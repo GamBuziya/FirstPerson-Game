@@ -3507,22 +3507,6 @@ PrefabInstance:
       propertyPath: _frontStamina
       value: 
       objectReference: {fileID: 1662432142}
-    - target: {fileID: 965108353875011027, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
-      propertyPath: _backHealth
-      value: 
-      objectReference: {fileID: 21963834}
-    - target: {fileID: 965108353875011027, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
-      propertyPath: _backStamina
-      value: 
-      objectReference: {fileID: 240306342}
-    - target: {fileID: 965108353875011027, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
-      propertyPath: _frontHealth
-      value: 
-      objectReference: {fileID: 484501581}
-    - target: {fileID: 965108353875011027, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
-      propertyPath: _frontStamina
-      value: 
-      objectReference: {fileID: 1662432142}
     - target: {fileID: 1312410785556395014, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 18.1

@@ -14,12 +14,11 @@ namespace DefaultNamespace.Abstract_classes
         
         [Header("Attack Event Controller")]
         [SerializeField] protected UnityEvent _attackEvent;
-
-        //protected StaminaController Stamina;
+        
+        
         protected BattleController BattleController;
         protected HealthManager Health;
         protected AnimatorManager Animator;
-        protected HealthUI _healthUI;
         protected bool IsStun = false;
 
         protected int _currentHealth;
