@@ -7,10 +7,10 @@ namespace DefaultNamespace.EnemyFol
     {
         private void Awake()
         {
-            _hero = GetComponent<global::Enemy>();
+            _gameCharacter = GetComponent<global::Enemy>();
             _checker = new BlockChecker();
-            _enemyLayer = _hero.GetEnemyLayer();
-            SubscribeToAttack(() => _hero.GetHealthPoints().BasicTakeDamage(30));
+            _enemyLayer = _gameCharacter.GetEnemyLayer();
+            SubscribeToAttack(() => _gameCharacter.GetHealthPoints().TakeDamage(30));
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -158,7 +157,7 @@ namespace DefaultNamespace.DialogSystem
 
             IsDialog = false;
             
-            GameEventManager.Instance.InputEvents.SubmitPressed();
+            //GameEventManager.Instance.InputEvents.SubmitPressed();
         }
     }
 }

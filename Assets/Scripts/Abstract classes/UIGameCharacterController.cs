@@ -1,28 +1,27 @@
 ﻿using System;
 using DefaultNamespace.Abstract_classes;
 using UnityEngine;
-using UnityEngine;
 using UnityEngine.UI;
 
 namespace DefaultNamespace
 {
     public class UIGameCharacterController : MonoBehaviour
     {
-        /*[Header("Health Bar")]
+        [Header("Health Bar")]
         [SerializeField] protected Image _frontHealth;
-        [SerializeField] protected Image _backHealth;*/
+        [SerializeField] protected Image _backHealth;
         
         [Header("Stamina Bar")]
-        [SerializeField] private Image _frontStamina;
-        [SerializeField] private Image _backStamina;
+        [SerializeField] protected Image _frontStamina;
+        [SerializeField] protected Image _backStamina;
 
-        private float _maxStamina;
+        protected float _maxStamina;
 
-        private int _maxHealth;
+        protected int _maxHealth;
 
-        private GameCharacter _gameCharacter;
+        protected GameCharacter _gameCharacter;
 
-        private void Start()
+        protected void Start()
         {
             _gameCharacter = GetComponent<GameCharacter>();
             _maxHealth = _gameCharacter.GetCurrentHealth();
@@ -30,7 +29,7 @@ namespace DefaultNamespace
             
         }
 
-        private void Update()
+        protected void Update()
         {
             _gameCharacter.SetCurrentStamina(Mathf.Clamp(_gameCharacter.GetCurrentStamina(), 0, _maxStamina));
         }
@@ -38,7 +37,7 @@ namespace DefaultNamespace
         private void LateUpdate()
         {
             UpdateStaminaUI();
-            //UpdateHealthUI();
+            UpdateHealthUI();
         }
 
         private void UpdateStaminaUI()
@@ -59,13 +58,12 @@ namespace DefaultNamespace
             _backStamina.fillAmount = Mathf.Lerp(fillB, certainStamina, Time.deltaTime*5);
         }
         
-        /*protected void UpdateHealthUI()
+        protected void UpdateHealthUI()
         {
             float fillB = _backHealth.fillAmount;
             float fillA = _frontHealth.fillAmount;
-
-            float certainHealth = _currentHealth / _maxHealth;
-        
+            
+            float certainHealth = (float)_gameCharacter.GetCurrentHealth() / _maxHealth;
             if (certainHealth < fillB)
             {
                 _backHealth.color = Color.red;
@@ -79,6 +77,6 @@ namespace DefaultNamespace
                 _backHealth.fillAmount = certainHealth;
                 _frontHealth.fillAmount = Mathf.Lerp(fillA, certainHealth, Time.deltaTime);
             }
-        }*/
+        }
     }
 }

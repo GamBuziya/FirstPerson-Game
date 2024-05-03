@@ -10,31 +10,45 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected int _maxHealth = 100;
         [SerializeField] protected float _maxStamina = 100;
         [SerializeField] protected LayerMask EnemyLayer;
+        [Range(0f, 1f)] [SerializeField] protected float _attackResist;
         
         [Header("Attack Event Controller")]
         [SerializeField] protected UnityEvent _attackEvent;
-
-        //protected StaminaController Stamina;
+        
+        
         protected BattleController BattleController;
-        protected HealthPoints Health;
+        protected HealthManager Health;
         protected AnimatorManager Animator;
-        protected HealthUI _healthUI;
         protected bool IsStun = false;
 
         protected int _currentHealth;
         protected float _currentStamina;
 
+        
+        
+        public UnityEvent DeathEvent;
+        
+        
+        
+        
 
         public StaminaManager _staminaManager { get; protected set; }
 
         public int GetCurrentHealth() => _currentHealth;
+        public void SetCurrentHealth(int currentHealth) => _currentHealth = currentHealth;
         public float GetCurrentStamina() => _currentStamina;
+        
+        public int GetMaxHealth() => _maxHealth;
+        public float GetMaxStamina() => _maxStamina;
+        
+        public float GetAttackResist() => _attackResist;
+        
         public void SetCurrentStamina(float stamina) => _currentStamina = stamina;
         public UnityEvent GetAttackEvent() => _attackEvent;
         public LayerMask GetEnemyLayer() => EnemyLayer;
         public BattleController GetBattleController() => BattleController;
 
-        public HealthPoints GetHealthPoints() => Health;
+        public HealthManager GetHealthPoints() => Health;
 
         public AnimatorManager GetAnimatorManager() => Animator;
 

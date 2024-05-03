@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using DefaultNamespace.Events;
 using UnityEngine;
 
 public abstract class QuestStep : MonoBehaviour
@@ -25,14 +24,14 @@ public abstract class QuestStep : MonoBehaviour
         if (!_isFinished)
         {
             _isFinished = true;
-            GameEventManager.Instance.QuestEvents.AdvanceQuest(_questId);
+            //GameEventManager.Instance.QuestEvents.AdvanceQuest(_questId);
             Destroy(this.gameObject);
         }
     }
 
     protected void ChangeState(string newState)
     {
-        GameEventManager.Instance.QuestEvents.QuestStepStateChange(_questId, _stepIndex, new QuestStepState(newState));
+        //GameEventManager.Instance.QuestEvents.QuestStepStateChange(_questId, _stepIndex, new QuestStepState(newState));
     }
 
     protected abstract void SetQuestStepState(string state);

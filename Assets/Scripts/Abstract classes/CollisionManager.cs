@@ -13,7 +13,7 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected UnityEvent _IsBlocked;
         [SerializeField] protected ParticleSystem _particleEffect;
         
-        protected GameCharacter _hero;
+        protected GameCharacter _gameCharacter;
         protected BlockChecker _checker;
         protected LayerMask _enemyLayer;
 
@@ -22,19 +22,22 @@ namespace DefaultNamespace.Abstract_classes
         protected void OnCollisionEnter(Collision other)
         {
             if (_onCollision == true) return;
-
+            
+            
             if (other.gameObject.CompareTag("Weapon") 
                 && (_enemyLayer & (1 << other.gameObject.layer)) != 0 
                 && other.gameObject.GetComponentInParent<GameCharacter>().GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsAttack)
             {
                 _onCollision = true;
-                var isBlock = _checker.IsBlock(other.gameObject, _hero.gameObject);
+                var isBlock = _checker.IsBlock(other.gameObject, _gameCharacter.gameObject);
                 if (!isBlock)
                 {
+                    SoundManager.Instance.HitSound(gameObject);
                     _IsDamaged.Invoke();
                 }
                 else
                 {
+                    SoundManager.Instance.BlockSound(gameObject);
                     PlayParticleEffect(other.contacts[0].point);
                     var enemyCharacter = other.gameObject.GetComponentInParent<GameCharacter>();
                     enemyCharacter.SetStun(true);

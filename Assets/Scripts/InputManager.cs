@@ -1,6 +1,5 @@
 using System;
 using DefaultNamespace;
-using DefaultNamespace.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -13,6 +12,7 @@ public class InputManager : MonoBehaviour
     private PlayerMotor _motor;
     private PlayerLook _look;
     private Player _player;
+    private MagicManager _magicManager;
     
     void Awake()
     {
@@ -22,12 +22,14 @@ public class InputManager : MonoBehaviour
         _motor = GetComponent<PlayerMotor>();
         _look = GetComponent<PlayerLook>();
         _player = GetComponent<Player>();
+        _magicManager= GetComponent<MagicManager>();
         
         //Підв'язка методу до дії
+        onFoot.MagicButton.performed += context => _magicManager.ShootProjectile();
         onFoot.Jump.performed += context =>  _motor.Jump();
         onFoot.SpeedUp.performed += context =>  _motor.SpeedUp();
 
-        onFoot.Interact.performed += context => GameEventManager.Instance.InputEvents.Interacted();
+        onFoot.Interact.performed += context => EventManager.Instance.Interacted();
         //Удари
         onFoot.PowerButton.started += context => _player.GetBattleController().ChangeForce();
         onFoot.PowerButton.canceled += context => _player.GetBattleController().ChangeForce();

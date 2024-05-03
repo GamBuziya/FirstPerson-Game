@@ -6,7 +6,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : HealthUI
+public class PlayerUI : UIGameCharacterController
 {
 
     [SerializeField] private TextMeshProUGUI _promptText;
@@ -18,22 +18,22 @@ public class PlayerUI : HealthUI
     
     public float _durationTimer = 0;
 
-    private void Start()
+    private new void Start()
     {
-        _hero = GetComponent<Player>();
-        _currentHealth = _hero.GetHealthPoints().GetHealth();
+        base.Start();
         _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, 0);
     }
     
-    private void Update()
+    private new void Update()
     {
-        _currentHealth = _hero.GetHealthPoints().GetHealth();
-        _currentHealth = Mathf.Clamp(_currentHealth, 0, _hero.GetHealthPoints().GetMaxHealth());
-        UpdateHealthUI();
+        base.Update();
         
+        _gameCharacter.SetCurrentHealth(Mathf.Clamp(_gameCharacter.GetCurrentHealth(), 0, _maxHealth));
+        UpdateHealthUI();
+
         if (_hitEffect.color.a > 0)
         {
-            if(_currentHealth < 30) return;
+            if(_gameCharacter.GetCurrentHealth() < 30) return;
             _durationTimer += Time.deltaTime;
             if (_durationTimer > _fullADuration)
             {
@@ -41,7 +41,7 @@ public class PlayerUI : HealthUI
                 temp -= Time.deltaTime * _recoverSpeed;
                 _hitEffect.color = new Color(_hitEffect.color.r, _hitEffect.color.g, _hitEffect.color.b, temp);
             }
-            
+
         }
     }
 

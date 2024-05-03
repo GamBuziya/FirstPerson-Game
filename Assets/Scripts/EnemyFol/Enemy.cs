@@ -5,7 +5,6 @@ using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.EnemyFol;
-using EnemyFol;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -42,22 +41,22 @@ public class Enemy : GameCharacter
     public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
     
 
-    private bool IsDead = false;
+    private bool _isDead = false;
     
-    private float timer = 0f;
-    private float interval = 0.1f;
+    private float _timer = 0f;
+    private float _interval = 0.1f;
 
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        //Stamina = GetComponent<EnemyStaminaController>();
         
         
         _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
         _currentStamina = _maxStamina;
+        _currentHealth = _maxHealth;
         
         
-        Health = new EnemyHealth(_maxHealth);
+        Health = new HealthManager(this);
         
     
         Animator = GetComponent<EnemyAnimation>();
@@ -66,15 +65,9 @@ public class Enemy : GameCharacter
     
         _stateMachine.Initialise();
 
-        _healthUI = GetComponent<EnemyHealthUI>();
-        if (_healthUI != null)
-        {
-            ((EnemyHealthUI)_healthUI).SetCurrentHealthPoint(this);
-        }
-
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
 
-        var temp = _healthUI.GetComponentInChildren<Canvas>();
+        var temp = gameObject.GetComponentInChildren<Canvas>();
         _canvasDisabler = new CanvasDisabler(temp);
         
         Health.DeathEvent.AddListener(_canvasDisabler.CanvasDisabled);
@@ -89,16 +82,16 @@ public class Enemy : GameCharacter
     
     private void Update()
     {
-        if(!IsDead)
+        if(!_isDead)
         {
             ((EnemyBattleController)BattleController).BattleControllerUpdate();
         }
         
-        timer += Time.deltaTime;
-        if (timer >= interval)
+        _timer += Time.deltaTime;
+        if (_timer >= _interval)
         {
             _staminaManager.RegenerateStamina(ref _currentStamina);
-            timer = 0f;
+            _timer = 0f;
         }
     }
 
@@ -135,8 +128,7 @@ public class Enemy : GameCharacter
 
     private void Death()
     {
-        IsDead = true;
-        GameObject.Find("SoundSystem").GetComponent<Sounds>().PlayDeathSound();
+        _isDead = true;
         GetComponent<EnemyCollision>().enabled = false;
         _stateMachine.enabled = false;
         _agent.enabled = false;

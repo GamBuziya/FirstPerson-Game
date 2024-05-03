@@ -20,10 +20,13 @@ namespace DefaultNamespace
             
             _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
             BattleController = new PlayerBattleController(this);
-            Health = new PlayerHealth(_maxHealth);
+            
+            
+            Health = new HealthManager(this);
             
             WeaponTaker = new WeaponTaker(this);
             _currentStamina = _maxStamina;
+            _currentHealth = _maxHealth;
         }
 
 

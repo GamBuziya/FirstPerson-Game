@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using DefaultNamespace.Events;
 using UnityEngine;
 
 namespace DefaultNamespace.QuestsSystem
@@ -19,20 +18,20 @@ namespace DefaultNamespace.QuestsSystem
 
         private void OnEnable()
         {
-            GameEventManager.Instance.QuestEvents.onStartQuest += StartQuest;
+            /*GameEventManager.Instance.QuestEvents.onStartQuest += StartQuest;
             GameEventManager.Instance.QuestEvents.onAdvanceQuest += AdvanceQuest;
             GameEventManager.Instance.QuestEvents.onFinishQuest += FinishQuest;
 
-            GameEventManager.Instance.QuestEvents.onQuestStepStateChange += QuestStepStateChange;
+            GameEventManager.Instance.QuestEvents.onQuestStepStateChange += QuestStepStateChange;*/
         }
         
         private void OnDisable()
         {
-            GameEventManager.Instance.QuestEvents.onStartQuest -= StartQuest;
+            /*GameEventManager.Instance.QuestEvents.onStartQuest -= StartQuest;
             GameEventManager.Instance.QuestEvents.onAdvanceQuest -= AdvanceQuest;
             GameEventManager.Instance.QuestEvents.onFinishQuest -= FinishQuest;
             
-            GameEventManager.Instance.QuestEvents.onQuestStepStateChange -= QuestStepStateChange;
+            GameEventManager.Instance.QuestEvents.onQuestStepStateChange -= QuestStepStateChange;*/
         }
 
         private void Start()
@@ -44,7 +43,7 @@ namespace DefaultNamespace.QuestsSystem
                 {
                     quest.InstantiateCurrentQuestStep(transform);
                 }
-                GameEventManager.Instance.QuestEvents.QuestStateChange(quest);
+                //GameEventManager.Instance.QuestEvents.QuestStateChange(quest);
             }
         }
 
@@ -64,7 +63,7 @@ namespace DefaultNamespace.QuestsSystem
             Quest quest = GetQuestById(id);
 
             quest.State = state;
-            GameEventManager.Instance.QuestEvents.QuestStateChange(quest);
+            //GameEventManager.Instance.QuestEvents.QuestStateChange(quest);
         }
         
         

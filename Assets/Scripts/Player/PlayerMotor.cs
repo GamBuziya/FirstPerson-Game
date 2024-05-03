@@ -57,7 +57,6 @@ public class PlayerMotor : MonoBehaviour
 
     public void SpeedUp()
     {
-        Debug.Log("Run");
         if (_player.GetCurrentStamina() > _SpeedupStaminaCost)
         {
             Invoke("SpeedUpReset", 0.2f);
