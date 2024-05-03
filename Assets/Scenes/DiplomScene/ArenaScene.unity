@@ -3496,9 +3496,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1752826442}
     - target: {fileID: 704425920380729454, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      propertyPath: _backStamina
+      value: 
+      objectReference: {fileID: 240306342}
+    - target: {fileID: 704425920380729454, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: _frontHealth
       value: 
       objectReference: {fileID: 484501581}
+    - target: {fileID: 704425920380729454, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      propertyPath: _frontStamina
+      value: 
+      objectReference: {fileID: 1662432142}
     - target: {fileID: 965108353875011027, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: _backHealth
       value: 
@@ -3721,7 +3729,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7150706013457400947, guid: 4dd19c49140f5b642a23645e09a98329, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

@@ -13,16 +13,16 @@ namespace DefaultNamespace
         [SerializeField] protected Image _backHealth;
         
         [Header("Stamina Bar")]
-        [SerializeField] private Image _frontStamina;
-        [SerializeField] private Image _backStamina;
+        [SerializeField] protected Image _frontStamina;
+        [SerializeField] protected Image _backStamina;
 
-        private float _maxStamina;
+        protected float _maxStamina;
 
-        private int _maxHealth;
+        protected int _maxHealth;
 
-        private GameCharacter _gameCharacter;
+        protected GameCharacter _gameCharacter;
 
-        private void Start()
+        protected void Start()
         {
             _gameCharacter = GetComponent<GameCharacter>();
             _maxHealth = _gameCharacter.GetCurrentHealth();
@@ -30,7 +30,7 @@ namespace DefaultNamespace
             
         }
 
-        private void Update()
+        protected void Update()
         {
             _gameCharacter.SetCurrentStamina(Mathf.Clamp(_gameCharacter.GetCurrentStamina(), 0, _maxStamina));
         }

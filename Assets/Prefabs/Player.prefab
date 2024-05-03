@@ -15,15 +15,14 @@ GameObject:
   - component: {fileID: 4513613448651238428}
   - component: {fileID: 1477346577781351026}
   - component: {fileID: 5008434300003097475}
+  - component: {fileID: 6939364773227829886}
   - component: {fileID: 2568917245639862342}
   - component: {fileID: 1415501280095888186}
   - component: {fileID: 3870916682164375809}
   - component: {fileID: 704425920380729454}
   - component: {fileID: 7813005532750296851}
   - component: {fileID: 3027081942084630660}
-  - component: {fileID: 6939364773227829886}
   - component: {fileID: 7258381498518686007}
-  - component: {fileID: 965108353875011027}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -185,6 +184,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 471c85788f1c996499e1625575690a9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6939364773227829886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 99683411360573057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c576a017ecc4ab1b770bd0db200c5ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _maxHealth: 100
+  _maxStamina: 100
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  _attackResist: 0
+  _attackEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  DeathEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2568917245639862342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +268,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _frontHealth: {fileID: 0}
   _backHealth: {fileID: 0}
+  _frontStamina: {fileID: 0}
+  _backStamina: {fileID: 0}
   _promptText: {fileID: 0}
   _hitEffect: {fileID: 0}
   _fullADuration: 1
@@ -317,28 +342,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _particleEffect: {fileID: 7210390216215930889, guid: dc721be970cf6e24d8df2e3c07de8856, type: 3}
---- !u!114 &6939364773227829886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99683411360573057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c576a017ecc4ab1b770bd0db200c5ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _maxStamina: 100
-  EnemyLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  _attackEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  CurrentHealth: 0
-  CurrentStamina: 0
 --- !u!114 &7258381498518686007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -358,20 +361,6 @@ MonoBehaviour:
   _typingSpeed: 0.01
   _turnSpeed: 2
   IsDialog: 0
---- !u!114 &965108353875011027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99683411360573057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c877e54e81894edb941fca55b91b9574, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frontStamina: {fileID: 0}
-  _backStamina: {fileID: 0}
 --- !u!1 &7531284264709940320
 GameObject:
   m_ObjectHideFlags: 0
