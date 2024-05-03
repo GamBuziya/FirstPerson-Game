@@ -41,10 +41,10 @@ public class Enemy : GameCharacter
     public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
     
 
-    private bool IsDead = false;
+    private bool _isDead = false;
     
-    private float timer = 0f;
-    private float interval = 0.1f;
+    private float _timer = 0f;
+    private float _interval = 0.1f;
 
     private void Awake()
     {
@@ -82,16 +82,16 @@ public class Enemy : GameCharacter
     
     private void Update()
     {
-        if(!IsDead)
+        if(!_isDead)
         {
             ((EnemyBattleController)BattleController).BattleControllerUpdate();
         }
         
-        timer += Time.deltaTime;
-        if (timer >= interval)
+        _timer += Time.deltaTime;
+        if (_timer >= _interval)
         {
             _staminaManager.RegenerateStamina(ref _currentStamina);
-            timer = 0f;
+            _timer = 0f;
         }
     }
 
@@ -128,8 +128,7 @@ public class Enemy : GameCharacter
 
     private void Death()
     {
-        IsDead = true;
-        GameObject.Find("SoundSystem").GetComponent<Sounds>().PlayDeathSound();
+        _isDead = true;
         GetComponent<EnemyCollision>().enabled = false;
         _stateMachine.enabled = false;
         _agent.enabled = false;

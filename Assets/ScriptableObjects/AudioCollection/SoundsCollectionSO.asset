@@ -12,6 +12,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95a62788336d3a74b9dac454047d13ef, type: 3}
   m_Name: SoundsCollectionSO
   m_EditorClassIdentifier: 
-  AttackSounds: []
-  BlockSounds: []
-  HitSounds: []
+  AttackSounds:
+  - {fileID: 8300000, guid: 55d2cf1098e1e5b429da9e3cca6e4632, type: 3}
+  - {fileID: 8300000, guid: a6ab8ad97269b364896b69cf4ec68bc6, type: 3}
+  BlockSounds:
+  - {fileID: 8300000, guid: 6cdf2b6afcdf03c4fb959f056819ba48, type: 3}
+  - {fileID: 8300000, guid: 594c4d362d2ee664e91397fd725b3b3f, type: 3}
+  - {fileID: 8300000, guid: b0c1abd0649fdfd428d028574a0805fe, type: 3}
+  - {fileID: 8300000, guid: 94c93377631b5c14e959b951b435b46a, type: 3}
+  - {fileID: 8300000, guid: 64052350e1c642c46ae3f682ec7fabc5, type: 3}
+  HitSounds:
+  - {fileID: 8300000, guid: 62a170fe8aeb8d64da25eed2d4fb98c8, type: 3}
+  FireAttackSounds:
+  - {fileID: 8300000, guid: 522e3ab7bac86e443bd5721d8933b455, type: 3}
+  - {fileID: 8300000, guid: 07cc499b4e48b544aadf3af4b86365bd, type: 3}
+  - {fileID: 8300000, guid: bbf962a63a63c7b46a8e1d13be6b9177, type: 3}
+  - {fileID: 8300000, guid: 446efb2bed112d943bac13192a0a0cc7, type: 3}
+  - {fileID: 8300000, guid: c7dfaade8a16d6f4e953914319840ee9, type: 3}
+  IceAttackSounds:
+  - {fileID: 8300000, guid: 0a1c8512ec0ce824fa0485eaaccf700f, type: 3}
+  - {fileID: 8300000, guid: b46570503514e2a4f8183e73714a8fa7, type: 3}
+  - {fileID: 8300000, guid: 5e0be140f13f0c341bb91abddd2e76bf, type: 3}
+  - {fileID: 8300000, guid: 589b20060dc19154ab2d746246fe6b7c, type: 3}
+  FleshAttackSounds:
+  - {fileID: 8300000, guid: 29087d7031d2abc4991376b3c22a770a, type: 3}
+  - {fileID: 8300000, guid: 7282ca5a2495791438d14a92c68afd17, type: 3}
+  - {fileID: 8300000, guid: 9496feb530c6bc647a5d5a9208e8eaa3, type: 3}
+  - {fileID: 8300000, guid: 67ec363e05e9dc74d930a48a6f1941e6, type: 3}
