@@ -13,6 +13,20 @@ namespace DefaultNamespace
         private void Awake()
         {
             _person = GetComponent<Player>();
+            
+            var temp = _person.GetComponentsInChildren<Transform>(true);
+
+            foreach (var childTransform in temp)
+            {
+                var childGameObject = childTransform.gameObject;
+
+                if (childGameObject.CompareTag("Weapon"))
+                {
+                    Debug.Log("Enter");
+                    WeaponAnimator = childGameObject.GetComponent<Animator>();
+                    break; 
+                }
+            }
         }
         
     }
