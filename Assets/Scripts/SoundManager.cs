@@ -9,34 +9,35 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private SoundsCollectionSO _collections;
     public static SoundManager Instance;
 
+    private AudioSource _audioSource; // Змінна для зберігання джерела звуку
+
     private void Awake()
     {
         Instance = this;
+        _audioSource = gameObject.AddComponent<AudioSource>(); // Додаємо компонент AudioSource
     }
 
     public void AttackSound(GameObject gameObject)
     {
-        PlaySound(_collections.AttackSounds, gameObject.transform.position);
+        PlaySound(_collections.AttackSounds);
     }
     
     public void BlockSound(GameObject gameObject)
     {
-        PlaySound(_collections.BlockSounds, gameObject.transform.position);
+        PlaySound(_collections.BlockSounds);
     }
     
     public void HitSound(GameObject gameObject)
     {
-        PlaySound(_collections.HitSounds, gameObject.transform.position);
+        _audioSource.Stop(); // Вимикаємо попередній звук
+        PlaySound(_collections.HitSounds);
     }
 
-    private void PlaySound(AudioClip audioClip, Vector3 position, float volume = 1f)
+    private void PlaySound(AudioClip[] audioClips)
     {
-        AudioSource.PlayClipAtPoint(audioClip, position, volume);
-    }
-    
-    private void PlaySound(AudioClip[] audioClips, Vector3 position, float volume = 1f)
-    {
+        if (audioClips.Length == 0) return;
+
         var temp = audioClips[Random.Range(0, audioClips.Length)];
-        AudioSource.PlayClipAtPoint(temp, position, volume);
+        _audioSource.PlayOneShot(temp); // Відтворюємо звук один раз
     }
 }

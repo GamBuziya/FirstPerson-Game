@@ -31,10 +31,12 @@ namespace DefaultNamespace.Abstract_classes
                 var isBlock = _checker.IsBlock(other.gameObject, _gameCharacter.gameObject);
                 if (!isBlock)
                 {
+                    SoundManager.Instance.HitSound(gameObject);
                     _IsDamaged.Invoke();
                 }
                 else
                 {
+                    SoundManager.Instance.BlockSound(gameObject);
                     PlayParticleEffect(other.contacts[0].point);
                     var enemyCharacter = other.gameObject.GetComponentInParent<GameCharacter>();
                     enemyCharacter.SetStun(true);

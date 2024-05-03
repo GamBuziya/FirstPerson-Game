@@ -34,6 +34,7 @@ namespace DefaultNamespace
             {
                 if (_gameCharacter.GetCurrentStamina() >= _forceAttackStaminaCost)
                 {
+                    SoundManager.Instance.AttackSound(_gameCharacter.gameObject);
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
                     _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
                     _gameCharacter.StaminaDamage(_forceAttackStaminaCost);
@@ -43,6 +44,7 @@ namespace DefaultNamespace
             {
                 if (_gameCharacter.GetCurrentStamina() >= _basicAttackStaminaCost)
                 {
+                    SoundManager.Instance.AttackSound(_gameCharacter.gameObject);
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
                     _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
                     _gameCharacter.StaminaDamage(_basicAttackStaminaCost);
