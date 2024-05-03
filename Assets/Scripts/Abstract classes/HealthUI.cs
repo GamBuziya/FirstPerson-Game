@@ -18,7 +18,7 @@ namespace DefaultNamespace.Abstract_classes
             float fillB = _backHealth.fillAmount;
             float fillA = _frontHealth.fillAmount;
 
-            float certainHealth = _currentHealth / _hero.GetHealthPoints().GetMaxHealth();
+            float certainHealth = _currentHealth / _hero.GetMaxHealth();
         
             if (certainHealth < fillB)
             {

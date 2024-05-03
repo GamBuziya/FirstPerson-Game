@@ -8,9 +8,9 @@ namespace DefaultNamespace
 {
     public class UIGameCharacterController : MonoBehaviour
     {
-        /*[Header("Health Bar")]
+        [Header("Health Bar")]
         [SerializeField] protected Image _frontHealth;
-        [SerializeField] protected Image _backHealth;*/
+        [SerializeField] protected Image _backHealth;
         
         [Header("Stamina Bar")]
         [SerializeField] private Image _frontStamina;
@@ -38,7 +38,7 @@ namespace DefaultNamespace
         private void LateUpdate()
         {
             UpdateStaminaUI();
-            //UpdateHealthUI();
+            UpdateHealthUI();
         }
 
         private void UpdateStaminaUI()
@@ -59,13 +59,12 @@ namespace DefaultNamespace
             _backStamina.fillAmount = Mathf.Lerp(fillB, certainStamina, Time.deltaTime*5);
         }
         
-        /*protected void UpdateHealthUI()
+        protected void UpdateHealthUI()
         {
             float fillB = _backHealth.fillAmount;
             float fillA = _frontHealth.fillAmount;
-
-            float certainHealth = _currentHealth / _maxHealth;
-        
+            
+            float certainHealth = (float)_gameCharacter.GetCurrentHealth() / _maxHealth;
             if (certainHealth < fillB)
             {
                 _backHealth.color = Color.red;
@@ -79,6 +78,6 @@ namespace DefaultNamespace
                 _backHealth.fillAmount = certainHealth;
                 _frontHealth.fillAmount = Mathf.Lerp(fillA, certainHealth, Time.deltaTime);
             }
-        }*/
+        }
     }
 }

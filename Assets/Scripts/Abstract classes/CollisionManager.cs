@@ -13,7 +13,7 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected UnityEvent _IsBlocked;
         [SerializeField] protected ParticleSystem _particleEffect;
         
-        protected GameCharacter _hero;
+        protected GameCharacter _gameCharacter;
         protected BlockChecker _checker;
         protected LayerMask _enemyLayer;
 
@@ -28,7 +28,7 @@ namespace DefaultNamespace.Abstract_classes
                 && other.gameObject.GetComponentInParent<GameCharacter>().GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsAttack)
             {
                 _onCollision = true;
-                var isBlock = _checker.IsBlock(other.gameObject, _hero.gameObject);
+                var isBlock = _checker.IsBlock(other.gameObject, _gameCharacter.gameObject);
                 if (!isBlock)
                 {
                     _IsDamaged.Invoke();

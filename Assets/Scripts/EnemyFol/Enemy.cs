@@ -5,7 +5,6 @@ using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.EnemyFol;
-using EnemyFol;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -55,9 +54,10 @@ public class Enemy : GameCharacter
         
         _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
         _currentStamina = _maxStamina;
+        _currentHealth = _maxHealth;
         
         
-        Health = new EnemyHealth(_maxHealth);
+        Health = new HealthManager(this);
         
     
         Animator = GetComponent<EnemyAnimation>();
@@ -66,15 +66,15 @@ public class Enemy : GameCharacter
     
         _stateMachine.Initialise();
 
-        _healthUI = GetComponent<EnemyHealthUI>();
+        /*_healthUI = GetComponent<HealthUI>();
         if (_healthUI != null)
         {
-            ((EnemyHealthUI)_healthUI).SetCurrentHealthPoint(this);
-        }
+            //((EnemyHealthUI)_healthUI).SetCurrentHealthPoint(this);
+        }*/
 
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
 
-        var temp = _healthUI.GetComponentInChildren<Canvas>();
+        var temp = gameObject.GetComponentInChildren<Canvas>();
         _canvasDisabler = new CanvasDisabler(temp);
         
         Health.DeathEvent.AddListener(_canvasDisabler.CanvasDisabled);
