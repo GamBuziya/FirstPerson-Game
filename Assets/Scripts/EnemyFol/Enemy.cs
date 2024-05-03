@@ -49,7 +49,6 @@ public class Enemy : GameCharacter
     private void Awake()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        //Stamina = GetComponent<EnemyStaminaController>();
         
         
         _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
@@ -65,12 +64,6 @@ public class Enemy : GameCharacter
         _agent = GetComponent<NavMeshAgent>();
     
         _stateMachine.Initialise();
-
-        /*_healthUI = GetComponent<HealthUI>();
-        if (_healthUI != null)
-        {
-            //((EnemyHealthUI)_healthUI).SetCurrentHealthPoint(this);
-        }*/
 
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
 

@@ -7,10 +7,8 @@ namespace DefaultNamespace.Abstract_classes
     {
         public UnityEvent DeathEvent;
         private GameCharacter _gameCharacter;
-
-        //private int _maxHealth;
-        //public int GetMaxHealth() => _maxHealth;
-
+        
+        
         public HealthManager(GameCharacter gameCharacter)
         {
             DeathEvent = new UnityEvent();
