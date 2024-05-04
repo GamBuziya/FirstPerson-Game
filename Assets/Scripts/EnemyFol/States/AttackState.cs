@@ -1,6 +1,8 @@
-﻿using DefaultNamespace.Enums;
+﻿using System;
+using DefaultNamespace.Enums;
 using Managers;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace DefaultNamespace.Enemy.States
 {
@@ -25,7 +27,7 @@ namespace DefaultNamespace.Enemy.States
         }
         
         private float timer = 0f;
-        private float interval = 4f; 
+        private float interval = 5f; 
         private void Attack()
         {
             if(Enemy.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
@@ -35,6 +37,7 @@ namespace DefaultNamespace.Enemy.States
             if (Vector3.Distance(Enemy.transform.position, closestEnemie.transform.position) < 5f
                 && Vector3.Distance(Enemy.transform.position, Player.transform.position) > 2f)
             {
+                
                 var tempZ = 0;
                 var transform = Player.transform;
                 Enemy.transform.LookAt(transform);
@@ -44,39 +47,52 @@ namespace DefaultNamespace.Enemy.States
                 Vector3 directionToRight = Quaternion.Euler(0, 90 + tempZ, tempZ) * directionToPlayer; // Поворот на 90 градусів праворуч
 
                 Vector3 averageDirection;
-
+                
+                
                 timer += Time.deltaTime;
                 if (timer >= interval)
                 {
-                    tempZ = Random.Range(-50, 50);
-                    var rand = Random.Range(0, 2);
+                    tempZ = Random.Range(-60, 60);
+                    var rand = Random.Range(0, 3);
                     if (rand == 0)
                     {
-                        RightRegroup = true;
+                        Side = SideToGo.forward;
+                    }
+                    else if (rand == 1)
+                    {
+                        Side = SideToGo.left;
                     }
                     else
                     {
-                        RightRegroup = false;
+                        Side = SideToGo.right;
                     }
                     
                     timer = 0;
                 }
                 
-                if (RightRegroup)
+
+                switch (Side)
                 {
-                    averageDirection = directionToRight + directionToPlayer;
-                }
-                else
-                {
-                    averageDirection = directionToLeft + directionToPlayer;
+                    case SideToGo.forward:
+                        averageDirection = Quaternion.Euler(0,  tempZ, tempZ) * directionToPlayer;
+                        break;
+                    case SideToGo.left:
+                        averageDirection = directionToLeft + directionToPlayer;
+                        break;
+                    case SideToGo.right:
+                        averageDirection = directionToRight + directionToPlayer;
+                        break;
+                    default:
+                        averageDirection = Quaternion.Euler(0,  tempZ, tempZ) * directionToPlayer;
+                        break;
                 }
                 
+                Debug.Log("Side" + Side);
                 
                 Enemy.transform.Translate(averageDirection * Time.deltaTime, Space.World);
                 return;
             }
-
-            RightRegroup = false;
+            
             
             
             if (Vector3.Distance(Enemy.gameObject.transform.position, Enemy.Player.transform.position) <= 2.3f)
