@@ -6,19 +6,13 @@ namespace Managers
 {
     public class EnemiesManager : MonoBehaviour
     {
-        private List<Enemy> _enemies;
+        public static EnemiesManager Instance;
+        private Enemy[] _enemies;
 
         private void Awake()
         {
-            foreach (Transform child in transform)
-            {
-                Enemy enemyComponent;
-                
-                if (child.TryGetComponent(out enemyComponent))
-                {
-                    _enemies.Add(enemyComponent);
-                }
-            }
+            Instance = this;
+            _enemies = GetComponentsInChildren<Enemy>();
         }
 
         public Enemy GetClosestEnemy(Enemy currentEnemy)
