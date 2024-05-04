@@ -1,4 +1,5 @@
-﻿using Abstract_classes;
+﻿using System;
+using Abstract_classes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,16 +24,19 @@ namespace DefaultNamespace.Abstract_classes
 
         protected int _currentHealth;
         protected float _currentStamina;
-
-        
         
         public UnityEvent DeathEvent;
-        
-        
-        
-        
-
         public StaminaManager _staminaManager { get; protected set; }
+
+
+        protected void Awake()
+        {
+            _currentStamina = _maxStamina;
+            _currentHealth = _maxHealth;
+            
+            Health = new HealthManager(this);
+            _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
+        }
 
         public int GetCurrentHealth() => _currentHealth;
         public void SetCurrentHealth(int currentHealth) => _currentHealth = currentHealth;

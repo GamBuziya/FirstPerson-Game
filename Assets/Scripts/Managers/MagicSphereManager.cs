@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class MagicSphereManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _impactVFX;
+    [SerializeField] private MagicAttackSO _object;
     private bool collided;
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.tag != "Player" && !collided)
+        if (!other.gameObject.CompareTag("Player") && !collided)
         {
             collided = true;
-
-            var impact = Instantiate(_impactVFX, other.contacts[0].point, Quaternion.identity);
+            SoundManager.Instance.MagicAttackSound(_object.TypeMagic, 0.05f);
+            var impact = Instantiate(_object.Impact, other.contacts[0].point, Quaternion.identity);
             Destroy(impact, 1);
             Destroy(gameObject);
         }

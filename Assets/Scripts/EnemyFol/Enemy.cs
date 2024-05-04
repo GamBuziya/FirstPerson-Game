@@ -46,17 +46,11 @@ public class Enemy : GameCharacter
     private float _timer = 0f;
     private float _interval = 0.1f;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
+        
         Player = GameObject.FindGameObjectWithTag("Player");
-        
-        
-        _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
-        _currentStamina = _maxStamina;
-        _currentHealth = _maxHealth;
-        
-        
-        Health = new HealthManager(this);
         
     
         Animator = GetComponent<EnemyAnimation>();

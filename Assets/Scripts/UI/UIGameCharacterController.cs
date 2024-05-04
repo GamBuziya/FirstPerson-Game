@@ -14,9 +14,10 @@ namespace DefaultNamespace
         [Header("Stamina Bar")]
         [SerializeField] protected Image _frontStamina;
         [SerializeField] protected Image _backStamina;
+        
+        
 
         protected float _maxStamina;
-
         protected int _maxHealth;
 
         protected GameCharacter _gameCharacter;
@@ -34,7 +35,7 @@ namespace DefaultNamespace
             _gameCharacter.SetCurrentStamina(Mathf.Clamp(_gameCharacter.GetCurrentStamina(), 0, _maxStamina));
         }
 
-        private void LateUpdate()
+        protected void LateUpdate()
         {
             UpdateStaminaUI();
             UpdateHealthUI();

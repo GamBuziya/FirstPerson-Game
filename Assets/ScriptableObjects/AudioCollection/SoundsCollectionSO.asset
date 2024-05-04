@@ -34,8 +34,9 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b46570503514e2a4f8183e73714a8fa7, type: 3}
   - {fileID: 8300000, guid: 5e0be140f13f0c341bb91abddd2e76bf, type: 3}
   - {fileID: 8300000, guid: 589b20060dc19154ab2d746246fe6b7c, type: 3}
-  FleshAttackSounds:
-  - {fileID: 8300000, guid: 29087d7031d2abc4991376b3c22a770a, type: 3}
-  - {fileID: 8300000, guid: 7282ca5a2495791438d14a92c68afd17, type: 3}
-  - {fileID: 8300000, guid: 9496feb530c6bc647a5d5a9208e8eaa3, type: 3}
-  - {fileID: 8300000, guid: 67ec363e05e9dc74d930a48a6f1941e6, type: 3}
+  ElectricityAttackSounds:
+  - {fileID: 8300000, guid: ab297b593498a6e47ba84de770477cbe, type: 3}
+  VenomAttackSounds:
+  - {fileID: 8300000, guid: 24252664d1f41c140864d611ea092c18, type: 3}
+  - {fileID: 8300000, guid: 6b50bafaa2ac38c43a8bd2a002b7cfe0, type: 3}
+  - {fileID: 8300000, guid: 0d0b319c3ae49a843893aba4950ff680, type: 3}
