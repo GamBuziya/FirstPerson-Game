@@ -10,5 +10,6 @@ public class SoundsCollectionSO : ScriptableObject
     public AudioClip[] HitSounds;
     public AudioClip[] FireAttackSounds;
     public AudioClip[] IceAttackSounds;
-    public AudioClip[] FleshAttackSounds;
+    public AudioClip[] ElectricityAttackSounds;
+    public AudioClip[] VenomAttackSounds;
 }

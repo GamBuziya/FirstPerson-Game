@@ -23,7 +23,6 @@ GameObject:
   - component: {fileID: 7813005532750296851}
   - component: {fileID: 3027081942084630660}
   - component: {fileID: 7258381498518686007}
-  - component: {fileID: 8567681619307969432}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -362,23 +361,6 @@ MonoBehaviour:
   _typingSpeed: 0.01
   _turnSpeed: 2
   IsDialog: 0
---- !u!114 &8567681619307969432
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 99683411360573057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7532e382eee648b4bb7ec2dc1e678266, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Cam: {fileID: 7030315746386024482}
-  Projectile: {fileID: 1347771500990160856, guid: 992242a718460bc4dbeb85ac783c67a4, type: 3}
-  Firepoint: {fileID: 7307136824461553524}
-  Speed: 30
-  ArcRange: 1
 --- !u!1 &6768457478031291657
 GameObject:
   m_ObjectHideFlags: 0

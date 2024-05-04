@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Abstract_classes;
 using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerUI : UIGameCharacterController
+public class PlayerUI : UiMagicCharacterController
 {
 
     [SerializeField] private TextMeshProUGUI _promptText;

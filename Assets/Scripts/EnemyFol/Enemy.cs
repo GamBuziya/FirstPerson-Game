@@ -20,11 +20,6 @@ public class Enemy : GameCharacter
     // Enemy Moves
     public GameObject Player { get; set; }
     public NavMeshAgent Agent { get => _agent;}
-    public Path Path;
-    public Path PointsList;
-    
-    private float _sightDistance = 13f;
-    private float _fieldOfView = 70f;
     
     private StateMachine _stateMachine;
     private NavMeshAgent _agent;
@@ -46,17 +41,11 @@ public class Enemy : GameCharacter
     private float _timer = 0f;
     private float _interval = 0.1f;
 
-    private void Awake()
+    private new void Awake()
     {
+        base.Awake();
+        
         Player = GameObject.FindGameObjectWithTag("Player");
-        
-        
-        _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
-        _currentStamina = _maxStamina;
-        _currentHealth = _maxHealth;
-        
-        
-        Health = new HealthManager(this);
         
     
         Animator = GetComponent<EnemyAnimation>();
@@ -99,32 +88,7 @@ public class Enemy : GameCharacter
     {
         _sideAttackUI.ChangeUI(BattleController.GetCurrentTypeOfMove(), BattleController.GetCurrentMove());
     }
-
-    public bool CanSee()
-    {
-        if (Vector3.Distance(transform.position, Player.transform.position) < _sightDistance)
-        {
-            Vector3 targetDirection = Player.transform.position - transform.position;
-            float angle = Vector3.Angle(transform.forward, targetDirection);
-
-            if (angle >= -_fieldOfView && angle <= _fieldOfView)
-            {
-                Ray ray = new Ray(transform.position, targetDirection);
-                RaycastHit hitInfo = new RaycastHit();
-                if (Physics.Raycast(ray, out hitInfo, _sightDistance))
-                {
-                    if (hitInfo.transform.gameObject == Player)
-                    {
-                        Debug.DrawRay(ray.origin, ray.direction* _sightDistance);
-                        return true;
-                    }
-                }
-                
-            }
-        }
-
-        return false;
-    }
+    
 
     private void Death()
     {
