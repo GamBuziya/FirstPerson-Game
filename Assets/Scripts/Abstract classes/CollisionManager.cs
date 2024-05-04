@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Enums;
+using Managers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -32,6 +33,7 @@ namespace DefaultNamespace.Abstract_classes
                 var isBlock = _checker.IsBlock(other.gameObject, _gameCharacter.gameObject);
                 if (!isBlock)
                 {
+                    ParticleEffectsManager.Instance.CreateBloodEffect(other.contacts[0].point);
                     SoundManager.Instance.HitSound(gameObject);
                     _IsDamaged.Invoke();
                 }
