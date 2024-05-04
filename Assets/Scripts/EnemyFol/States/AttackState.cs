@@ -6,7 +6,6 @@ namespace DefaultNamespace.Enemy.States
     public class AttackState : BaseState
     {
         private float _moveTimer;
-        private float _losePlayerTimer;
         private float _attackTimer = 0f;
         public override void Enter()
         {
@@ -14,26 +13,11 @@ namespace DefaultNamespace.Enemy.States
 
         public override void Perform()
         {
-            if (Enemy.CanSee())
-            {
-                Enemy.GetCanvasDisabler().CanvasEnable();
-                Attack();
-                _losePlayerTimer = 0;
-                _moveTimer += Time.deltaTime;
-                if (_moveTimer >= Random.Range(0, 1f))
-                {
-                    Enemy.Agent.SetDestination(Enemy.Player.transform.position);
-                }
-            }
-            else
-            {
-                _losePlayerTimer += Time.deltaTime;
-                if (_losePlayerTimer > 7)
-                {
-                    StateMachine.ChangeState(new PeaseState());
-                    Enemy.GetCanvasDisabler().CanvasDisabled();
-                }
-            }
+            //Робимо вигляд що отримали усіх найближчих ворогів
+            Enemy.GetCanvasDisabler().CanvasEnable();
+            Attack();
+            
+            Enemy.Agent.SetDestination(Enemy.Player.transform.position);
         }
 
         public override void Exit()

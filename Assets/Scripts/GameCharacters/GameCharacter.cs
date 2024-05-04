@@ -13,9 +13,6 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected LayerMask EnemyLayer;
         [Range(0f, 1f)] [SerializeField] protected float _attackResist;
         
-        [Header("Attack Event Controller")]
-        [SerializeField] protected UnityEvent _attackEvent;
-        
         
         protected BattleController BattleController;
         protected HealthManager Health;
@@ -25,7 +22,6 @@ namespace DefaultNamespace.Abstract_classes
         protected int _currentHealth;
         protected float _currentStamina;
         
-        public UnityEvent DeathEvent;
         public StaminaManager _staminaManager { get; protected set; }
 
 
@@ -48,7 +44,6 @@ namespace DefaultNamespace.Abstract_classes
         public float GetAttackResist() => _attackResist;
         
         public void SetCurrentStamina(float stamina) => _currentStamina = stamina;
-        public UnityEvent GetAttackEvent() => _attackEvent;
         public LayerMask GetEnemyLayer() => EnemyLayer;
         public BattleController GetBattleController() => BattleController;
 

@@ -8,21 +8,12 @@ using UnityEngine;
 public class StateMachine : MonoBehaviour
 {
     public BaseState ActiveState;
-    public MoveToState MoveToState;
     public Enemy Enemy;
 
     private void Start()
     {
         Enemy = GetComponent<Enemy>();
     }
-
-    private void MoveTo(Transform destination, string ObjectName)
-    {
-        Debug.Log("ObjectName " + ObjectName);
-        Debug.Log("Enemy " + gameObject.name);
-        if(gameObject.name.Equals(ObjectName)) ChangeState(new MoveToState(destination));
-    }
-
 
     public void Initialise()
     {

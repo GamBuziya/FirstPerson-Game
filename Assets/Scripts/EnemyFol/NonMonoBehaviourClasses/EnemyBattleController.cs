@@ -36,7 +36,9 @@ namespace DefaultNamespace.Enemy
             _enemyTypeOfMove = _enemy.GetBattleController().GetCurrentTypeOfMove();
 
             var tempGameCharacter = (global::Enemy)_gameCharacter;
-            if (_enemyTypeOfMove == TypeOfMove.IsAttack && !_isBlock && tempGameCharacter.CanSee() && !tempGameCharacter.GetStun())
+            if (_enemyTypeOfMove == TypeOfMove.IsAttack 
+                && !_isBlock && !tempGameCharacter.GetStun()
+                && Vector3.Distance(_gameCharacter.gameObject.transform.position, _enemy.transform.position) < 3)
             {
                 _isBlock = true;
                 var temp = Random.Range(0f, 4f);

@@ -23,7 +23,6 @@ namespace DefaultNamespace
 
                 if (childGameObject.CompareTag("Weapon"))
                 {
-                    Debug.Log("Enter");
                     WeaponAnimator = childGameObject.GetComponent<Animator>();
                     break; 
                 }

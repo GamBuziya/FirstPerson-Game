@@ -10,7 +10,6 @@
         public override void Perform()
         {
             if (Enemy.IsAngry) StateMachine.ChangeState(new AttackState());
-            if(Enemy.Path != null) StateMachine.ChangeState(new PatrolState());
         }
 
         public override void Exit()
