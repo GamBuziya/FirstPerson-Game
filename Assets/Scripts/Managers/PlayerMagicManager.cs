@@ -21,7 +21,7 @@ public class PlayerMagicManager : BasicMagicManager
     }
     
     
-    public override void ShootProjectile()
+    public new void ShootProjectile()
     {
         Ray ray = _camera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
@@ -35,6 +35,6 @@ public class PlayerMagicManager : BasicMagicManager
             _destination = ray.GetPoint(500);
         }
 
-        InstantiateProjectile();
+        base.ShootProjectile();
     }
 }

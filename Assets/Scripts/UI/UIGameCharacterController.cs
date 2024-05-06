@@ -10,10 +10,12 @@ namespace DefaultNamespace
         [Header("Health Bar")]
         [SerializeField] protected Image _frontHealth;
         [SerializeField] protected Image _backHealth;
-        
-        [Header("Stamina Bar")]
+
+        [Header("Stamina Bar")] 
+        [SerializeField] protected bool _haveStamina;
         [SerializeField] protected Image _frontStamina;
         [SerializeField] protected Image _backStamina;
+        
         
         
 
@@ -25,8 +27,9 @@ namespace DefaultNamespace
         protected void Start()
         {
             _gameCharacter = GetComponent<GameCharacter>();
+            if(_haveStamina) _maxStamina = _gameCharacter.GetCurrentStamina();
             _maxHealth = _gameCharacter.GetCurrentHealth();
-            _maxStamina = _gameCharacter.GetCurrentStamina();
+            
             
         }
 
@@ -37,7 +40,7 @@ namespace DefaultNamespace
 
         protected void LateUpdate()
         {
-            UpdateStaminaUI();
+            if(_haveStamina) UpdateStaminaUI();
             UpdateHealthUI();
         }
 

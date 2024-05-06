@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2642455870192057459}
@@ -138,10 +138,7 @@ GameObject:
   - component: {fileID: 515036715343887062}
   - component: {fileID: 1748940052978153304}
   - component: {fileID: 1622038142488327828}
-  - component: {fileID: 904645237996427571}
   - component: {fileID: 693379623404696745}
-  - component: {fileID: 6951714282392789363}
-  - component: {fileID: 6984526355302795703}
   - component: {fileID: 925546999341019585}
   m_Layer: 7
   m_Name: Piyer
@@ -212,26 +209,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &904645237996427571
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258558574091238140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7123c478447e63b4ea05d9eed8d22b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _maxStamina: 100
-  EnemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  _attackResist: 0
-  _arrowImage: {fileID: 6959108141104533896}
-  _timeForArrow: 0.5
 --- !u!114 &693379623404696745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,61 +222,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swordEnemy: {fileID: 0}
---- !u!114 &6951714282392789363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258558574091238140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 977462192caa4944b1dcf7bce732d77e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &6984526355302795703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258558574091238140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e83dd5e68d954d9688a4e2007e354871, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _IsDamaged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DefaultNamespace.Sounds, Assembly-CSharp
-        m_MethodName: PlayRandomHitSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _IsBlocked:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: DefaultNamespace.Sounds, Assembly-CSharp
-        m_MethodName: PlayRandomAttackSound
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  _particleEffect: {fileID: 7210390216215930889, guid: dc721be970cf6e24d8df2e3c07de8856, type: 3}
 --- !u!95 &925546999341019585
 Animator:
   serializedVersion: 5

@@ -7,20 +7,24 @@ using UnityEngine.PlayerLoop;
 
 namespace DefaultNamespace
 {
-    public class Player: MagicGameCharacter
+    public class Player: GameCharacter, IMagic
     {
-        public WeaponTaker WeaponTaker;
+        [SerializeField]
+        private float _maxMagic;
+        public float MaxMagic {get; set; }
+        public float CurrentMagic { get; set; }
         
         private float timer = 0f;
         private float interval = 0.1f;
+        private float _maxMagic1;
 
         private new void Awake()
         {
             base.Awake();
-            
+            MaxMagic = _maxMagic;
+            CurrentMagic = _maxMagic;
             Animator = GetComponent<PlayerAnimation>();
             WeaponBattleController = new PlayerWeaponBattleController(this);
-            WeaponTaker = new WeaponTaker(this);
         }
 
 
@@ -34,12 +38,6 @@ namespace DefaultNamespace
                 timer = 0f;
             }
         }
-
-        public void TakeWeapon()
-        {
-            WeaponTaker.TakeWeapon();
-        }
-        
         
     }
 }

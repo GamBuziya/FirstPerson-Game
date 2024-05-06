@@ -30,6 +30,7 @@ namespace DefaultNamespace.Enemy.States
         private float interval = 5f; 
         private void Attack()
         {
+            Debug.Log("Player.transform.position " + Player.transform.position);
             if(SwordEnemy.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
 
             var closestEnemie = EnemiesManager.Instance.GetClosestEnemy(SwordEnemy);

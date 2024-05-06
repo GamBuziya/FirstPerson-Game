@@ -24,6 +24,7 @@ public class StateMachine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log("ActiveState" + ActiveState);
         if (ActiveState != null)
         {
             ActiveState.Perform();

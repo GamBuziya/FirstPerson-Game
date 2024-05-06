@@ -13,7 +13,8 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected float _arcRange = 1f;
         
         [SerializeField] [Range(0, 1)] protected float _regenerateInterval;
-        protected MagicGameCharacter _gameCharacter;
+        protected GameCharacter _gameCharacter;
+        protected IMagic _magicGameCharacter;
         protected MagicAttackSO _currentMagicAttack;
         
         protected Vector3 _destination;
@@ -23,26 +24,13 @@ namespace DefaultNamespace.Abstract_classes
         private float _magicSaveBonus = 0;
         //
         
-        public void MagicDamage()
-        {
-            _gameCharacter.SetCurrentMagic(
-                _gameCharacter.GetCurrentMagic() - (_currentMagicAttack.MagicCost - _magicSaveBonus));
-        }
-    
-        public void RegenerateMagic()
-        {
-            if (_gameCharacter.GetCurrentMagic() <= _gameCharacter.GetMaxMagic())
-            {
-                _gameCharacter.SetCurrentMagic(_gameCharacter.GetCurrentMagic() + 0.7f + _magicRegenBonus);
-            }
-        }
-        
         private float _timer = 0f;
     
         protected void Start()
         {
             SetCurrentMagic(_typeMagicAttack);
-            _gameCharacter = GetComponent<MagicGameCharacter>();
+            _gameCharacter = GetComponent<GameCharacter>();
+            _magicGameCharacter = (IMagic)_gameCharacter;
         }
 
         protected void Update()
@@ -52,6 +40,19 @@ namespace DefaultNamespace.Abstract_classes
             {
                 RegenerateMagic();
                 _timer = 0f;
+            }
+        }
+        
+        public void MagicDamage()
+        {
+            _magicGameCharacter.CurrentMagic = _magicGameCharacter.CurrentMagic - (_currentMagicAttack.MagicCost - _magicSaveBonus);
+        }
+    
+        public void RegenerateMagic()
+        {
+            if (_magicGameCharacter.CurrentMagic <= _magicGameCharacter.MaxMagic)
+            {
+                _magicGameCharacter.CurrentMagic = _magicGameCharacter.CurrentMagic + 0.7f + _magicRegenBonus;
             }
         }
         
@@ -68,7 +69,7 @@ namespace DefaultNamespace.Abstract_classes
         }
         protected void InstantiateProjectile()
         {
-            if (_gameCharacter.GetCurrentMagic() > _currentMagicAttack.MagicCost)
+            if (_magicGameCharacter.CurrentMagic > _currentMagicAttack.MagicCost)
             {
                 MagicDamage();
                 SoundManager.Instance.MagicAttackSound(_currentMagicAttack.TypeMagic);
@@ -84,6 +85,9 @@ namespace DefaultNamespace.Abstract_classes
         
         }
 
-        public abstract void ShootProjectile();
+        protected void ShootProjectile()
+        {
+            InstantiateProjectile();
+        }
     }
 }
