@@ -37,6 +37,9 @@ namespace GameCharacters
             
             _stateMachine.Initialise();
             
+            var temp = gameObject.GetComponentInChildren<Canvas>();
+            _canvasDisabler = new CanvasDisabler(temp);
+            
         }
         
         public StateMachine GetStateMachine() => _stateMachine;

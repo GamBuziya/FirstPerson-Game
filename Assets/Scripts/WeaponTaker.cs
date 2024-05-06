@@ -26,7 +26,7 @@ namespace DefaultNamespace
 
                     var weapon = childTransform.gameObject;
                     
-                    if (_player.GetBattleController() is PlayerBattleController playerBattleController)
+                    if (_player.GetBattleController() is PlayerWeaponBattleController playerBattleController)
                     {
                         playerBattleController.SetAnimator(weapon.GetComponent<Animator>());
                     }

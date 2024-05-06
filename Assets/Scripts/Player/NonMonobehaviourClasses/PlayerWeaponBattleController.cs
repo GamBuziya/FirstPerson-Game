@@ -10,11 +10,11 @@ using UnityEngine.Serialization;
 
 namespace DefaultNamespace
 {
-    public class PlayerBattleController : BattleController
+    public class PlayerWeaponBattleController : WeaponBattleController
     {
         private MoveParametrsController _battleMoves;
         
-        public PlayerBattleController(Player player)
+        public PlayerWeaponBattleController(Player player)
         {
             _gameCharacter = player;
             _animator = _gameCharacter.GetAnimatorManager();

@@ -2,6 +2,6 @@
 {
     public interface IAtackable
     {
-        protected void Attack();
+        public void Attack();
     }
 }

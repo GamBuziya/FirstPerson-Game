@@ -9,7 +9,7 @@ using Update = Unity.VisualScripting.Update;
 
 namespace DefaultNamespace.Enemy
 {
-    public class EnemyBattleController : BattleController
+    public class EnemyWeaponBattleController : WeaponBattleController
     {
         private SideOfMove _enemySideOfMove;
         private TypeOfMove _enemyTypeOfMove;
@@ -19,7 +19,7 @@ namespace DefaultNamespace.Enemy
         private float _stunTime = 0;
 
         private GameCharacter _enemy;
-        public EnemyBattleController(GameCharacter gameCharacter, float time, GameCharacter player)
+        public EnemyWeaponBattleController(GameCharacter gameCharacter, float time, GameCharacter player)
         {
             _time = time;
             _gameCharacter = gameCharacter; 

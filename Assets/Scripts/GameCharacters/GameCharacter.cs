@@ -14,7 +14,7 @@ namespace DefaultNamespace.Abstract_classes
         [Range(0f, 1f)] [SerializeField] protected float _attackResist;
         
         
-        protected BattleController BattleController;
+        protected WeaponBattleController WeaponBattleController;
         protected HealthManager Health;
         protected AnimatorManager Animator;
         protected bool IsStun = false;
@@ -45,7 +45,7 @@ namespace DefaultNamespace.Abstract_classes
         
         public void SetCurrentStamina(float stamina) => _currentStamina = stamina;
         public LayerMask GetEnemyLayer() => EnemyLayer;
-        public BattleController GetBattleController() => BattleController;
+        public WeaponBattleController GetBattleController() => WeaponBattleController;
 
         public HealthManager GetHealthPoints() => Health;
 

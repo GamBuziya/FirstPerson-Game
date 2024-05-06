@@ -19,7 +19,7 @@ namespace DefaultNamespace
             base.Awake();
             
             Animator = GetComponent<PlayerAnimation>();
-            BattleController = new PlayerBattleController(this);
+            WeaponBattleController = new PlayerWeaponBattleController(this);
             WeaponTaker = new WeaponTaker(this);
         }
 

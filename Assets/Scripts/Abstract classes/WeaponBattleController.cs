@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace DefaultNamespace.Abstract_classes
 {
-    public abstract class BattleController
+    public abstract class WeaponBattleController : IAtackable
     {
         protected GameCharacter _gameCharacter;
         

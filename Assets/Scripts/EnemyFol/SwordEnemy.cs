@@ -29,9 +29,7 @@ public class SwordEnemy : EnemyGameCharacter
         base.Awake();
         
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
-
-        var temp = gameObject.GetComponentInChildren<Canvas>();
-        _canvasDisabler = new CanvasDisabler(temp);
+        
         
         //Health.DeathEvent.AddListener(_canvasDisabler.CanvasDisabled);
         
@@ -40,14 +38,14 @@ public class SwordEnemy : EnemyGameCharacter
     void Start()
     {
         //Спробувати передавати Delegate
-        BattleController = new EnemyBattleController(this, _timeForArrow, GameObject.Find("Player").GetComponent<GameCharacter>());
+        WeaponBattleController = new EnemyWeaponBattleController(this, _timeForArrow, GameObject.Find("Player").GetComponent<GameCharacter>());
     }
     
     private void Update()
     {
         if(!_isDead)
         {
-            ((EnemyBattleController)BattleController).BattleControllerUpdate();
+            ((EnemyWeaponBattleController)WeaponBattleController).BattleControllerUpdate();
         }
         
         _timer += Time.deltaTime;
@@ -60,7 +58,7 @@ public class SwordEnemy : EnemyGameCharacter
 
     private void LateUpdate()
     {
-        _sideAttackUI.ChangeUI(BattleController.GetCurrentTypeOfMove(), BattleController.GetCurrentMove());
+        _sideAttackUI.ChangeUI(WeaponBattleController.GetCurrentTypeOfMove(), WeaponBattleController.GetCurrentMove());
     }
     
 
