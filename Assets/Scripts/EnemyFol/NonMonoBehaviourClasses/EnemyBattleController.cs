@@ -35,7 +35,7 @@ namespace DefaultNamespace.Enemy
             _enemySideOfMove = _enemy.GetBattleController().GetCurrentMove();
             _enemyTypeOfMove = _enemy.GetBattleController().GetCurrentTypeOfMove();
 
-            var tempGameCharacter = (global::Enemy)_gameCharacter;
+            var tempGameCharacter = (global::SwordEnemy)_gameCharacter;
             if (_enemyTypeOfMove == TypeOfMove.IsAttack 
                 && !_isBlock && !tempGameCharacter.GetStun()
                 && Vector3.Distance(_gameCharacter.gameObject.transform.position, _enemy.transform.position) < 3)

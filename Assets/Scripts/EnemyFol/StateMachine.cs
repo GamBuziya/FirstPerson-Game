@@ -4,15 +4,16 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using DefaultNamespace.Enemy.States;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class StateMachine : MonoBehaviour
 {
     public BaseState ActiveState;
-    public Enemy Enemy;
+    [FormerlySerializedAs("Enemy")] public SwordEnemy swordEnemy;
 
     private void Start()
     {
-        Enemy = GetComponent<Enemy>();
+        swordEnemy = GetComponent<SwordEnemy>();
     }
 
     public void Initialise()
@@ -40,7 +41,7 @@ public class StateMachine : MonoBehaviour
         if (ActiveState != null)
         {
             ActiveState.StateMachine = this;
-            ActiveState.Enemy = GetComponent<Enemy>();
+            ActiveState.SwordEnemy = GetComponent<SwordEnemy>();
             ActiveState.Player = GameObject.Find("Player").GetComponent<Player>();
             ActiveState.Enter();
         }

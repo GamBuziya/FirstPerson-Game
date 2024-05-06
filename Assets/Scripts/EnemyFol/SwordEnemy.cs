@@ -5,38 +5,21 @@ using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.EnemyFol;
+using GameCharacters;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class Enemy : GameCharacter
+public class SwordEnemy : EnemyGameCharacter
 {
     [SerializeField] private Image _arrowImage;
 
     [SerializeField] private float _timeForArrow;
     
-    [SerializeField] public bool IsAngry;
-
-    // Enemy Moves
-    public GameObject Player { get; set; }
-    public NavMeshAgent Agent { get => _agent;}
-    
-    private StateMachine _stateMachine;
-    private NavMeshAgent _agent;
-    
-    //-----------------
     
     private EnemySideAttackUI _sideAttackUI;
-
-    private CanvasDisabler _canvasDisabler;
-
-    public StateMachine GetStateMachine() => _stateMachine;
-    public CanvasDisabler GetCanvasDisabler() => _canvasDisabler;
-
-    public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
     
-
-    private bool _isDead = false;
+    public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
     
     private float _timer = 0f;
     private float _interval = 0.1f;
@@ -45,22 +28,13 @@ public class Enemy : GameCharacter
     {
         base.Awake();
         
-        Player = GameObject.FindGameObjectWithTag("Player");
-        
-    
-        Animator = GetComponent<EnemyAnimation>();
-        _stateMachine = GetComponent<StateMachine>();
-        _agent = GetComponent<NavMeshAgent>();
-    
-        _stateMachine.Initialise();
-
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
 
         var temp = gameObject.GetComponentInChildren<Canvas>();
         _canvasDisabler = new CanvasDisabler(temp);
         
-        Health.DeathEvent.AddListener(_canvasDisabler.CanvasDisabled);
-        Health.DeathEvent.AddListener(Death);
+        //Health.DeathEvent.AddListener(_canvasDisabler.CanvasDisabled);
+        
     }
 
     void Start()
@@ -90,12 +64,6 @@ public class Enemy : GameCharacter
     }
     
 
-    private void Death()
-    {
-        _isDead = true;
-        GetComponent<EnemyCollision>().enabled = false;
-        _stateMachine.enabled = false;
-        _agent.enabled = false;
-    }
+    
     
 }

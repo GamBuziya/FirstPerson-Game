@@ -4,12 +4,12 @@
     {
         public override void Enter()
         {
-            Enemy.Agent.SetDestination(Enemy.transform.position);
+            SwordEnemy.Agent.SetDestination(SwordEnemy.transform.position);
         }
 
         public override void Perform()
         {
-            if (Enemy.IsAngry) StateMachine.ChangeState(new AttackState());
+            StateMachine.ChangeState(new AttackState());
         }
 
         public override void Exit()

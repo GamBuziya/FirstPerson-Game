@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class BaseState
 {
     public StateMachine StateMachine;
-    public Enemy Enemy;
+    public SwordEnemy SwordEnemy;
     public Player Player;
     public SideToGo Side;
     public abstract void Enter();

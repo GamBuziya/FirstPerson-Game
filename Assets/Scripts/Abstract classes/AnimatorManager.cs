@@ -43,7 +43,7 @@ namespace DefaultNamespace.Abstract_classes
 
         public void EnemyParriedEffect()
         {
-            if (_person is global::Enemy enemy)
+            if (_person is global::SwordEnemy enemy)
             {
                 enemy.GetEnemySideAttackUI().DisableUI();
             }

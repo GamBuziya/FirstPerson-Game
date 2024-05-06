@@ -141,8 +141,6 @@ GameObject:
   - component: {fileID: 904645237996427571}
   - component: {fileID: 693379623404696745}
   - component: {fileID: 6951714282392789363}
-  - component: {fileID: 3237256950965307267}
-  - component: {fileID: 4268134608692303997}
   - component: {fileID: 6984526355302795703}
   - component: {fileID: 925546999341019585}
   m_Layer: 7
@@ -226,18 +224,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7123c478447e63b4ea05d9eed8d22b74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 100
+  _maxHealth: 100
+  _maxStamina: 100
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  _attackEvent:
-    m_PersistentCalls:
-      m_Calls: []
+  _attackResist: 0
   _arrowImage: {fileID: 6959108141104533896}
   _timeForArrow: 0.5
-  IsAngry: 0
-  Path: {fileID: 0}
-  PointsList: {fileID: 0}
 --- !u!114 &693379623404696745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -250,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b14009989f0de8f40b64f822c621558c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 0}
+  swordEnemy: {fileID: 0}
 --- !u!114 &6951714282392789363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -263,36 +257,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 977462192caa4944b1dcf7bce732d77e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3237256950965307267
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258558574091238140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 80159f19e674495ca960cf3aa4d6f040, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _maxStamina: 70
-  _frontStamina: {fileID: 8661701272396281355}
-  _backStamina: {fileID: 7620574652031909421}
-  Stamina: 70
---- !u!114 &4268134608692303997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3258558574091238140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7429f97a39df440fb7d1044ae03aeb8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _frontHealth: {fileID: 3817139846353462343}
-  _backHealth: {fileID: 4283889523837878334}
 --- !u!114 &6984526355302795703
 MonoBehaviour:
   m_ObjectHideFlags: 0
