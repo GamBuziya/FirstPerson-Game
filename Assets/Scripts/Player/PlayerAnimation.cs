@@ -28,6 +28,10 @@ namespace DefaultNamespace
                 }
             }
         }
-        
+
+        public override void Death()
+        {
+            //Смеееерть
+        }
     }
 }

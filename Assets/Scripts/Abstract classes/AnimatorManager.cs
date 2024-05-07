@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace.Abstract_classes
 {
-    public abstract class AnimatorManager : MonoBehaviour
+    public abstract class AnimatorManager : MonoBehaviour, IDeathable
     {
         protected Animator WeaponAnimator;
         protected GameCharacter _person;
@@ -50,8 +50,8 @@ namespace DefaultNamespace.Abstract_classes
             WeaponAnimator.SetBool("IsParried", true);
             ResetAttack();
         }
-        
-        
-        
+
+
+        public abstract void Death();
     }
 }

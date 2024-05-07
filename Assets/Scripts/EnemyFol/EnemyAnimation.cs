@@ -30,7 +30,7 @@ public class EnemyAnimation : AnimatorManager
             }
         }
         
-        _person.GetHealthPoints().DeathEvent.AddListener(DeathAnimation);
+        _person.GetHealthPoints().DeathEvent.AddListener(Death);
         _temp = (SwordEnemy)_person;
         
     }
@@ -47,7 +47,7 @@ public class EnemyAnimation : AnimatorManager
         }
     }
 
-    public void DeathAnimation()
+    public override void Death()
     {
         Debug.Log("Death");
         _enemyAnimator.SetTrigger("IsDead");
@@ -57,6 +57,5 @@ public class EnemyAnimation : AnimatorManager
     {
         _enemyAnimator.SetBool("IsAgressive", state);
     }
-    
     
 }

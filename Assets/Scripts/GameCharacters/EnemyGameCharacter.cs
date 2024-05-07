@@ -46,6 +46,7 @@ namespace GameCharacters
         private void Death()
         {
             _isDead = true;
+            _canvasDisabler.CanvasDisabled();
             GetComponent<EnemyCollision>().enabled = false;
             _stateMachine.enabled = false;
             _agent.enabled = false;

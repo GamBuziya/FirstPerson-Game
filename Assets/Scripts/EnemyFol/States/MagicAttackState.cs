@@ -33,7 +33,6 @@ namespace DefaultNamespace.Enemy.States
         // ReSharper disable Unity.PerformanceAnalysis
         private void Attack()
         {
-            Debug.Log("_needGo " + _needGo);
             var playerTransform = Player.transform;
             Vector3 directionToPlayer = playerTransform.position - GameCharacter.transform.position;
             GameCharacter.transform.LookAt(playerTransform);
@@ -63,6 +62,7 @@ namespace DefaultNamespace.Enemy.States
                         _needGo = false;
                         _firstTimer = 0;
                     }
+                    return;
                 }
                 
                 _secondTimer += Time.deltaTime;

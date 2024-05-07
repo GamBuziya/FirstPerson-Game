@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Abstract_classes;
 using UnityEngine;
 
 public class EventManager : MonoBehaviour
@@ -16,10 +17,18 @@ public class EventManager : MonoBehaviour
         }
     }
     
+    public event Action<GameCharacter, GameCharacter> onPhysicDamage;
+    public void PhysicDamage(GameCharacter attacker, GameCharacter defender)
+    {
+        if (onPhysicDamage != null)
+        {
+            onPhysicDamage(attacker, defender);
+        }
+    }
+    
     public event Action onSubmitPressed;
     public void SubmitPressed()
     {
-        Debug.Log("SubmitPressed");
         if (onSubmitPressed != null)
         {
             onSubmitPressed();

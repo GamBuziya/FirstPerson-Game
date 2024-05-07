@@ -11,7 +11,10 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected int _maxHealth = 100;
         [SerializeField] protected float _maxStamina = 100;
         [SerializeField] protected LayerMask EnemyLayer;
-        [Range(0f, 1f)] [SerializeField] protected float _attackResist;
+        [Range(0f, 100f)] [SerializeField] protected float _attackResist;
+
+
+        [SerializeField] protected int _weaponDamage;
         
         
         protected WeaponBattleController WeaponBattleController;
@@ -34,6 +37,7 @@ namespace DefaultNamespace.Abstract_classes
             _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
         }
 
+        public int GetWeaponDamage() => _weaponDamage;
         public int GetCurrentHealth() => _currentHealth;
         public void SetCurrentHealth(int currentHealth) => _currentHealth = currentHealth;
         public float GetCurrentStamina() => _currentStamina;

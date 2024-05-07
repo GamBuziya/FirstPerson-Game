@@ -18,36 +18,39 @@ namespace DefaultNamespace.Enemy.States
         {
             GameCharacter.GetCanvasDisabler().CanvasEnable();
             Attack();
-            //GameCharacter.Agent.SetDestination(GameCharacter.Player.transform.position);
+            GameCharacter.Agent.SetDestination(GameCharacter.Player.transform.position);
         }
-
+        
         public override void Exit()
         {
         }
         
         private float timer = 0f;
         private float interval = 5f; 
+        
+        
+        
         private void Attack()
         {
             if(GameCharacter.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
 
             var closestEnemie = EnemiesManager.Instance.GetClosestEnemy(GameCharacter as SwordEnemy);
-            
+
             if (Vector3.Distance(GameCharacter.transform.position, closestEnemie.transform.position) < 5f
                 && Vector3.Distance(GameCharacter.transform.position, Player.transform.position) > 2f)
             {
-                
+
                 var tempZ = 0;
                 var transform = Player.transform;
                 GameCharacter.transform.LookAt(transform);
                 Vector3 directionToPlayer = (Player.transform.position - GameCharacter.transform.position).normalized;
-                
+
                 Vector3 directionToLeft = Quaternion.Euler(0, -90 + tempZ , tempZ) * directionToPlayer; // Поворот на 90 градусів ліворуч
                 Vector3 directionToRight = Quaternion.Euler(0, 90 + tempZ, tempZ) * directionToPlayer; // Поворот на 90 градусів праворуч
 
                 Vector3 averageDirection;
-                
-                
+
+
                 timer += Time.deltaTime;
                 if (timer >= interval)
                 {
@@ -65,10 +68,10 @@ namespace DefaultNamespace.Enemy.States
                     {
                         Side = SideToGo.right;
                     }
-                    
+
                     timer = 0;
                 }
-                
+
 
                 switch (Side)
                 {
@@ -76,40 +79,40 @@ namespace DefaultNamespace.Enemy.States
                         averageDirection = Quaternion.Euler(0,  tempZ, tempZ) * directionToPlayer;
                         break;
                     case SideToGo.left:
-                        averageDirection = directionToLeft + directionToPlayer;
+                        averageDirection = 2 * directionToLeft + directionToPlayer;
                         break;
                     case SideToGo.right:
-                        averageDirection = directionToRight + directionToPlayer;
+                        averageDirection = 2 * directionToRight + directionToPlayer;
                         break;
                     default:
                         averageDirection = Quaternion.Euler(0,  tempZ, tempZ) * directionToPlayer;
                         break;
                 }
-                
-                // GameCharacter.transform.Translate(averageDirection * 1.3f * Time.deltaTime, Space.World);
+
+                GameCharacter.transform.Translate(averageDirection * Time.deltaTime, Space.World);
                 return;
             }
-            
-            
-            
+
+
+
             if (Vector3.Distance(GameCharacter.gameObject.transform.position, GameCharacter.Player.transform.position) <= 2.3f)
             {
                 GameCharacter.Agent.speed = 0f;
                 _attackTimer += Time.deltaTime;
-                
+
                 if (StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
-                    
-                
+
+
                 if (_attackTimer > Random.Range(0, 0.3f) && StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
                     StateMachine.gameCharacter.GetBattleController().Attack();
                     _attackTimer = 0;
                 }
-                    
+
             }
             else
             {
-                GameCharacter.Agent.speed = 2.5f;
+                GameCharacter.Agent.speed = 3f;
             }
         }
 

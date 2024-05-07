@@ -17,6 +17,8 @@ namespace DefaultNamespace.Abstract_classes
         
         public void TakeDamage(int damage)
         {
+            Debug.Log("damage " + damage);
+            Debug.Log("_gameCharacter.GetCurrentHealth() " + _gameCharacter.GetCurrentHealth());
             var temp = _gameCharacter.GetCurrentHealth();
             if(_gameCharacter.GetCurrentHealth() > 0) _gameCharacter.SetCurrentHealth(temp - damage);
             DeathChecker();

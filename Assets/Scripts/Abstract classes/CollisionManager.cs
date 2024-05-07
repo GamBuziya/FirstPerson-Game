@@ -33,9 +33,9 @@ namespace DefaultNamespace.Abstract_classes
                 var isBlock = _checker.IsBlock(other.gameObject, _gameCharacter.gameObject);
                 if (!isBlock)
                 {
+                    EventManager.Instance.PhysicDamage(other.gameObject.GetComponentInParent<GameCharacter>(), GetComponent<GameCharacter>());
                     ParticleEffectsManager.Instance.CreateBloodEffect(other.contacts[0].point);
                     SoundManager.Instance.HitSound(gameObject);
-                    _IsDamaged.Invoke();
                 }
                 else
                 {
