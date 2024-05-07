@@ -16,10 +16,9 @@ namespace DefaultNamespace.Enemy.States
 
         public override void Perform()
         {
-            //Робимо вигляд що отримали усіх найближчих ворогів
-            SwordEnemy.GetCanvasDisabler().CanvasEnable();
+            GameCharacter.GetCanvasDisabler().CanvasEnable();
             Attack();
-            SwordEnemy.Agent.SetDestination(SwordEnemy.Player.transform.position);
+            GameCharacter.Agent.SetDestination(GameCharacter.Player.transform.position);
         }
 
         public override void Exit()
@@ -30,19 +29,18 @@ namespace DefaultNamespace.Enemy.States
         private float interval = 5f; 
         private void Attack()
         {
-            Debug.Log("Player.transform.position " + Player.transform.position);
-            if(SwordEnemy.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
+            if(GameCharacter.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
 
-            var closestEnemie = EnemiesManager.Instance.GetClosestEnemy(SwordEnemy);
+            var closestEnemie = EnemiesManager.Instance.GetClosestEnemy(GameCharacter as SwordEnemy);
             
-            if (Vector3.Distance(SwordEnemy.transform.position, closestEnemie.transform.position) < 5f
-                && Vector3.Distance(SwordEnemy.transform.position, Player.transform.position) > 2f)
+            if (Vector3.Distance(GameCharacter.transform.position, closestEnemie.transform.position) < 5f
+                && Vector3.Distance(GameCharacter.transform.position, Player.transform.position) > 2f)
             {
                 
                 var tempZ = 0;
                 var transform = Player.transform;
-                SwordEnemy.transform.LookAt(transform);
-                Vector3 directionToPlayer = (Player.transform.position - SwordEnemy.transform.position).normalized;
+                GameCharacter.transform.LookAt(transform);
+                Vector3 directionToPlayer = (Player.transform.position - GameCharacter.transform.position).normalized;
                 
                 Vector3 directionToLeft = Quaternion.Euler(0, -90 + tempZ , tempZ) * directionToPlayer; // Поворот на 90 градусів ліворуч
                 Vector3 directionToRight = Quaternion.Euler(0, 90 + tempZ, tempZ) * directionToPlayer; // Поворот на 90 градусів праворуч
@@ -88,30 +86,30 @@ namespace DefaultNamespace.Enemy.States
                         break;
                 }
                 
-                SwordEnemy.transform.Translate(averageDirection * 1.3f * Time.deltaTime, Space.World);
+                GameCharacter.transform.Translate(averageDirection * 1.3f * Time.deltaTime, Space.World);
                 return;
             }
             
             
             
-            if (Vector3.Distance(SwordEnemy.gameObject.transform.position, SwordEnemy.Player.transform.position) <= 2.3f)
+            if (Vector3.Distance(GameCharacter.gameObject.transform.position, GameCharacter.Player.transform.position) <= 2.3f)
             {
-                SwordEnemy.Agent.speed = 0f;
+                GameCharacter.Agent.speed = 0f;
                 _attackTimer += Time.deltaTime;
                 
-                if (StateMachine.swordEnemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
+                if (StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
                     
                 
-                if (_attackTimer > Random.Range(0, 0.3f) && StateMachine.swordEnemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
+                if (_attackTimer > Random.Range(0, 0.3f) && StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
-                    StateMachine.swordEnemy.GetBattleController().Attack();
+                    StateMachine.gameCharacter.GetBattleController().Attack();
                     _attackTimer = 0;
                 }
                     
             }
             else
             {
-                SwordEnemy.Agent.speed = 2.5f;
+                GameCharacter.Agent.speed = 2.5f;
             }
         }
 

@@ -72,8 +72,13 @@ namespace DefaultNamespace.Abstract_classes
             if (_magicGameCharacter.CurrentMagic > _currentMagicAttack.MagicCost)
             {
                 MagicDamage();
-                SoundManager.Instance.MagicAttackSound(_currentMagicAttack.TypeMagic);
-                var projectileObj = Instantiate(_currentMagicAttack.Bullet, _firepoint.position, Quaternion.identity);
+                SoundManager.Instance.MagicAttackSound(_currentMagicAttack.TypeMagic, transform.position);
+                var projectileObj = Instantiate(
+                    _currentMagicAttack.Bullet, 
+                    _firepoint.position, 
+                    Quaternion.identity);
+                projectileObj.transform.parent = transform;
+                
                 projectileObj.GetComponent<Rigidbody>().velocity = 
                     (_destination - _firepoint.position).normalized * _currentMagicAttack.Speed;
         

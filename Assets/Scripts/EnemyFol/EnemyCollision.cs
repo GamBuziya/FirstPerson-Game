@@ -1,4 +1,5 @@
 ﻿using DefaultNamespace.Abstract_classes;
+using GameCharacters;
 using UnityEngine;
 
 namespace DefaultNamespace.EnemyFol
@@ -7,7 +8,7 @@ namespace DefaultNamespace.EnemyFol
     {
         private void Awake()
         {
-            _gameCharacter = GetComponent<global::SwordEnemy>();
+            _gameCharacter = GetComponent<EnemyGameCharacter>();
             _checker = new BlockChecker();
             _enemyLayer = _gameCharacter.GetEnemyLayer();
             SubscribeToAttack(() => _gameCharacter.GetHealthPoints().TakeDamage(30));

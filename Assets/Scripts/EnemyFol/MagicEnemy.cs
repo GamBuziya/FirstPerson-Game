@@ -1,24 +1,21 @@
 ﻿using Abstract_classes;
+using DefaultNamespace.Abstract_classes;
 using GameCharacters;
 using UnityEngine;
 
 namespace DefaultNamespace.EnemyFol
 {
-    public class MagicEnemy : EnemyGameCharacter
+    public class MagicEnemy : EnemyGameCharacter, IMagic
     {
-        [Header("Magic")] 
-        [SerializeField] protected float _maxMagic;
-        public float GetMaxMagic() => _maxMagic;
-
-        
-        private float _curentMagicCount;
-        public float GetCurrentMagic() => _curentMagicCount;
-        public void SetCurrentMagic(float magic) => _curentMagicCount = magic;
+        [SerializeField]
+        private float _maxMagic;
+        public float MaxMagic {get; set; }
+        public float CurrentMagic { get; set; }
         
         protected new void Awake()
         {
             base.Awake();
-            _curentMagicCount = _maxMagic;
+            CurrentMagic = _maxMagic;
         }
     }
 }

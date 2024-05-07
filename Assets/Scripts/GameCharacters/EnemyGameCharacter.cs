@@ -13,13 +13,12 @@ namespace GameCharacters
         public NavMeshAgent Agent { get => _agent;}
     
         protected StateMachine _stateMachine;
+        
         protected NavMeshAgent _agent;
         //-----------------
         
         
         protected CanvasDisabler _canvasDisabler;
-        public CanvasDisabler GetCanvasDisabler() => _canvasDisabler;
-        
         protected bool _isDead = false;
         
         
@@ -42,7 +41,7 @@ namespace GameCharacters
             
         }
         
-        public StateMachine GetStateMachine() => _stateMachine;
+        
         
         private void Death()
         {
@@ -51,5 +50,9 @@ namespace GameCharacters
             _stateMachine.enabled = false;
             _agent.enabled = false;
         }
+        
+        
+        public StateMachine GetStateMachine() => _stateMachine;
+        public CanvasDisabler GetCanvasDisabler() => _canvasDisabler;
     }
 }

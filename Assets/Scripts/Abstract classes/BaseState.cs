@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using GameCharacters;
 using UnityEngine;
 
 public abstract class BaseState
 {
     public StateMachine StateMachine;
-    public SwordEnemy SwordEnemy;
+    public EnemyGameCharacter GameCharacter;
     public Player Player;
     public SideToGo Side;
     public abstract void Enter();

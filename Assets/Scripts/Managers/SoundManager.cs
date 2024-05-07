@@ -16,23 +16,26 @@ public class SoundManager : MonoBehaviour
     {
         Instance = this;
         _audioSource = gameObject.AddComponent<AudioSource>(); // Додаємо компонент AudioSource
+        _audioSource.spatialBlend = 1;
+        _audioSource.minDistance = 1;
+        _audioSource.maxDistance = 5;
     }
     
-    public void MagicAttackSound(TypeMagicAttack _magicAttack, float volume = 1f)
+    public void MagicAttackSound(TypeMagicAttack _magicAttack, Vector3 position)
     {
         switch (_magicAttack)
         {
             case TypeMagicAttack.Electricity:
-                PlaySound(_collections.ElectricityAttackSounds, volume);
+                PlaySound(_collections.ElectricityAttackSounds,position);
                 break;
             case TypeMagicAttack.Venom:
-                PlaySound(_collections.VenomAttackSounds, volume);
+                PlaySound(_collections.VenomAttackSounds,position);
                 break;
             case TypeMagicAttack.Fire:
-                PlaySound(_collections.FireAttackSounds, volume);
+                PlaySound(_collections.FireAttackSounds,position);
                 break;
             case TypeMagicAttack.Ice:
-                PlaySound(_collections.IceAttackSounds, volume);
+                PlaySound(_collections.IceAttackSounds,position);
                 break;
         }
         
@@ -40,25 +43,27 @@ public class SoundManager : MonoBehaviour
 
     public void AttackSound(GameObject gameObject)
     {
-        PlaySound(_collections.AttackSounds);
+        PlaySound(_collections.AttackSounds, gameObject.transform.position);
     }
     
     public void BlockSound(GameObject gameObject)
     {
-        PlaySound(_collections.BlockSounds);
+        PlaySound(_collections.BlockSounds, gameObject.transform.position);
     }
     
     public void HitSound(GameObject gameObject)
     {
         _audioSource.Stop(); // Вимикаємо попередній звук
-        PlaySound(_collections.HitSounds);
+        PlaySound(_collections.HitSounds, gameObject.transform.position);
     }
 
-    private void PlaySound(AudioClip[] audioClips, float volume = 1f)
+    private void PlaySound(AudioClip[] audioClips, Vector3 position)
     {
         if (audioClips.Length == 0) return;
 
         var temp = audioClips[Random.Range(0, audioClips.Length)];
-        _audioSource.PlayOneShot(temp, volume); // Відтворюємо звук один раз
+        _audioSource.volume = 0.05f;
+        _audioSource.transform.position = position;
+        _audioSource.PlayOneShot(temp);
     }
 }
