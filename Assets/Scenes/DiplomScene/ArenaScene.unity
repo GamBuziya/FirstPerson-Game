@@ -4675,7 +4675,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a91339612290654eb75cecbc7e0b22a, type: 2}
   _firepoint: {fileID: 2027947494}
   _arcRange: 1
-  _regenerateInterval: 0
+  _regenerateInterval: 0.3
 --- !u!114 &5194483324212543442
 MonoBehaviour:
   m_ObjectHideFlags: 0

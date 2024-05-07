@@ -18,7 +18,7 @@ namespace DefaultNamespace.Enemy.States
         {
             GameCharacter.GetCanvasDisabler().CanvasEnable();
             Attack();
-            GameCharacter.Agent.SetDestination(GameCharacter.Player.transform.position);
+            //GameCharacter.Agent.SetDestination(GameCharacter.Player.transform.position);
         }
 
         public override void Exit()
@@ -86,7 +86,7 @@ namespace DefaultNamespace.Enemy.States
                         break;
                 }
                 
-                GameCharacter.transform.Translate(averageDirection * 1.3f * Time.deltaTime, Space.World);
+                // GameCharacter.transform.Translate(averageDirection * 1.3f * Time.deltaTime, Space.World);
                 return;
             }
             

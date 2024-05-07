@@ -16,6 +16,7 @@ namespace DefaultNamespace.EnemyFol
         {
             base.Awake();
             CurrentMagic = _maxMagic;
+            MaxMagic = _maxMagic;
         }
     }
 }

@@ -6,8 +6,11 @@ namespace DefaultNamespace.Enemy.States
 {
     public class MagicAttackState : BaseState
     {
-        private float _timer = 1;
-        private float _attackTimer = 3f;
+        private float _firstTimer = 1;
+        private float _secondTimer = 1;
+        private float _attackTimer = 1f;
+        private float _goTimer = 2f;
+        private bool _needGo = false;
         public override void Enter()
         {
         }
@@ -15,11 +18,22 @@ namespace DefaultNamespace.Enemy.States
         public override void Perform()
         {
             Attack();
+            if (Vector3.Distance(Player.transform.position, GameCharacter.transform.position) > 10f)
+            {
+                GameCharacter.Agent.speed = 3.5f;
+            }
+            else
+            {
+                GameCharacter.Agent.speed = 0f;
+            }
+            
             GameCharacter.Agent.SetDestination(GameCharacter.Player.transform.position);
         }
 
+        // ReSharper disable Unity.PerformanceAnalysis
         private void Attack()
         {
+            Debug.Log("_needGo " + _needGo);
             var playerTransform = Player.transform;
             Vector3 directionToPlayer = playerTransform.position - GameCharacter.transform.position;
             GameCharacter.transform.LookAt(playerTransform);
@@ -33,18 +47,33 @@ namespace DefaultNamespace.Enemy.States
                 if (!hit.collider.gameObject.CompareTag("Player"))
                 {
                     Vector3 directionToLeft = Quaternion.Euler(0, -90, 0) * directionToPlayer;
-                    GameCharacter.transform.Translate(directionToLeft * 1.3f * Time.deltaTime, Space.World);
+                    GameCharacter.transform.Translate(directionToLeft * (2f * Time.deltaTime), Space.World);
+                    _needGo = true;
+                    return;
                 }
-                else
+
+                if (_needGo)
                 {
-                    _timer += Time.deltaTime;
-                    if (_timer >= _attackTimer)
-                    {
-                        GameCharacter.GetComponent<EnemyMagicManager>().Attack();
-                        _timer = 0;
-                    }
+                    Vector3 directionToLeft = Quaternion.Euler(0, -90 + Random.Range(-40, 40), 0) * directionToPlayer;
+                    GameCharacter.transform.Translate(directionToLeft * (2f * Time.deltaTime), Space.World);
                     
+                    _firstTimer += Time.deltaTime;
+                    if (_firstTimer >= _goTimer)
+                    {
+                        _needGo = false;
+                        _firstTimer = 0;
+                    }
                 }
+                
+                _secondTimer += Time.deltaTime;
+                if (_secondTimer >= _attackTimer + Random.Range(0.5f, 1.5f))
+                {
+                    Debug.Log("Attack");
+                    GameCharacter.GetComponent<EnemyMagicManager>().Attack();
+                    _secondTimer = 0;
+                }
+                
+                
             }
         }
 
