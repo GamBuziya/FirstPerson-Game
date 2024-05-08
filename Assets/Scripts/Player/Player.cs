@@ -11,9 +11,12 @@ namespace DefaultNamespace
     {
         [SerializeField]
         private float _maxMagic;
+        
+        [SerializeField] public int WeaponDamage = 20;
         public float MaxMagic {get; set; }
         public float CurrentMagic { get; set; }
-        
+        public BasicMagicManager MagicManager { get; set; }
+
         private float timer = 0f;
         private float interval = 0.1f;
         private float _maxMagic1;
@@ -23,6 +26,7 @@ namespace DefaultNamespace
             base.Awake();
             MaxMagic = _maxMagic;
             CurrentMagic = _maxMagic;
+            MagicManager = GetComponent<BasicMagicManager>();
             Animator = GetComponent<PlayerAnimation>();
             WeaponBattleController = new PlayerWeaponBattleController(this);
         }

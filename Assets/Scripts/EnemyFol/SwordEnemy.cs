@@ -12,6 +12,7 @@ using UnityEngine.UI;
 
 public class SwordEnemy : EnemyGameCharacter
 {
+    [SerializeField] public int WeaponDamage = 20;
     [SerializeField] private Image _arrowImage;
 
     [SerializeField] private float _timeForArrow;

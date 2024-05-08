@@ -21,9 +21,9 @@ namespace Managers
         {
             //Тут рандом треба поставити по важкості ворога
             var randDestination = new Vector3(
-                _player.transform.position.x + Random.Range(-3,3),
-                _player.transform.position.y + Random.Range(-1,1),
-                _player.transform.position.z + Random.Range(-3,3));
+                _player.transform.position.x + Random.Range(-2,2),
+                _player.transform.position.y + Random.Range(-0.5f,0.5f),
+                _player.transform.position.z + Random.Range(-2,2));
             _destination = randDestination;
             
             base.ShootProjectile();

@@ -292,7 +292,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 501121836977916000, guid: 4dd19c49140f5b642a23645e09a98329, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 580749155300351229, guid: 4dd19c49140f5b642a23645e09a98329, type: 3}
       propertyPath: m_Layer
@@ -3056,10 +3056,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95e7fc5e89641cf4ea8d5dad1d410f73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _typeMagicAttack: 0
+  _typeMagicAttack: 3
   _magicAttacksSO:
   - {fileID: 11400000, guid: c69979b26a0ffac43abee80c12a85918, type: 2}
   - {fileID: 11400000, guid: 5a91339612290654eb75cecbc7e0b22a, type: 2}
+  - {fileID: 11400000, guid: 8fa4c778c47dced45be612399205207c, type: 2}
+  - {fileID: 11400000, guid: b22fc8232b1641646b85b8a0c1926844, type: 2}
   _firepoint: {fileID: 37687774}
   _arcRange: 1
   _regenerateInterval: 0.5
@@ -4437,7 +4439,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &758577539691004455
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4615,11 +4617,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6939364773227829886, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: _attackResist
-      value: 100
+      value: 49.7
       objectReference: {fileID: 0}
     - target: {fileID: 6939364773227829886, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: _weaponDamage
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939364773227829886, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      propertyPath: _magicResistances.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939364773227829886, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      propertyPath: _magicResistances.Array.data[1].MagicType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6939364773227829886, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
+      propertyPath: _magicResistances.Array.data[0].Resistance
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7258381498518686007, guid: 40459e42ac76f85408b372f5e37c765c, type: 3}
       propertyPath: _dialogueText
@@ -4817,6 +4831,63 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _particleEffect: {fileID: 7210390216215930889, guid: dc721be970cf6e24d8df2e3c07de8856, type: 3}
+--- !u!1001 &5180458117174224684
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 19.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4447622518681501057, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623303314681798855, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
+      propertyPath: m_Name
+      value: VfxIceballImpact
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
 --- !u!114 &5189464262368751026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4889,8 +4960,10 @@ MonoBehaviour:
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 8
-  _attackResist: 0.419
-  _weaponDamage: 0
+  _attackResist: 0
+  _magicResistances:
+  - MagicType: 0
+    Resistance: 50.8
   _maxMagic: 200
 --- !u!114 &5194483324212543443
 MonoBehaviour:
@@ -4998,7 +5071,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 501121836977916000, guid: 4dd19c49140f5b642a23645e09a98329, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1577764589861711886, guid: 4dd19c49140f5b642a23645e09a98329, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5242,3 +5315,4 @@ SceneRoots:
   - {fileID: 428306878}
   - {fileID: 1838493796}
   - {fileID: 1642257854}
+  - {fileID: 5180458117174224684}

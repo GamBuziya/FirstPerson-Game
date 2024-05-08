@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Abstract_classes;
+using DefaultNamespace.Enums;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -12,9 +14,19 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected float _maxStamina = 100;
         [SerializeField] protected LayerMask EnemyLayer;
         [Range(0f, 100f)] [SerializeField] protected float _attackResist;
+        [SerializeField] private List<MagicResistance> _magicResistances;
+        
+        
+        [Serializable]
+        public struct MagicResistance
+        {
+            public TypeMagicAttack MagicType;
+            [Range(0f, 100f)] public float Resistance;
+        }
 
-
-        [SerializeField] protected int _weaponDamage;
+        
+        //Треба отримувати від меча SO
+        //[SerializeField] protected int _weaponDamage;
         
         
         protected WeaponBattleController WeaponBattleController;
@@ -37,14 +49,12 @@ namespace DefaultNamespace.Abstract_classes
             _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
         }
 
-        public int GetWeaponDamage() => _weaponDamage;
+        // int GetWeaponDamage() => _weaponDamage;
         public int GetCurrentHealth() => _currentHealth;
         public void SetCurrentHealth(int currentHealth) => _currentHealth = currentHealth;
         public float GetCurrentStamina() => _currentStamina;
         
         public int GetMaxHealth() => _maxHealth;
-        public float GetMaxStamina() => _maxStamina;
-        
         public float GetAttackResist() => _attackResist;
         
         public void SetCurrentStamina(float stamina) => _currentStamina = stamina;
@@ -64,6 +74,17 @@ namespace DefaultNamespace.Abstract_classes
             _staminaManager.StaminaDamage(damage, ref _currentStamina);
         }
 
+        public float GetCurrentMagicResist(IMagic attacker)
+        { 
+            var typeOfMagic = attacker.MagicManager.GetMagicData().TypeMagic;
+            
+            var magicResistance = _magicResistances.Find(magic => magic.MagicType == typeOfMagic);
+            var resist = magicResistance.Equals(default(MagicResistance)) ? 0f : magicResistance.Resistance;
+
+            return resist;
+        }
+
 
     }
+    
 }

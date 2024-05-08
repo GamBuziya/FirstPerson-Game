@@ -6,5 +6,7 @@
         
         public float CurrentMagic { get; set; }
         
+        public BasicMagicManager MagicManager { get; set; }
+        
     }
 }

@@ -8,16 +8,17 @@ public class MagicSphereManager : MonoBehaviour
 {
     [SerializeField] private MagicAttackSO _object;
     private bool collided;
-    private GameCharacter _gameCharacter;
+    private GameCharacter _parentCharacter;
 
-    private void Start()
+    public void SetParent(GameCharacter parent)
     {
-        _gameCharacter = GetComponentInParent<GameCharacter>();
+        _parentCharacter = parent;
     }
+    
 
     private void OnCollisionEnter(Collision other)
     {
-        if (_gameCharacter != other.gameObject.GetComponentInParent<GameCharacter>() && !collided)
+        if (_parentCharacter != other.gameObject.GetComponentInParent<GameCharacter>() && !collided)
         {
             collided = true;
             SoundManager.Instance.MagicAttackSound(_object.TypeMagic, transform.position);
@@ -25,9 +26,10 @@ public class MagicSphereManager : MonoBehaviour
             Destroy(impact, 1);
             Destroy(gameObject);
 
-            if ((_gameCharacter.GetEnemyLayer() & (1 << other.gameObject.layer)) != 0)
+            if ((_parentCharacter.GetEnemyLayer() & (1 << other.gameObject.layer)) != 0)
             {
-                Debug.Log("Hit in Enemy");
+                EventManager.Instance.MagicDamage(_parentCharacter,
+                    other.gameObject.GetComponentInParent<GameCharacter>());
             }
         }
     }

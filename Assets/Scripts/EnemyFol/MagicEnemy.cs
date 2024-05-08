@@ -11,10 +11,12 @@ namespace DefaultNamespace.EnemyFol
         private float _maxMagic;
         public float MaxMagic {get; set; }
         public float CurrentMagic { get; set; }
-        
+        public BasicMagicManager MagicManager { get; set; }
+
         protected new void Awake()
         {
             base.Awake();
+            MagicManager = GetComponent<BasicMagicManager>();
             CurrentMagic = _maxMagic;
             MaxMagic = _maxMagic;
         }

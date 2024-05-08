@@ -76,8 +76,8 @@ namespace DefaultNamespace.Abstract_classes
                 var projectileObj = Instantiate(
                     _currentMagicAttack.Bullet, 
                     _firepoint.position, 
-                    Quaternion.identity);
-                projectileObj.transform.parent = transform;
+                    Quaternion.identity); 
+                projectileObj.GetComponent<MagicSphereManager>().SetParent(_gameCharacter);
                 
                 projectileObj.GetComponent<Rigidbody>().velocity = 
                     (_destination - _firepoint.position).normalized * _currentMagicAttack.Speed;
@@ -94,5 +94,7 @@ namespace DefaultNamespace.Abstract_classes
         {
             InstantiateProjectile();
         }
+        
+        public MagicAttackSO GetMagicData() => _currentMagicAttack;
     }
 }

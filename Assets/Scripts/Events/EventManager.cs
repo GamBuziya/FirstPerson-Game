@@ -26,6 +26,15 @@ public class EventManager : MonoBehaviour
         }
     }
     
+    public event Action<GameCharacter, GameCharacter> onMagicDamage;
+    public void MagicDamage(GameCharacter attacker, GameCharacter defender)
+    {
+        if (onMagicDamage != null)
+        {
+            onMagicDamage(attacker, defender);
+        }
+    }
+    
     public event Action onSubmitPressed;
     public void SubmitPressed()
     {

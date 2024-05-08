@@ -66,9 +66,8 @@ namespace DefaultNamespace.Enemy.States
                 }
                 
                 _secondTimer += Time.deltaTime;
-                if (_secondTimer >= _attackTimer + Random.Range(0.5f, 1.5f))
+                if (_secondTimer >= _attackTimer + Random.Range(0, 1f))
                 {
-                    Debug.Log("Attack");
                     GameCharacter.GetComponent<EnemyMagicManager>().Attack();
                     _secondTimer = 0;
                 }
