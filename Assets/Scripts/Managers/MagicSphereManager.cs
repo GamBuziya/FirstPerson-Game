@@ -22,12 +22,14 @@ public class MagicSphereManager : MonoBehaviour
         {
             collided = true;
             SoundManager.Instance.MagicAttackSound(_object.TypeMagic, transform.position);
+            
             var impact = Instantiate(_object.Impact, other.contacts[0].point, Quaternion.identity);
             Destroy(impact, 1);
             Destroy(gameObject);
 
             if ((_parentCharacter.GetEnemyLayer() & (1 << other.gameObject.layer)) != 0)
             {
+                _object.DebafFunc(other.gameObject.GetComponentInParent<GameCharacter>());
                 EventManager.Instance.MagicDamage(_parentCharacter,
                     other.gameObject.GetComponentInParent<GameCharacter>());
             }

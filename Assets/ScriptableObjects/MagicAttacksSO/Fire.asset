@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68da9c2982dc4234f95641ac401ce5a6, type: 3}
-  m_Name: Fireball
-  m_EditorClassIdentifier: 
+  m_Script: {fileID: 0}
+  m_Name: Fire
+  m_EditorClassIdentifier: Assembly-CSharp::FireMagicAttack
   Bullet: {fileID: 4158552110601649783, guid: 37a0c547142bb0446a6bf57fb21b1d9f, type: 3}
   Impact: {fileID: 646436950039351786, guid: eb5115220b219cf46885d9f87836253f, type: 3}
   TypeMagic: 2
-  Damage: 10
-  MagicCost: 10
-  Speed: 30
+  Damage: 40
+  MagicCost: 40
+  Speed: 15
   DamageBonus: 0
   SaveMagicBonus: 0
