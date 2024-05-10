@@ -15,8 +15,8 @@ MonoBehaviour:
   Bullet: {fileID: 1347771500990160856, guid: 992242a718460bc4dbeb85ac783c67a4, type: 3}
   Impact: {fileID: 7420277688125870721, guid: 333713f6d6c9e0447a4cfbc022ce9dd5, type: 3}
   TypeMagic: 1
-  Damage: 10
-  MagicCost: 30
-  Speed: 40
+  Damage: 20
+  MagicCost: 15
+  Speed: 30
   DamageBonus: 0
   SaveMagicBonus: 0
