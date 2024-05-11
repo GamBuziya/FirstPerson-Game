@@ -24,15 +24,17 @@ namespace DefaultNamespace.Abstract_classes
         {
             if (_onCollision == true) return;
             
-            
+            Debug.Log("1");
             if (other.gameObject.CompareTag("Weapon") 
                 && (_enemyLayer & (1 << other.gameObject.layer)) != 0 
                 && other.gameObject.GetComponentInParent<GameCharacter>().GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsAttack)
             {
+                Debug.Log("2");
                 _onCollision = true;
                 var isBlock = _checker.IsBlock(other.gameObject, _gameCharacter.gameObject);
                 if (!isBlock)
                 {
+                    Debug.Log("3");
                     EventManager.Instance.PhysicDamage(other.gameObject.GetComponentInParent<GameCharacter>(), GetComponent<GameCharacter>());
                     ParticleEffectsManager.Instance.CreateBloodEffect(other.contacts[0].point);
                     SoundManager.Instance.HitSound(gameObject);

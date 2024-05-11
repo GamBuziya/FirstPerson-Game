@@ -6,7 +6,7 @@ namespace DefaultNamespace.Enemy.States
 {
     public class LowStaminaState : BaseState
     {
-        private float _speed = 1f;
+        private float _speed = 0.5f;
 
         public override void Enter()
         {

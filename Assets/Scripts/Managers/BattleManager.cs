@@ -20,12 +20,10 @@ public class BattleManager : MonoBehaviour
         float modifiedDamage = 0f;
         if (attacker.TryGetComponent(out SwordEnemy swordEnemy))
         { 
-            Debug.Log("swordEnemy");
             modifiedDamage = swordEnemy.WeaponDamage * (1 + Random.Range(-0.25f, 0.25f));
         }
         else if (attacker.TryGetComponent(out Player player))
         {
-            Debug.Log("Player");
             modifiedDamage = player.WeaponDamage * (1 + Random.Range(-0.25f, 0.25f));
         }
         

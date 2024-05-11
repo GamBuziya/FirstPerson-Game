@@ -26,7 +26,7 @@ namespace DefaultNamespace.Enemy.States
         }
         
         private float timer = 0f;
-        private float interval = 5f; 
+        private float interval = 3f; 
         
         
         
@@ -35,14 +35,18 @@ namespace DefaultNamespace.Enemy.States
             if(GameCharacter.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
 
             var closestEnemie = EnemiesManager.Instance.GetClosestEnemy(GameCharacter as SwordEnemy);
-
+            
+            var transform = Player.transform;
+            GameCharacter.transform.LookAt(transform);
+            
+            
             if (Vector3.Distance(GameCharacter.transform.position, closestEnemie.transform.position) < 5f
                 && Vector3.Distance(GameCharacter.transform.position, Player.transform.position) > 2f)
             {
-
+                GameCharacter.Agent.speed = 2f;
                 var tempZ = 0;
-                var transform = Player.transform;
-                GameCharacter.transform.LookAt(transform);
+                
+                
                 Vector3 directionToPlayer = (Player.transform.position - GameCharacter.transform.position).normalized;
 
                 Vector3 directionToLeft = Quaternion.Euler(0, -90 + tempZ , tempZ) * directionToPlayer; // Поворот на 90 градусів ліворуч
@@ -112,7 +116,7 @@ namespace DefaultNamespace.Enemy.States
             }
             else
             {
-                GameCharacter.Agent.speed = 3f;
+                GameCharacter.Agent.speed = 2f;
             }
         }
 
