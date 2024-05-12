@@ -15,6 +15,9 @@ namespace DefaultNamespace.Abstract_classes
         [SerializeField] protected LayerMask EnemyLayer;
         [Range(0f, 100f)] [SerializeField] protected float _attackResist;
         [SerializeField] private List<MagicResistance> _magicResistances;
+
+        [field: Range(1f, 3f)] [SerializeField]
+        protected float _speed;
         
         
         [Serializable]
@@ -23,10 +26,6 @@ namespace DefaultNamespace.Abstract_classes
             public TypeMagicAttack MagicType;
             [Range(0f, 100f)] public float Resistance;
         }
-
-        
-        //Треба отримувати від меча SO
-        //[SerializeField] protected int _weaponDamage;
         
         
         protected WeaponBattleController WeaponBattleController;
@@ -49,7 +48,8 @@ namespace DefaultNamespace.Abstract_classes
             _staminaManager = new StaminaManager(_maxStamina, 1.2f, 0.2f);
         }
 
-        // int GetWeaponDamage() => _weaponDamage;
+
+        public float GetSpeed() => _speed;
         public int GetCurrentHealth() => _currentHealth;
         public void SetCurrentHealth(int currentHealth) => _currentHealth = currentHealth;
         public float GetCurrentStamina() => _currentStamina;
@@ -67,12 +67,7 @@ namespace DefaultNamespace.Abstract_classes
 
         public bool GetStun() => IsStun;
         public void SetStun(bool temp) => IsStun = temp;
-
-
-        public void StaminaDamage(int damage)
-        {
-            _staminaManager.StaminaDamage(damage, ref _currentStamina);
-        }
+        
 
         public float GetCurrentMagicResist(IMagic attacker)
         { 

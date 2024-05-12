@@ -5,14 +5,15 @@ using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enemy;
 using DefaultNamespace.EnemyFol;
+using DefaultNamespace.Enums;
 using GameCharacters;
+using Managers;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-public class SwordEnemy : EnemyGameCharacter
+public class SwordEnemy : EnemyGameCharacter, IWeapon
 {
-    [SerializeField] public int WeaponDamage = 20;
     [SerializeField] private Image _arrowImage;
 
     [SerializeField] private float _timeForArrow;
@@ -21,6 +22,7 @@ public class SwordEnemy : EnemyGameCharacter
     private EnemySideAttackUI _sideAttackUI;
     
     public EnemySideAttackUI GetEnemySideAttackUI() => _sideAttackUI;
+    public WeaponManager Weapon { get; set; }
     
     private float _timer = 0f;
     private float _interval = 0.1f;
@@ -30,10 +32,10 @@ public class SwordEnemy : EnemyGameCharacter
         base.Awake();
         
         _sideAttackUI = new EnemySideAttackUI(_arrowImage);
-        
-        
+
+        Weapon = GetComponentInChildren<WeaponManager>();
         //Health.DeathEvent.AddListener(_canvasDisabler.CanvasDisabled);
-        
+
     }
 
     void Start()
@@ -61,8 +63,23 @@ public class SwordEnemy : EnemyGameCharacter
     {
         _sideAttackUI.ChangeUI(WeaponBattleController.GetCurrentTypeOfMove(), WeaponBattleController.GetCurrentMove());
     }
-    
 
-    
-    
+    public void StaminaDamage(TypeOfStaminaDamage type)
+    {
+        var damage = 0;
+        if (type == TypeOfStaminaDamage.BasicAttack)
+        {
+            damage = Weapon.WeaponData.BasicStaminaCost;
+        }
+        else if (type == TypeOfStaminaDamage.PowerAttack)
+        {
+            damage = Weapon.WeaponData.PowerStaminaCost;
+        }
+        else
+        {
+            //Вартість ривка
+            damage = 10;
+        }
+        _staminaManager.StaminaDamage(damage, ref _currentStamina);
+    }
 }

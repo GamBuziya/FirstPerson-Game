@@ -73,13 +73,13 @@ namespace DefaultNamespace.Enemy
         
         private async Task DelayedAttack(SideOfMove randomMove)
         {
-            
+            IWeapon gameCharacter = _gameCharacter  as IWeapon;
             if (randomMove == SideOfMove.Up && _gameCharacter.GetCurrentStamina() >= _forceAttackStaminaCost)
             {
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 _animator.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
-                _gameCharacter.StaminaDamage(_forceAttackStaminaCost);
+                gameCharacter.StaminaDamage(TypeOfStaminaDamage.PowerAttack);
             }
             else if (randomMove == SideOfMove.Up && _gameCharacter.GetCurrentStamina() >= _basicAttackStaminaCost)
             {
@@ -87,14 +87,14 @@ namespace DefaultNamespace.Enemy
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 _animator.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
-                _gameCharacter.StaminaDamage(_basicAttackStaminaCost);
+                gameCharacter.StaminaDamage(TypeOfStaminaDamage.BasicAttack);
             }
             else if (randomMove != SideOfMove.Up && _gameCharacter.GetCurrentStamina() >= _basicAttackStaminaCost)
             {
                 SetData(randomMove, TypeOfMove.IsAttack);
                 await Task.Delay(TimeSpan.FromSeconds(_time));
                 _animator.PlayFightAnimation(randomMove, TypeOfMove.IsAttack);
-                _gameCharacter.StaminaDamage(_basicAttackStaminaCost);
+                gameCharacter.StaminaDamage(TypeOfStaminaDamage.BasicAttack);
             }
         }
         

@@ -8,7 +8,7 @@ namespace DefaultNamespace.ScriptableObjects
     {
         public override void DebafFunc(GameCharacter gameCharacter)
         {
-            gameCharacter.StaminaDamage(30);
+            //gameCharacter.StaminaDamage(30);
         
             var temp = gameCharacter is IMagic;
             if (temp)

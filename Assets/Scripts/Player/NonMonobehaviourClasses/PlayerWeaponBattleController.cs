@@ -37,7 +37,8 @@ namespace DefaultNamespace
                     SoundManager.Instance.AttackSound(_gameCharacter.gameObject);
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
                     _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
-                    _gameCharacter.StaminaDamage(_forceAttackStaminaCost);
+                    var weaponEnemy = _gameCharacter as Player;
+                    if (weaponEnemy != null) weaponEnemy.StaminaDamage(TypeOfStaminaDamage.PowerAttack);
                 }
             }
             else
@@ -47,7 +48,8 @@ namespace DefaultNamespace
                     SoundManager.Instance.AttackSound(_gameCharacter.gameObject);
                     _battleMoves.GetMoveParametrs(true, _force, out _currentMove, out _currentTypeOfMove);
                     _animator.PlayFightAnimation(_currentMove, _currentTypeOfMove);
-                    _gameCharacter.StaminaDamage(_basicAttackStaminaCost);
+                    var weaponEnemy = _gameCharacter as Player;
+                    if (weaponEnemy != null) weaponEnemy.StaminaDamage(TypeOfStaminaDamage.BasicAttack);
                 }
             }
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.Enums;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,15 +19,31 @@ public class BattleManager : MonoBehaviour
     private void EventManagerOnPhysicDamage(GameCharacter attacker, GameCharacter defender)
     {
         float modifiedDamage = 0f;
+        int damageType = 0;
         if (attacker.TryGetComponent(out SwordEnemy swordEnemy))
-        { 
-            modifiedDamage = swordEnemy.WeaponDamage * (1 + Random.Range(-0.25f, 0.25f));
+        {
+            if (swordEnemy.GetBattleController().GetCurrentMove() == SideOfMove.Up)
+            {
+                damageType = swordEnemy.Weapon.WeaponData.PowerDamage;
+            }
+            else
+            {
+                damageType = swordEnemy.Weapon.WeaponData.BasicDamage;
+            }
+            modifiedDamage = damageType * (1 + Random.Range(-0.25f, 0.25f));
         }
         else if (attacker.TryGetComponent(out Player player))
         {
-            modifiedDamage = player.WeaponDamage * (1 + Random.Range(-0.25f, 0.25f));
+            if (player.GetBattleController().GetCurrentMove() == SideOfMove.Up)
+            {
+                damageType = player.Weapon.WeaponData.PowerDamage;
+            }
+            else
+            {
+                damageType = player.Weapon.WeaponData.BasicDamage;
+            }
+            modifiedDamage = damageType * (1 + Random.Range(-0.25f, 0.25f));
         }
-        
         
         int damage = (int)((int)(modifiedDamage)*(1 - defender.GetAttackResist()/100));
         defender.GetHealthPoints().TakeDamage(damage);

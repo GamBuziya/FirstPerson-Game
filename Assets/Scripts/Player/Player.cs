@@ -1,21 +1,23 @@
 ﻿using System;
 using Abstract_classes;
 using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.Enums;
 using DefaultNamespace.NonMonobehaviourClasses;
+using Managers;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
 
 namespace DefaultNamespace
 {
-    public class Player: GameCharacter, IMagic
+    public class Player: GameCharacter, IMagic, IWeapon
     {
         [SerializeField]
         private float _maxMagic;
-        
-        [SerializeField] public int WeaponDamage = 20;
         public float MaxMagic {get; set; }
         public float CurrentMagic { get; set; }
         public BasicMagicManager MagicManager { get; set; }
+        
+        public WeaponManager Weapon { get; set; }
 
         private float timer = 0f;
         private float interval = 0.1f;
@@ -29,6 +31,7 @@ namespace DefaultNamespace
             MagicManager = GetComponent<BasicMagicManager>();
             Animator = GetComponent<PlayerAnimation>();
             WeaponBattleController = new PlayerWeaponBattleController(this);
+            Weapon = GetComponentInChildren<WeaponManager>();
         }
 
 
@@ -43,5 +46,23 @@ namespace DefaultNamespace
             }
         }
         
+        public void StaminaDamage(TypeOfStaminaDamage type)
+        {
+            var damage = 0;
+            if (type == TypeOfStaminaDamage.BasicAttack)
+            {
+                damage = Weapon.WeaponData.BasicStaminaCost;
+            }
+            else if (type == TypeOfStaminaDamage.PowerAttack)
+            {
+                damage = Weapon.WeaponData.PowerStaminaCost;
+            }
+            else
+            {
+                //Вартість ривка
+                damage = 10;
+            }
+            _staminaManager.StaminaDamage(damage, ref _currentStamina);
+        }
     }
 }

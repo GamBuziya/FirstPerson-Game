@@ -170,9 +170,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2.1424124
+  m_Height: 1.9289446
   m_Direction: 1
-  m_Center: {x: 0, y: -0.062812924, z: 0}
+  m_Center: {x: 0, y: 0.043920994, z: 0}
 --- !u!195 &1830804334560709031
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -216,6 +216,7 @@ MonoBehaviour:
   _magicResistances:
   - MagicType: 0
     Resistance: 50.8
+  _speed: 0
   _maxMagic: 200
 --- !u!114 &3444170048875750278
 MonoBehaviour:
@@ -722,7 +723,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0.53}
+  m_AnchoredPosition: {x: 0, y: 0.21}
   m_SizeDelta: {x: 300, y: 550}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &7781032625006281901
@@ -924,7 +925,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7986385047115511797, guid: 2945d4df1ec55e34085482508740b645, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.62
+      value: -0.93
       objectReference: {fileID: 0}
     - target: {fileID: 7986385047115511797, guid: 2945d4df1ec55e34085482508740b645, type: 3}
       propertyPath: m_LocalPosition.z

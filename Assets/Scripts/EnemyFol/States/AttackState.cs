@@ -10,8 +10,10 @@ namespace DefaultNamespace.Enemy.States
     {
         private float _moveTimer;
         private float _attackTimer = 0f;
+        private float _speed;
         public override void Enter()
         {
+            _speed = GameCharacter.GetSpeed();
         }
 
         public override void Perform()
@@ -43,7 +45,7 @@ namespace DefaultNamespace.Enemy.States
             if (Vector3.Distance(GameCharacter.transform.position, closestEnemie.transform.position) < 5f
                 && Vector3.Distance(GameCharacter.transform.position, Player.transform.position) > 2f)
             {
-                GameCharacter.Agent.speed = 2f;
+                GameCharacter.Agent.speed = _speed;
                 var tempZ = 0;
                 
                 
@@ -107,7 +109,7 @@ namespace DefaultNamespace.Enemy.States
                 if (StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
 
 
-                if (_attackTimer > Random.Range(0, 0.3f) && StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
+                if (_attackTimer > Random.Range(0, 0.1f) && StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
                     StateMachine.gameCharacter.GetBattleController().Attack();
                     _attackTimer = 0;
@@ -116,7 +118,7 @@ namespace DefaultNamespace.Enemy.States
             }
             else
             {
-                GameCharacter.Agent.speed = 2f;
+                GameCharacter.Agent.speed = _speed;
             }
         }
 
