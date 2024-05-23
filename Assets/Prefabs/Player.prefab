@@ -203,8 +203,8 @@ MonoBehaviour:
     m_Bits: 128
   _attackResist: 0
   _magicResistances: []
+  _speed: 1
   _maxMagic: 0
-  WeaponDamage: 20
 --- !u!114 &2568917245639862342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,7 +217,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e5de16fdc024ea4ea4861fdd11002b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 5
   _gravity: -9.8
   _jumpHeight: 1
   _SpeedupStaminaCost: 20
