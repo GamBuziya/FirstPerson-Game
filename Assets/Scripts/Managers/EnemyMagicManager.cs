@@ -5,11 +5,13 @@ namespace Managers
 {
     public class EnemyMagicManager : BasicMagicManager, IAtackable
     {
+        [SerializeField] protected MagicAttackSO[] _magicsAttacksSO;
         private GameObject _player;
         
         protected new void Start()
         {
             base.Start();
+            SetCurrentMagic();
             _player = GameObject.Find("Player");
         }
         public void Attack()
@@ -27,6 +29,11 @@ namespace Managers
             _destination = randDestination;
             
             base.ShootProjectile();
+        }
+        
+        public void SetCurrentMagic()
+        {
+            _currentMagicAttack = _magicsAttacksSO[Random.Range(0, _magicsAttacksSO.Length)];
         }
     }
 }

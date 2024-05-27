@@ -6,8 +6,6 @@ namespace DefaultNamespace.Abstract_classes
 {
     public abstract class BasicMagicManager : MonoBehaviour
     {
-        [SerializeField] protected TypeMagicAttack _typeMagicAttack;
-        [SerializeField] protected MagicAttackSO[] _magicAttacksSO;
         
         [SerializeField] protected Transform _firepoint;
         [SerializeField] protected float _arcRange = 1f;
@@ -28,7 +26,6 @@ namespace DefaultNamespace.Abstract_classes
     
         protected void Start()
         {
-            SetCurrentMagic(_typeMagicAttack);
             _gameCharacter = GetComponent<GameCharacter>();
             _magicGameCharacter = (IMagic)_gameCharacter;
         }
@@ -56,17 +53,6 @@ namespace DefaultNamespace.Abstract_classes
             }
         }
         
-        public void SetCurrentMagic(TypeMagicAttack magicAttack)
-        {
-            foreach (var attack in _magicAttacksSO)
-            {
-                if (attack.TypeMagic == magicAttack)
-                {
-                    _currentMagicAttack = attack;
-                    break;
-                }
-            }
-        }
         protected void InstantiateProjectile()
         {
             if (_magicGameCharacter.CurrentMagic > _currentMagicAttack.MagicCost)

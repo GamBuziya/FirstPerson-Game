@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f240d8b50384461c97776f22496822ee, type: 3}
   m_Name: HammerSO
   m_EditorClassIdentifier: 
+  Name: Hammer
   BasicStaminaCost: 40
   PowerStaminaCost: 50
   BasicDamage: 40

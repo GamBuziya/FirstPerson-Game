@@ -29,9 +29,18 @@ namespace DefaultNamespace
             MaxMagic = _maxMagic;
             CurrentMagic = _maxMagic;
             MagicManager = GetComponent<BasicMagicManager>();
+            //Debug.Log("Weapon = " + Weapon.name);
+        }
+
+        private void Start()
+        {
+            Weapon = GetComponentInChildren<WeaponManager>();
+        }
+
+        private void OnEnable()
+        {
             Animator = GetComponent<PlayerAnimation>();
             WeaponBattleController = new PlayerWeaponBattleController(this);
-            Weapon = GetComponentInChildren<WeaponManager>();
         }
 
 

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f240d8b50384461c97776f22496822ee, type: 3}
   m_Name: SwordSO
   m_EditorClassIdentifier: 
+  Name: Sword
   BasicStaminaCost: 30
   PowerStaminaCost: 40
   BasicDamage: 30
