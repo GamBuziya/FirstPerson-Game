@@ -38,14 +38,14 @@ public class InputManager : MonoBehaviour
         
         onFoot.RMK.started += context =>
         {
-            if (_player.GetBattleController() is PlayerBattleController playerBattleController)
+            if (_player.GetBattleController() is PlayerWeaponBattleController playerBattleController)
             {
                 playerBattleController.Block();
             }
         };
         onFoot.RMK.canceled += context =>
         {
-            if (_player.GetBattleController() is PlayerBattleController playerBattleController)
+            if (_player.GetBattleController() is PlayerWeaponBattleController playerBattleController)
             {
                 playerBattleController.ResetBlock();
             }
@@ -65,7 +65,7 @@ public class InputManager : MonoBehaviour
 
     private void Update()
     {
-        if (_player.GetBattleController() is PlayerBattleController playerBattleController)
+        if (_player.GetBattleController() is PlayerWeaponBattleController playerBattleController)
         {
             playerBattleController.UpdateMousePosition(_playerInput.OnFoot.Look.ReadValue<Vector2>());
         }

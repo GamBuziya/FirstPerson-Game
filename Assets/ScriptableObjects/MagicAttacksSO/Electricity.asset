@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68da9c2982dc4234f95641ac401ce5a6, type: 3}
+  m_Script: {fileID: 11500000, guid: e6e9a4b4c2cd48a29e006dfcb5019c16, type: 3}
   m_Name: Electricity
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::FireMagicAttack
   Bullet: {fileID: 3174473135770588789, guid: a16754f77cfd1fc458eb68a4d50633de, type: 3}
   Impact: {fileID: 5272287450059339608, guid: e0ff4edd25c93864db1e12b22787b0d5, type: 3}
   TypeMagic: 0
-  Damage: 20
-  MagicCost: 20
-  Speed: 30
+  Damage: 35
+  MagicCost: 35
+  Speed: 25
   DamageBonus: 0
   SaveMagicBonus: 0

@@ -1,4 +1,5 @@
 ﻿using DefaultNamespace;
+using DefaultNamespace.Abstract_classes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,18 +7,18 @@ namespace Abstract_classes
 {
     public class UiMagicCharacterController : UIGameCharacterController
     {
-        [Header("Magic Bar")]
+        [Header("Magic Bar")] 
         [SerializeField] protected Image _frontMagic;
         [SerializeField] protected Image _backMagic;
         
         protected int _maxMagic;
 
-        private MagicGameCharacter _magicCharacter;
+        private IMagic _magicCharacter;
         
         protected new void Start()
         {
             base.Start();
-            if (TryGetComponent(out MagicGameCharacter magicCharacter))
+            if (TryGetComponent(out IMagic magicCharacter))
             {
                 _magicCharacter = magicCharacter;
             }
@@ -36,7 +37,7 @@ namespace Abstract_classes
         protected void UpdateMagicUI()
         {
             float fillB = _backMagic.fillAmount;
-            float certainMagic = _magicCharacter.GetCurrentMagic() / _magicCharacter.GetMaxMagic();
+            float certainMagic = _magicCharacter.CurrentMagic / _magicCharacter.MaxMagic;
         
             if (certainMagic < fillB)
             {

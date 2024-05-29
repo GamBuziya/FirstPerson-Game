@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace DefaultNamespace.Abstract_classes
 {
-    public abstract class AnimatorManager : MonoBehaviour
+    public abstract class AnimatorManager : MonoBehaviour, IDeathable
     {
         protected Animator WeaponAnimator;
         protected GameCharacter _person;
@@ -43,15 +43,15 @@ namespace DefaultNamespace.Abstract_classes
 
         public void EnemyParriedEffect()
         {
-            if (_person is global::Enemy enemy)
+            if (_person is global::SwordEnemy enemy)
             {
                 enemy.GetEnemySideAttackUI().DisableUI();
             }
             WeaponAnimator.SetBool("IsParried", true);
             ResetAttack();
         }
-        
-        
-        
+
+
+        public abstract void Death();
     }
 }

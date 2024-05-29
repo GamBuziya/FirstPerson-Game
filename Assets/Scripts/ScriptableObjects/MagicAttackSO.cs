@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace.Abstract_classes;
 using DefaultNamespace.Enums;
 using UnityEngine;
 
-[CreateAssetMenu]
-public class MagicAttackSO : ScriptableObject
+
+public abstract class MagicAttackSO : ScriptableObject
 {
     public GameObject Bullet;
     public GameObject Impact;
@@ -16,4 +18,7 @@ public class MagicAttackSO : ScriptableObject
     [Header("Bonuses")]
     public int DamageBonus;
     public int SaveMagicBonus;
+
+    public abstract void DebafFunc(GameCharacter gameCharacter);
 }
+

@@ -2,11 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
+using DefaultNamespace.Enums;
 using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    [SerializeField] private float _speed;
+    
     [SerializeField] private float _gravity = -9.8f;
     [SerializeField] private float _jumpHeight = 1f;
     [SerializeField] private int _SpeedupStaminaCost = 20;
@@ -16,6 +17,7 @@ public class PlayerMotor : MonoBehaviour
     private Player _player;
     private Vector3 _velocityVector;
     private Vector3 _worldSpaceInput;
+    private float _speed;
     
     private bool _isGrounded;
     
@@ -23,6 +25,7 @@ public class PlayerMotor : MonoBehaviour
     {
         _player = GetComponent<Player>();
         _characterController = GetComponent<CharacterController>();
+        _speed = _player.GetSpeed() * 2f;
     }
 
     private void Update()
@@ -69,6 +72,6 @@ public class PlayerMotor : MonoBehaviour
     {
         
         _speed /= 3f;
-        _player.StaminaDamage(_SpeedupStaminaCost);
+        _player.StaminaDamage(TypeOfStaminaDamage.Dash);
     }
 }

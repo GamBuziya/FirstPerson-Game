@@ -19,6 +19,7 @@ namespace DefaultNamespace
                 return false;
             }
             
+            if(heroCharacter.GetBattleController() == null) return false;
             if (heroCharacter.GetBattleController().GetCurrentTypeOfMove() != TypeOfMove.IsBlock) return false;
 
             if (heroCharacter.GetBattleController().GetCurrentMove() == enemyCharacter.GetBattleController().GetCurrentMove() &&  heroCharacter.GetBattleController().GetCurrentMove() == SideOfMove.Up)

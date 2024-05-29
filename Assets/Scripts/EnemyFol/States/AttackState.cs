@@ -10,45 +10,53 @@ namespace DefaultNamespace.Enemy.States
     {
         private float _moveTimer;
         private float _attackTimer = 0f;
+        private float _speed;
         public override void Enter()
         {
+            _speed = GameCharacter.GetSpeed();
         }
 
         public override void Perform()
         {
-            //Робимо вигляд що отримали усіх найближчих ворогів
-            Enemy.GetCanvasDisabler().CanvasEnable();
+            GameCharacter.GetCanvasDisabler().CanvasEnable();
             Attack();
-            Enemy.Agent.SetDestination(Enemy.Player.transform.position);
+            GameCharacter.Agent.SetDestination(GameCharacter.Player.transform.position);
         }
-
+        
         public override void Exit()
         {
         }
         
         private float timer = 0f;
-        private float interval = 5f; 
+        private float interval = 3f; 
+        
+        
+        
         private void Attack()
         {
-            if(Enemy.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
+            if(GameCharacter.GetCurrentStamina() < 30) StateMachine.ChangeState(new LowStaminaState());
 
-            var closestEnemie = EnemiesManager.Instance.GetClosestEnemy(Enemy);
+            var closestEnemie = EnemiesManager.Instance.GetClosestEnemy(GameCharacter as SwordEnemy);
             
-            if (Vector3.Distance(Enemy.transform.position, closestEnemie.transform.position) < 5f
-                && Vector3.Distance(Enemy.transform.position, Player.transform.position) > 2f)
+            var transform = Player.transform;
+            GameCharacter.transform.LookAt(transform);
+            
+            
+            if (Vector3.Distance(GameCharacter.transform.position, closestEnemie.transform.position) < 5f
+                && Vector3.Distance(GameCharacter.transform.position, Player.transform.position) > 2f)
             {
-                
+                GameCharacter.Agent.speed = _speed;
                 var tempZ = 0;
-                var transform = Player.transform;
-                Enemy.transform.LookAt(transform);
-                Vector3 directionToPlayer = (Player.transform.position - Enemy.transform.position).normalized;
                 
+                
+                Vector3 directionToPlayer = (Player.transform.position - GameCharacter.transform.position).normalized;
+
                 Vector3 directionToLeft = Quaternion.Euler(0, -90 + tempZ , tempZ) * directionToPlayer; // Поворот на 90 градусів ліворуч
                 Vector3 directionToRight = Quaternion.Euler(0, 90 + tempZ, tempZ) * directionToPlayer; // Поворот на 90 градусів праворуч
 
                 Vector3 averageDirection;
-                
-                
+
+
                 timer += Time.deltaTime;
                 if (timer >= interval)
                 {
@@ -66,10 +74,10 @@ namespace DefaultNamespace.Enemy.States
                     {
                         Side = SideToGo.right;
                     }
-                    
+
                     timer = 0;
                 }
-                
+
 
                 switch (Side)
                 {
@@ -77,42 +85,40 @@ namespace DefaultNamespace.Enemy.States
                         averageDirection = Quaternion.Euler(0,  tempZ, tempZ) * directionToPlayer;
                         break;
                     case SideToGo.left:
-                        averageDirection = directionToLeft + directionToPlayer;
+                        averageDirection = 2 * directionToLeft + directionToPlayer;
                         break;
                     case SideToGo.right:
-                        averageDirection = directionToRight + directionToPlayer;
+                        averageDirection = 2 * directionToRight + directionToPlayer;
                         break;
                     default:
                         averageDirection = Quaternion.Euler(0,  tempZ, tempZ) * directionToPlayer;
                         break;
                 }
-                
-                Debug.Log("Side" + Side);
-                
-                Enemy.transform.Translate(averageDirection * Time.deltaTime, Space.World);
+
+                GameCharacter.transform.Translate(averageDirection * Time.deltaTime, Space.World);
                 return;
             }
-            
-            
-            
-            if (Vector3.Distance(Enemy.gameObject.transform.position, Enemy.Player.transform.position) <= 2.3f)
+
+
+
+            if (Vector3.Distance(GameCharacter.gameObject.transform.position, GameCharacter.Player.transform.position) <= 2.3f)
             {
-                Enemy.Agent.speed = 0f;
+                GameCharacter.Agent.speed = 0f;
                 _attackTimer += Time.deltaTime;
-                
-                if (StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
-                    
-                
-                if (_attackTimer > Random.Range(0, 0.3f) && StateMachine.Enemy.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
+
+                if (StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.IsBlock) _attackTimer = 0;
+
+
+                if (_attackTimer > Random.Range(0, 0.1f) && StateMachine.gameCharacter.GetBattleController().GetCurrentTypeOfMove() == TypeOfMove.Nothing)
                 {
-                    StateMachine.Enemy.GetBattleController().Attack();
+                    StateMachine.gameCharacter.GetBattleController().Attack();
                     _attackTimer = 0;
                 }
-                    
+
             }
             else
             {
-                Enemy.Agent.speed = 2.5f;
+                GameCharacter.Agent.speed = _speed;
             }
         }
 

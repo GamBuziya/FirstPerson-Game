@@ -10,11 +10,11 @@ using UnityEngine;
 public class EnemyAnimation : AnimatorManager
 {
     private Animator _enemyAnimator;
-    private Enemy _temp;
+    private SwordEnemy _temp;
 
     void Start()
     {
-        _person = GetComponent<Enemy>();
+        _person = GetComponent<SwordEnemy>();
         _enemyAnimator = GetComponent<Animator>();
         
         var temp = _person.GetComponentsInChildren<Transform>(true);
@@ -30,8 +30,8 @@ public class EnemyAnimation : AnimatorManager
             }
         }
         
-        _person.GetHealthPoints().DeathEvent.AddListener(DeathAnimation);
-        _temp = (Enemy)_person;
+        _person.GetHealthPoints().DeathEvent.AddListener(Death);
+        _temp = (SwordEnemy)_person;
         
     }
 
@@ -47,7 +47,7 @@ public class EnemyAnimation : AnimatorManager
         }
     }
 
-    public void DeathAnimation()
+    public override void Death()
     {
         Debug.Log("Death");
         _enemyAnimator.SetTrigger("IsDead");
@@ -57,6 +57,5 @@ public class EnemyAnimation : AnimatorManager
     {
         _enemyAnimator.SetBool("IsAgressive", state);
     }
-    
     
 }

@@ -11,7 +11,7 @@ namespace DefaultNamespace
     public class PlayerAnimation : AnimatorManager
     {
         
-        private void Awake()
+        private void Start()
         {
             _person = GetComponent<Player>();
             
@@ -28,6 +28,10 @@ namespace DefaultNamespace
                 }
             }
         }
-        
+
+        public override void Death()
+        {
+            //Смеееерть
+        }
     }
 }

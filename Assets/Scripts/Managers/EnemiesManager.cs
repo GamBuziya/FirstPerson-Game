@@ -7,34 +7,34 @@ namespace Managers
     public class EnemiesManager : MonoBehaviour
     {
         public static EnemiesManager Instance;
-        private Enemy[] _enemies;
+        private SwordEnemy[] _enemies;
 
         private void Awake()
         {
             Instance = this;
-            _enemies = GetComponentsInChildren<Enemy>();
+            _enemies = GetComponentsInChildren<SwordEnemy>();
         }
 
-        public Enemy GetClosestEnemy(Enemy currentEnemy)
+        public SwordEnemy GetClosestEnemy(SwordEnemy currentSwordEnemy)
         {
-            Enemy closestEnemy = null;
+            SwordEnemy closestSwordEnemy = null;
             float closestDistance = Mathf.Infinity;
 
-            foreach (Enemy enemy in _enemies)
+            foreach (SwordEnemy enemy in _enemies)
             {
-                if (enemy == currentEnemy)
+                if (enemy == currentSwordEnemy)
                     continue;
                 
-                float distance = Vector3.Distance(currentEnemy.transform.position, enemy.transform.position);
+                float distance = Vector3.Distance(currentSwordEnemy.transform.position, enemy.transform.position);
                 
                 if (distance < closestDistance)
                 {
                     closestDistance = distance;
-                    closestEnemy = enemy;
+                    closestSwordEnemy = enemy;
                 }
             }
 
-            return closestEnemy;
+            return closestSwordEnemy;
         }
     }
 }
