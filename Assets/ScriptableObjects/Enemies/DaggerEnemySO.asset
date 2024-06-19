@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f240d8b50384461c97776f22496822ee, type: 3}
-  m_Name: HammerSO
+  m_Name: DaggerEnemySO
   m_EditorClassIdentifier: 
-  Name: Hammer
-  BasicStaminaCost: 40
-  PowerStaminaCost: 50
-  BasicDamage: 40
-  PowerDamage: 55
-  DamageLevel: 3
-  StaminaLevel: 0
+  Name: Dagger
+  BasicStaminaCost: 20
+  PowerStaminaCost: 30
+  BasicDamage: 20
+  PowerDamage: 30

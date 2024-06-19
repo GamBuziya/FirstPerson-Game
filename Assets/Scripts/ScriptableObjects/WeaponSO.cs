@@ -11,5 +11,8 @@ namespace DefaultNamespace.ScriptableObjects
         public int PowerStaminaCost;
         public int BasicDamage;
         public int PowerDamage;
+
+        public int DamageLevel;
+        public int StaminaLevel;
     }
 }

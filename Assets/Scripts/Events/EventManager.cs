@@ -35,14 +35,6 @@ public class EventManager : MonoBehaviour
         }
     }
     
-    public event Action onSubmitPressed;
-    public void SubmitPressed()
-    {
-        if (onSubmitPressed != null)
-        {
-            onSubmitPressed();
-        }
-    }
         
     public event Action onInteract;
     public void Interacted()

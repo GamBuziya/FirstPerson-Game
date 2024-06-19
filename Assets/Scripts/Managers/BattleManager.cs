@@ -24,11 +24,11 @@ public class BattleManager : MonoBehaviour
         {
             if (swordEnemy.GetBattleController().GetCurrentMove() == SideOfMove.Up)
             {
-                damageType = swordEnemy.Weapon.WeaponData.PowerDamage;
+                damageType = swordEnemy.Weapon.BasicWeaponData.PowerDamage;
             }
             else
             {
-                damageType = swordEnemy.Weapon.WeaponData.BasicDamage;
+                damageType = swordEnemy.Weapon.BasicWeaponData.BasicDamage;
             }
             modifiedDamage = damageType * (1 + Random.Range(-0.25f, 0.25f));
         }
@@ -36,11 +36,11 @@ public class BattleManager : MonoBehaviour
         {
             if (player.GetBattleController().GetCurrentMove() == SideOfMove.Up)
             {
-                damageType = player.Weapon.WeaponData.PowerDamage;
+                damageType = player.Weapon.BasicWeaponData.PowerDamage;
             }
             else
             {
-                damageType = player.Weapon.WeaponData.BasicDamage;
+                damageType = player.Weapon.BasicWeaponData.BasicDamage;
             }
             modifiedDamage = damageType * (1 + Random.Range(-0.25f, 0.25f));
         }

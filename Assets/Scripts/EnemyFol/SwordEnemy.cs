@@ -69,11 +69,11 @@ public class SwordEnemy : EnemyGameCharacter, IWeapon
         var damage = 0;
         if (type == TypeOfStaminaDamage.BasicAttack)
         {
-            damage = Weapon.WeaponData.BasicStaminaCost;
+            damage = Weapon.BasicWeaponData.BasicStaminaCost;
         }
         else if (type == TypeOfStaminaDamage.PowerAttack)
         {
-            damage = Weapon.WeaponData.PowerStaminaCost;
+            damage = Weapon.BasicWeaponData.PowerStaminaCost;
         }
         else
         {

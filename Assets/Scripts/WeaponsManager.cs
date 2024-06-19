@@ -1,16 +1,24 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DefaultNamespace.Abstract_classes;
+using DefaultNamespace.ScriptableObjects;
 using Managers;
 using UnityEngine;
 
 public class WeaponsManager : MonoBehaviour, IDataReturner
 {
+    [SerializeField] private GameObject DamageIconsParent;
+    [SerializeField] private GameObject StaminaIconsParent;
+
+    public Action<WeaponSO> ChangeWeapon;
+    
     private WeaponManager[] _weapons;
     private WeaponManager _currentWeapon;
     private int _currentIndex;
     private int _maxWeapons;
+    
     
     private void Awake()
     {
@@ -22,14 +30,42 @@ public class WeaponsManager : MonoBehaviour, IDataReturner
 
     private void Start()
     {
-        GameStatsManager.Instance.SelectedWeapon = _currentWeapon.WeaponData;
+        WeaponSO currentWeapon = null;
+        if (GameStatsManager.Instance.WeaponsSO != null)
+        {
+            currentWeapon = GameStatsManager.Instance.WeaponsSO.FirstOrDefault(
+                weapon => weapon.Name == _currentWeapon.BasicWeaponData.Name);
+        }
+        
+        if (currentWeapon == null)
+        {
+            currentWeapon = _currentWeapon.BasicWeaponData;
+            GameStatsManager.Instance.WeaponsSO?.Add(currentWeapon);
+        }
+        
+        ChangeWeapon?.Invoke(currentWeapon);
+        GameStatsManager.Instance.SelectedWeapon = currentWeapon;
+        Debug.Log("Start");
     }
     
     public void SetCurrent(int index)
     {
         _currentIndex = index;
         _currentWeapon = _weapons[_currentIndex];
-        GameStatsManager.Instance.SelectedWeapon = _currentWeapon.WeaponData; 
+        WeaponSO currentWeapon = null;
+        if (GameStatsManager.Instance.WeaponsSO != null)
+        {
+            currentWeapon = GameStatsManager.Instance.WeaponsSO.FirstOrDefault(
+                weapon => weapon.Name == _currentWeapon.BasicWeaponData.Name);
+        }
+        
+        if (currentWeapon == null)
+        {
+            currentWeapon = _currentWeapon.BasicWeaponData;
+            GameStatsManager.Instance.WeaponsSO?.Add(currentWeapon);
+        }
+        ChangeWeapon?.Invoke(currentWeapon);
+        GameStatsManager.Instance.SelectedWeapon = currentWeapon;
     }
 
     public int GetCurrent()

@@ -11,9 +11,9 @@ public class WeaponSpawnManager : MonoBehaviour
     {
         foreach (GameObject weapon in _weaponsObjects)
         {
-            if (weapon.GetComponent<WeaponManager>().WeaponData.Name == GameStatsManager.Instance.SelectedWeapon.Name)
+            if (weapon.GetComponent<WeaponManager>().BasicWeaponData.Name == GameStatsManager.Instance.SelectedWeapon.Name)
             {
-                weapon.GetComponent<WeaponManager>().WeaponData = GameStatsManager.Instance.SelectedWeapon;
+                weapon.GetComponent<WeaponManager>().BasicWeaponData = GameStatsManager.Instance.SelectedWeapon;
                 Instantiate(weapon, transform, true);
             }
             
