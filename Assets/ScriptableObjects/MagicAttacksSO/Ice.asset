@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11419db888ee42a082ec0b4815040666, type: 3}
   m_Name: Ice
   m_EditorClassIdentifier: Assembly-CSharp::IceMagicAttack
+  Name: Ice
   Bullet: {fileID: 5865854183427622192, guid: d0399435cd2115c47ad4fd44d9324258, type: 3}
   Impact: {fileID: 6623303314681798855, guid: d8f3b908eb160e344b49d57a2b795910, type: 3}
   TypeMagic: 3

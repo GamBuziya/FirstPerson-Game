@@ -11,8 +11,6 @@ public class WeaponsManager : MonoBehaviour, IDataReturner
 {
     [SerializeField] private GameObject DamageIconsParent;
     [SerializeField] private GameObject StaminaIconsParent;
-
-    public Action<WeaponSO> ChangeWeapon;
     
     private WeaponManager[] _weapons;
     private WeaponManager _currentWeapon;
@@ -43,9 +41,7 @@ public class WeaponsManager : MonoBehaviour, IDataReturner
             GameStatsManager.Instance.WeaponsSO?.Add(currentWeapon);
         }
         
-        ChangeWeapon?.Invoke(currentWeapon);
         GameStatsManager.Instance.SelectedWeapon = currentWeapon;
-        Debug.Log("Start");
     }
     
     public void SetCurrent(int index)
@@ -64,7 +60,6 @@ public class WeaponsManager : MonoBehaviour, IDataReturner
             currentWeapon = _currentWeapon.BasicWeaponData;
             GameStatsManager.Instance.WeaponsSO?.Add(currentWeapon);
         }
-        ChangeWeapon?.Invoke(currentWeapon);
         GameStatsManager.Instance.SelectedWeapon = currentWeapon;
     }
 

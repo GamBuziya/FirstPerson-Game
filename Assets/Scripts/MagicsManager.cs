@@ -1,4 +1,5 @@
-﻿using DefaultNamespace.Abstract_classes;
+﻿using System.Linq;
+using DefaultNamespace.Abstract_classes;
 using Managers;
 using UnityEngine;
 
@@ -21,14 +22,40 @@ namespace DefaultNamespace
 
         private void Start()
         {
-            GameStatsManager.Instance.SelectedMagic = _currentMagic.MagicData;
+            MagicAttackSO currentMagic = null;
+            if (GameStatsManager.Instance.MagicsAttackSO != null)
+            {
+                currentMagic = GameStatsManager.Instance.MagicsAttackSO.FirstOrDefault(
+                    magic => magic.Name == _currentMagic.MagicData.Name);
+            }
+        
+            if (currentMagic == null)
+            {
+                currentMagic = _currentMagic.MagicData;
+                GameStatsManager.Instance.MagicsAttackSO?.Add(currentMagic);
+            }
+        
+            GameStatsManager.Instance.SelectedMagic = currentMagic;
         }
-    
+        
         public void SetCurrent(int index)
         {
             _currentIndex = index;
             _currentMagic = _magics[_currentIndex];
-            GameStatsManager.Instance.SelectedMagic = _currentMagic.MagicData; 
+            MagicAttackSO currentMagic = null;
+            if (GameStatsManager.Instance.MagicsAttackSO != null)
+            {
+                currentMagic = GameStatsManager.Instance.MagicsAttackSO.FirstOrDefault(
+                    magic => magic.Name == _currentMagic.MagicData.Name);
+            }
+        
+            if (currentMagic == null)
+            {
+                Debug.Log("aaaaaa");
+                currentMagic = _currentMagic.MagicData;
+                GameStatsManager.Instance.MagicsAttackSO?.Add(currentMagic);
+            }
+            GameStatsManager.Instance.SelectedMagic = currentMagic;
         }
 
         public int GetCurrent()

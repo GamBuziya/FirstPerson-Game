@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48465bafbdb54895b6ffe496a8a40249, type: 3}
   m_Name: Venom
   m_EditorClassIdentifier: Assembly-CSharp::VenomMagicAttack
+  Name: Venom
   Bullet: {fileID: 1347771500990160856, guid: 992242a718460bc4dbeb85ac783c67a4, type: 3}
   Impact: {fileID: 7420277688125870721, guid: 333713f6d6c9e0447a4cfbc022ce9dd5, type: 3}
   TypeMagic: 1

@@ -8,6 +8,7 @@ using UnityEngine;
 
 public abstract class MagicAttackSO : ScriptableObject
 {
+    public string Name;
     public GameObject Bullet;
     public GameObject Impact;
     public TypeMagicAttack TypeMagic;
