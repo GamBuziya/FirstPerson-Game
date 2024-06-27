@@ -33,7 +33,6 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
 
     public void Next()
     {
-        Debug.Log("Next");
         if (_currentPage < _maxPage)
         {
             _currentPage++;
@@ -44,7 +43,6 @@ public class SwipeController : MonoBehaviour, IEndDragHandler
 
     public void Previous()
     {
-        Debug.Log("Previous");
         if (_currentPage > 1)
         {
             _currentPage--;

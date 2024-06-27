@@ -6,15 +6,16 @@ using UnityEngine.UI;
 
 namespace Managers
 {
-    public class BarDataChanger : MonoBehaviour
+    public class BarDataManager : MonoBehaviour
     {
         [SerializeField] private GameObject _parentGameObjects;
-
         [SerializeField] private Button _button;
         [SerializeField] private TextMeshProUGUI _text;
+        
+        public int Price; 
     
         private Image[] _levelGameObjects;
-        private int _price; 
+        
         protected void Awake()
         {
             _levelGameObjects = _parentGameObjects.GetComponentsInChildren<Image>();
@@ -22,10 +23,10 @@ namespace Managers
         
         public void UpdateData(int data)
         {
-            _price = 200 + data * 200;
-            _text.text = _price.ToString();
+            Price = 200 + data * 200;
+            _text.text = Price.ToString();
 
-            if (_price > GameStatsManager.Instance.Coins)
+            if (Price > GameStatsManager.Instance.Coins)
             {
                 _button.interactable = false;
             }

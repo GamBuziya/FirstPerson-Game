@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace.Abstract_classes;
 using DG.Tweening;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -31,7 +30,7 @@ public class SwipeDataController : MonoBehaviour, IEndDragHandler
         dragThreshuld = Screen.width / 10;
         _maxWeapons = _manager.GetMaxCount();
         UpdateArrowButton();
-        Debug.Log("_manager + " + _manager.GetType());
+        
     }
     
 

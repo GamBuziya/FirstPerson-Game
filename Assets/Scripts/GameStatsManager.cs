@@ -13,7 +13,7 @@ public class GameStatsManager : MonoBehaviour
     public Action<DataType> ChangeStats;
     private WeaponSO _selectedWeapon;
     private MagicAttackSO _selectedMagic;
-    private int _coins;
+    private int _coins = 500;
     private int _levelHealthBonus;
     private int _levelStaminaBonus;
     private int _levelMagicBonus;

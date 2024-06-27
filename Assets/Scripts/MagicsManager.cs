@@ -51,7 +51,6 @@ namespace DefaultNamespace
         
             if (currentMagic == null)
             {
-                Debug.Log("aaaaaa");
                 currentMagic = _currentMagic.MagicData;
                 GameStatsManager.Instance.MagicsAttackSO?.Add(currentMagic);
             }
