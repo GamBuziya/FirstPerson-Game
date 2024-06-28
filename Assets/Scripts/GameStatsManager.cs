@@ -17,6 +17,7 @@ public class GameStatsManager : MonoBehaviour
     private int _levelHealthBonus;
     private int _levelStaminaBonus;
     private int _levelMagicBonus;
+    
 
     #region Properties
     public WeaponSO SelectedWeapon
@@ -99,9 +100,10 @@ public class GameStatsManager : MonoBehaviour
     
     [CanBeNull] public List<WeaponSO> WeaponsSO;
     [CanBeNull] public List<MagicAttackSO> MagicsAttackSO;
-
+    public int CountOfBattles = 10;
     private void Awake()
     {
+        CountOfBattles = 10;
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

@@ -19,6 +19,7 @@ public class PlayerMagicManager : BasicMagicManager
         base.Start();
         _camera = GetComponentInChildren<Camera>();
         _currentMagicAttack = GameStatsManager.Instance.SelectedMagic;
+        
     }
     
     

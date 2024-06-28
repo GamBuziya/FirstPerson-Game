@@ -28,6 +28,7 @@ namespace DefaultNamespace.Abstract_classes
         {
             _gameCharacter = GetComponent<GameCharacter>();
             _magicGameCharacter = (IMagic)_gameCharacter;
+            _magicSaveBonus = GameStatsManager.Instance.SelectedMagic.SaveMagicBonus * 10;
         }
 
         protected void Update()

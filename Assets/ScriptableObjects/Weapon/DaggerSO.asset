@@ -17,5 +17,5 @@ MonoBehaviour:
   PowerStaminaCost: 30
   BasicDamage: 20
   PowerDamage: 30
-  DamageLevel: 4
+  DamageLevel: 0
   StaminaLevel: 0

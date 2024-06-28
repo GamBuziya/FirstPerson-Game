@@ -11,6 +11,7 @@ public class WeaponSpawnManager : MonoBehaviour
     {
         foreach (GameObject weapon in _weaponsObjects)
         {
+            Debug.Log("weapon.GetComponent<WeaponManager>().BasicWeaponData.Name" + weapon.GetComponent<WeaponManager>().BasicWeaponData.Name);
             if (weapon.GetComponent<WeaponManager>().BasicWeaponData.Name == GameStatsManager.Instance.SelectedWeapon.Name)
             {
                 weapon.GetComponent<WeaponManager>().BasicWeaponData = GameStatsManager.Instance.SelectedWeapon;

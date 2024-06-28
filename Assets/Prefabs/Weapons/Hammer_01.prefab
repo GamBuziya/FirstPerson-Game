@@ -203,4 +203,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f904be764f4d19adeb3c4c977dc9c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WeaponData: {fileID: 11400000, guid: 807b0ca526f96b84ea113d40e5a9fb46, type: 2}
+  BasicWeaponData: {fileID: 11400000, guid: 807b0ca526f96b84ea113d40e5a9fb46, type: 2}

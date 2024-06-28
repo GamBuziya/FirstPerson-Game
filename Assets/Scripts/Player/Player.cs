@@ -21,15 +21,17 @@ namespace DefaultNamespace
 
         private float timer = 0f;
         private float interval = 0.1f;
-        private float _maxMagic1;
 
         private new void Awake()
         {
-            base.Awake();
+            MagicManager = GetComponent<BasicMagicManager>();
+            _maxHealth = 100 + GameStatsManager.Instance.LevelHealthBonus * 20;
+            _maxStamina = 100 + GameStatsManager.Instance.LevelStaminaBonus * 10;
+            _maxMagic = 100 + GameStatsManager.Instance.LevelMagicBonus * 10;
             MaxMagic = _maxMagic;
             CurrentMagic = _maxMagic;
-            MagicManager = GetComponent<BasicMagicManager>();
-            //Debug.Log("Weapon = " + Weapon.name);
+            
+            base.Awake();
         }
 
         private void Start()

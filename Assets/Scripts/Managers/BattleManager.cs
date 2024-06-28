@@ -34,13 +34,14 @@ public class BattleManager : MonoBehaviour
         }
         else if (attacker.TryGetComponent(out Player player))
         {
+            var bonus = GameStatsManager.Instance.SelectedWeapon.DamageLevel;
             if (player.GetBattleController().GetCurrentMove() == SideOfMove.Up)
             {
-                damageType = player.Weapon.BasicWeaponData.PowerDamage;
+                damageType = player.Weapon.BasicWeaponData.PowerDamage + bonus * 3;
             }
             else
             {
-                damageType = player.Weapon.BasicWeaponData.BasicDamage;
+                damageType = player.Weapon.BasicWeaponData.BasicDamage + bonus * 3;
             }
             modifiedDamage = damageType * (1 + Random.Range(-0.25f, 0.25f));
         }
@@ -52,8 +53,13 @@ public class BattleManager : MonoBehaviour
     private void EventManagerOnMagicDamage(GameCharacter attacker, GameCharacter defender)
     {
         var magic = attacker as IMagic;
+        var bonus = 0;
         
-        float modifiedDamage = (magic.MagicManager.GetMagicData().Damage + magic.MagicManager.GetMagicData().DamageBonus) * (1 + Random.Range(-0.25f, 0.25f));
+        if (attacker.TryGetComponent(out Player player))
+        {
+            bonus = GameStatsManager.Instance.SelectedMagic.DamageBonus * 5;
+        }
+        float modifiedDamage = (magic.MagicManager.GetMagicData().Damage + bonus) * (1 + Random.Range(-0.25f, 0.25f));
         int damage = (int)((int)(modifiedDamage)*(1 - defender.GetCurrentMagicResist(magic)/100));
         defender.GetHealthPoints().TakeDamage(damage);
     }

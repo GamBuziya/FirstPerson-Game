@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 public class WatchersManager : MonoBehaviour
 {
     private GameObject _player;
-    private List<Transform> _watchers; // Змініть тип на Transform
+    private List<Transform> _watchers;
 
     void Start()
     {

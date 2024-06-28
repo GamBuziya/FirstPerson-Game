@@ -50,7 +50,6 @@ namespace Managers
                     _magicBonus.UpdateData(GameStatsManager.Instance.LevelMagicBonus);
                     break;
                 case DataType.Coins:
-                    _weaponStamina.UpdateData(GameStatsManager.Instance.Coins);
                     break;
                 default:
                     UpdateAllData();
@@ -60,8 +59,31 @@ namespace Managers
 
         private void ConfigureButtonActions()
         {
-            ConfigureButton(_healthBonus.GetComponentInChildren<Button>(), () => GameStatsManager.Instance.LevelHealthBonus, value => GameStatsManager.Instance.LevelHealthBonus = value);
-            ConfigureButton(_staminaBonus.GetComponentInChildren<Button>(), () => GameStatsManager.Instance.LevelStaminaBonus, value => GameStatsManager.Instance.LevelStaminaBonus = value);
+            ConfigureButton(_healthBonus.GetComponentInChildren<Button>(), 
+                () => GameStatsManager.Instance.LevelHealthBonus, 
+                value => GameStatsManager.Instance.LevelHealthBonus = value);
+            ConfigureButton(_staminaBonus.GetComponentInChildren<Button>(), 
+                () => GameStatsManager.Instance.LevelStaminaBonus, 
+                value => GameStatsManager.Instance.LevelStaminaBonus = value);
+            
+            ConfigureButton(_magicBonus.GetComponentInChildren<Button>(), 
+                () => GameStatsManager.Instance.LevelMagicBonus, 
+                value => GameStatsManager.Instance.LevelMagicBonus = value);
+            
+            ConfigureButton(_weaponDamage.GetComponentInChildren<Button>(), 
+                () => GameStatsManager.Instance.SelectedWeapon.DamageLevel, 
+                value => GameStatsManager.Instance.SelectedWeapon.DamageLevel = value);
+            
+            ConfigureButton(_weaponStamina.GetComponentInChildren<Button>(), 
+                () => GameStatsManager.Instance.SelectedWeapon.StaminaLevel, 
+                value => GameStatsManager.Instance.SelectedWeapon.StaminaLevel = value);
+            
+            ConfigureButton(_magicDamage.GetComponentInChildren<Button>(), 
+                () => GameStatsManager.Instance.SelectedMagic.DamageBonus, 
+                value => GameStatsManager.Instance.SelectedMagic.DamageBonus = value);
+            ConfigureButton(_magicStamina.GetComponentInChildren<Button>(), 
+                () => GameStatsManager.Instance.SelectedMagic.SaveMagicBonus, 
+                value => GameStatsManager.Instance.SelectedMagic.SaveMagicBonus = value);
         }
 
         private void ConfigureButton(Button button, Func<int> getter, Action<int> setter)
@@ -87,7 +109,6 @@ namespace Managers
             _healthBonus.UpdateData(GameStatsManager.Instance.LevelHealthBonus);
             _staminaBonus.UpdateData(GameStatsManager.Instance.LevelStaminaBonus);
             _magicBonus.UpdateData(GameStatsManager.Instance.LevelMagicBonus);
-            _weaponStamina.UpdateData(GameStatsManager.Instance.Coins);
         }
     }
 }
